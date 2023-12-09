@@ -1,0 +1,17 @@
+---
+type Props = {
+  href: string;
+};
+
+const { href } = Astro.props;
+---
+
+<a
+  href={href}
+  class="group block cursor-pointer px-3 font-medium capitalize text-black/70 no-underline outline-none transition-all last:pl-3 last:pr-0 hover:text-black"
+>
+  <slot />
+  <span
+    class="bg-accent2 block h-[3px] max-w-0 rounded-full text-yellow-500 transition-all duration-200 group-hover:max-w-full"
+  ></span>
+</a>

@@ -4,7 +4,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
-import Header from "../components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
 ---
 
 <!doctype html>
@@ -20,6 +21,7 @@ import Header from "../components/Header.astro";
   <body class="bg-white text-black antialiased">
     <Header />
     <slot />
+    <Footer />
   </body>
 </html>
 
@@ -38,6 +40,7 @@ import Header from "../components/Header.astro";
   }
 
   :root {
+    --color-accent-2: 108, 99, 255;
     --color-fill: 33, 39, 55;
     --color-accent: 255, 121, 1;
     --color-card: 52, 63, 96;
@@ -46,6 +49,7 @@ import Header from "../components/Header.astro";
   }
 
   html {
+    scroll-behavior: smooth;
     font-family:
       system-ui,
       -apple-system,

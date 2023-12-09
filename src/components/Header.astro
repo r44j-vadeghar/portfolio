@@ -1,9 +1,10 @@
 ---
+import HeaderNavItem from "./HeaderNavItem.astro";
 import Socials from "./Socials.astro";
 ---
 
 <header
-  class="absolute inset-x-0 mx-auto flex max-w-screen-2xl items-center justify-between p-8 px-16"
+  class="absolute inset-x-0 mx-auto flex max-w-screen-2xl items-center justify-center overflow-x-hidden p-8 px-16 sm:justify-between"
 >
   <div id="profile" class="flex scale-90 items-center gap-3">
     <img
@@ -15,7 +16,7 @@ import Socials from "./Socials.astro";
     <div id="profile-divider" class="h-10 w-1 rounded-full bg-black/60"></div>
     <div id="profile-data" class="flex flex-col gap-2">
       <p id="name" class="font-medium">Full Stack Developer</p>
-      <Socials />
+      <Socials className="flex items-center gap-2" />
     </div>
   </div>
   <!-- <div id="burger" class="group flex cursor-pointer flex-col items-end gap-2">
@@ -29,10 +30,11 @@ import Socials from "./Socials.astro";
     </div>
   </div> -->
 
-  <nav class="flex items-center gap-10 font-medium text-black/70">
-    <a href="#my-work">My work</a><a href="#services">Services</a><a
-      href="#testimonials">Testimonials</a
-    ><a href="">How much I charge</a>
+  <nav class="hidden items-center font-medium sm:flex">
+    <HeaderNavItem href="#my-work">My work</HeaderNavItem>
+    <HeaderNavItem href="#services">Services</HeaderNavItem>
+    <!-- <HeaderNavItem href="#testimonials">Testimonials</HeaderNavItem>
+    <HeaderNavItem href="">How much I charge</HeaderNavItem> -->
   </nav>
 </header>
 
@@ -40,90 +42,76 @@ import Socials from "./Socials.astro";
   import gsap from "gsap";
   import SplitType from "split-type";
 
-  const burger = document.getElementById("burger");
-  const main = document.querySelector("main");
-  const nav = document.querySelector("nav");
+  let mm = gsap.matchMedia();
+  const breakPoint = 800;
 
-  burger?.addEventListener("click", () => {
-    console.log("clicked");
-    burger.toggleAttribute("data-active");
-  });
+  mm.add(
+    {
+      isDesktop: `(min-width: ${breakPoint}px)`,
+      isMobile: `(max-width: ${breakPoint - 1}px)`,
+      reduceMotion: "(prefers-reduced-motion: reduce)"
+    },
+    (context) => {
+      // @ts-ignore
+      const { isDesktop } = context.conditions;
+      const main = document.querySelector("main");
+      const nav = document.querySelector("nav");
+      const footer = document.querySelector("footer");
+      const letters = new SplitType("#name", { split: "chars" }).chars;
+      const duration = 0.3;
 
-  const tl = gsap.timeline();
+      const mainTl = gsap.timeline();
+      const staggerTl = gsap.timeline({
+        defaults: {
+          duration: duration,
+          stagger: duration / 15,
+          repeatDelay: 1
+        }
+      });
+      const settersTl = gsap.timeline();
 
-  tl.timeScale(2);
+      mainTl.timeScale(2);
 
-  let letters = new SplitType("#name", { split: "chars" }).chars;
-  let duration = 0.3;
+      settersTl
+        .set("#profile-divider", {
+          height: 0,
+          opacity: 0
+        })
+        .set("#profile-data", { opacity: 0 })
+        .set("#profile-img", {
+          opacity: 0,
+          scale: 1.2
+        });
 
-  const staggerTl = gsap.timeline({
-    defaults: {
-      duration: duration,
-      stagger: duration / 15,
-      repeatDelay: 1
+      const fromVars = { opacity: 0, scale: 0.7, filter: "blur(40px)" };
+      const toVars = { opacity: 1, scale: 1, filter: "none" };
+
+      staggerTl
+        .fromTo(letters, fromVars, toVars)
+        .fromTo("#socials a", fromVars, toVars, "<+=0.2");
+
+      mainTl
+        .to(
+          "#profile-img",
+          { opacity: 1, scale: 1, ease: "power1.out" },
+          "+=0.2"
+        )
+        .to("#profile-divider", { height: "2.5rem", opacity: 1 })
+        .to("#profile-data", { opacity: 1 })
+        .add(staggerTl)
+        .to("body", { backgroundColor: "#fff", color: "#000" }, "<+=1")
+        .to(main, { display: "flex", opacity: 1, duration: 1 })
+        .to(
+          nav,
+          { display: isDesktop ? "flex" : "none", opacity: 1, duration: 1 },
+          "<+=0.2"
+        )
+        .to(footer, { display: "block", opacity: 1, duration: 1 }, "<+=0.2")
+        .to(
+          "#profile-divider",
+          { backgroundColor: "rgb(0 0 0 / 0.6)" },
+          "<-=0.5"
+        );
     }
-  });
-
-  const profile = document.getElementById("profile");
-
-  if (profile) {
-    gsap.set(profile, {
-      xPercent: -50,
-      yPercent: -50,
-      x: innerWidth / 2,
-      y: innerHeight / 2,
-      scale: 1.5
-    });
-    gsap.set(main, { display: "none", opacity: 0 });
-    gsap.set(nav, { display: "none", opacity: 0 });
-    gsap.set("#profile-divider", { opacity: 0 });
-    gsap.set("#profile-data", { opacity: 0 });
-    gsap.set("#profile-img", {
-      xPercent: profile.offsetWidth / 2,
-      scale: 2
-    });
-  }
-
-  const fromVars = { opacity: 0, scale: 0.7, filter: "blur(40px)" };
-  const toVars = { opacity: 1, scale: 1, filter: "none" };
-
-  staggerTl
-    .fromTo(letters, fromVars, toVars)
-    .fromTo("#socials a", fromVars, toVars, "<+=0.2");
-
-  tl.to("#profile-img", { scale: 1.5 })
-    .to(
-      "#profile-img",
-      {
-        duration: 1,
-        opacity: 1,
-        xPercent: 0,
-        yPercent: 0,
-        x: 0,
-        y: 0,
-        scale: 1,
-        ease: "power1.out"
-      },
-      "+=0.2"
-    )
-    .fromTo("#profile-divider", { height: 0 }, { height: "2.5rem", opacity: 1 })
-    .to("#profile-data", { opacity: 1 })
-    .to(
-      profile,
-      {
-        xPercent: 0,
-        yPercent: 0,
-        x: 0,
-        y: 0,
-        scale: 1,
-        ease: "power1.out",
-        duration: 1
-      },
-      "+=.5"
-    )
-    .add(staggerTl, "-=2")
-    .to(main, { display: "block", opacity: 1, duration: 1 })
-    .to(nav, { display: "flex", opacity: 1, duration: 1 }, "<+=0.2");
-
-  gsap.fromTo("#profile-img", { opacity: 0 }, { opacity: 1 });
+  );
 </script>

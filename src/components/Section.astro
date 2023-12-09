@@ -7,6 +7,6 @@ type Props = {
 const { className, ...rest } = Astro.props;
 ---
 
-<section {...rest} class=`py-10 ${className}`>
+<section {...rest} class={className}>
   <slot />
 </section>

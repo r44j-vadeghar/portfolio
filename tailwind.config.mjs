@@ -13,6 +13,7 @@ export default {
       colors: {
         fill: "rgba(var(--color-fill))",
         accent: "rgba(var(--color-accent))",
+        accent2: "rgba(var(--color-accent-2))",
         card: "rgba(var(--color-card))",
         "card-muted": "rgba(var(--color-card-muted))",
         "accent-border": "rgba(var(--color-border))"
