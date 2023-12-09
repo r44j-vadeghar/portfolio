@@ -1,0 +1,156 @@
+---
+import Section from "./Section.astro";
+---
+
+<Section className="h-screen w-full">
+  <div class="grid h-full place-items-center">
+    <div class="w-[75%]">
+      <p class="-mt-6 text-center">
+        Full Stack Web developer | Software Developer
+      </p>
+      <div
+        id="placeholder"
+        class="text-center font-rubik-glitch text-8xl uppercase leading-[2.25] tracking-[1.2rem]"
+      >
+        React JS
+      </div>
+      <p class="-mt-6 text-center" id="sub-header">Full Stack Developer</p>
+    </div>
+  </div>
+</Section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to("#bg-video", {
+    scrollTrigger: {
+      trigger: document.body,
+      start: "top",
+      end: window.innerHeight,
+      scrub: true
+    },
+    scale: 0.7,
+    filter: "blur(8px)"
+  });
+
+  const placeholders = [
+    "React JS",
+    "Next JS",
+    "Figma",
+    "Design",
+    "Develop",
+    "Deploy"
+  ];
+
+  const subHeaders = [
+    "top-notch web design components.",
+    "forging ahead with elite web designs.",
+    "take the fast lane to mastery.",
+    "bring your projects to life, quicker than ever.",
+    "Responsive Web Designs"
+  ];
+
+  const placeholder = document.querySelector("#placeholder");
+  const subheader = document.querySelector("#sub-header");
+
+  function animateScale(element: HTMLElement, scaleValue: number) {
+    gsap.fromTo(
+      element,
+      { scale: 1 },
+      { scale: scaleValue, duration: 2, ease: "power1.out" }
+    );
+  }
+
+  function wrapLetters(text: string) {
+    if (placeholder) {
+      placeholder.innerHTML = "";
+      [...text].forEach((letter) => {
+        const span = document.createElement("span");
+        span.style.filter = "blur(8px)";
+        span.textContent = letter;
+        placeholder.appendChild(span);
+      });
+    }
+  }
+
+  function animateBlurEffect() {
+    if (placeholder) {
+      const letters = placeholder.children;
+      let index = 0;
+
+      function clearNextLetter() {
+        if (index < letters.length) {
+          gsap.to(letters[index]!, { filter: "blur(0px)", duration: 0.5 });
+          index++;
+          if (index < letters.length) {
+            setTimeout(clearNextLetter, 100);
+          }
+        }
+      }
+
+      setTimeout(clearNextLetter, 0);
+    }
+  }
+
+  function shuffleLetters(finalText: string) {
+    wrapLetters("");
+    wrapLetters(finalText.replace(/./g, " "));
+
+    let textArray = finalText.split("");
+    let shufflingCounter = 0;
+    let intervalHandles: ReturnType<typeof setTimeout>[] = [];
+
+    function shuffle(index: number) {
+      if (shufflingCounter < 30) {
+        textArray[index] =
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[Math.floor(Math.random() * 26)] ?? "R";
+        if (placeholder)
+          placeholder.children[index]!.textContent = textArray[index] ?? null;
+      } else {
+        if (placeholder)
+          placeholder.children[index]!.textContent = finalText.charAt(index);
+        clearInterval(intervalHandles[index]);
+      }
+    }
+
+    for (let i = 0; i < finalText.length; i++) {
+      intervalHandles[i] = setInterval(shuffle, 80, i);
+    }
+
+    setTimeout(() => {
+      shufflingCounter = 30;
+      for (let i = 0; i < finalText.length; i++) {
+        if (placeholder)
+          placeholder.children[i]!.textContent = finalText.charAt(i);
+        clearInterval(intervalHandles[i]);
+      }
+      animateBlurEffect();
+    }, 1000);
+  }
+
+  function resetPlaceholderText() {
+    const currentPlaceholder = placeholder?.textContent;
+    const currentSubHeader = subheader?.textContent;
+    if (currentPlaceholder && currentSubHeader) {
+      const placeholderIndex = placeholders.indexOf(currentPlaceholder);
+      const subheaderIndex = subHeaders.indexOf(currentSubHeader);
+      const newPlaceholder =
+        placeholders[
+          placeholderIndex < placeholders.length ? placeholderIndex + 1 : 0
+        ] ?? "ReactJS";
+      const newSubHeader =
+        subHeaders[
+          subheaderIndex < subHeaders.length ? subheaderIndex + 1 : 0
+        ] ?? "Responsive Web Designs";
+      if (subheader) subheader.textContent = newSubHeader;
+      if (placeholder) animateScale(placeholder as HTMLElement, 1.25);
+      shuffleLetters(newPlaceholder);
+    }
+  }
+
+  window.addEventListener("load", resetPlaceholderText);
+  setInterval(resetPlaceholderText, 5000);
+</script>

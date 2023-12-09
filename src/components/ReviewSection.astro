@@ -1,0 +1,103 @@
+---
+import Section from "./Section.astro";
+---
+
+<Section
+  id="reviews"
+  className="mx-auto my-10 flex w-full max-w-screen-2xl overflow-x-hidden px-10"
+>
+  <ul id="row" class="flex w-full flex-nowrap items-center gap-5">
+    <li
+      class="flex flex-[0_0_33%] flex-col gap-3 rounded-xl border p-5 shadow-md"
+    >
+      <p class="text-2xl">Title</p>
+      <p class="text-black/60">description</p>
+    </li>
+    <li
+      class="flex flex-[0_0_33%] flex-col gap-3 rounded-xl border p-5 shadow-md"
+    >
+      <p class="text-2xl">Title</p>
+      <p class="text-black/60">description</p>
+    </li>
+    <li
+      class="flex flex-[0_0_33%] flex-col gap-3 rounded-xl border p-5 shadow-md"
+    >
+      <p class="text-2xl">Title</p>
+      <p class="text-black/60">description</p>
+    </li>
+    <li
+      class="flex flex-[0_0_33%] flex-col gap-3 rounded-xl border p-5 shadow-md"
+    >
+      <p class="text-2xl">Title</p>
+      <p class="text-black/60">description</p>
+    </li>
+    <li
+      class="flex flex-[0_0_33%] flex-col gap-3 rounded-xl border p-5 shadow-md"
+    >
+      <p class="text-2xl">Title</p>
+      <p class="text-black/60">description</p>
+    </li>
+    <li
+      class="flex flex-[0_0_33%] flex-col gap-3 rounded-xl border p-5 shadow-md"
+    >
+      <p class="text-2xl">Title</p>
+      <p class="text-black/60">description</p>
+    </li>
+    <li
+      class="flex flex-[0_0_33%] flex-col gap-3 rounded-xl border p-5 shadow-md"
+    >
+      <p class="text-2xl">Title</p>
+      <p class="text-black/60">description</p>
+    </li>
+    <li
+      class="flex flex-[0_0_33%] flex-col gap-3 rounded-xl border p-5 shadow-md"
+    >
+      <p class="text-2xl">Title</p>
+      <p class="text-black/60">description</p>
+    </li>
+    <li
+      class="flex flex-[0_0_33%] flex-col gap-3 rounded-xl border p-5 shadow-md"
+    >
+      <p class="text-2xl">Title</p>
+      <p class="text-black/60">description</p>
+    </li>
+    <li
+      class="flex flex-[0_0_33%] flex-col gap-3 rounded-xl border p-5 shadow-md"
+    >
+      <p class="text-2xl">Title</p>
+      <p class="text-black/60">description</p>
+    </li>
+  </ul>
+</Section>
+
+<script>
+  import { gsap } from "gsap";
+
+  const row = document.getElementById("row");
+  if (row) {
+    let row_width = row.getBoundingClientRect().width;
+    let row_item_width = row.children[0]?.getBoundingClientRect().width;
+    if (row_item_width) {
+      let initial_offset = ((2 * row_item_width) / row_width) * 100 * -1;
+      // let x_translation = initial_offset * -1;
+
+      gsap.set(row, {
+        xPercent: `${initial_offset}`
+      });
+      var tl = gsap.timeline();
+
+      tl.fromTo(
+        row,
+        {
+          xPercent: 0
+        },
+        {
+          ease: "none",
+          duration: 5,
+          xPercent: initial_offset,
+          repeat: -1
+        }
+      );
+    }
+  }
+</script>

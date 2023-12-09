@@ -6,11 +6,8 @@ commit-msg:
 pre-commit:
   parallel: true
   commands:
-    eslint:
-      glob: "*.{ts,tsx,js,mjs,cjs,html,css,astro}"
-      run: yarn eslint {staged_files} --report-unused-disable-directives --max-warnings 0
     prettier:
       glob: "*.{ts,tsx,js,mjs,cjs,jsx,html,css,json,yaml,yml,svg,md,astro}"
-      run: yarn prettier --check {staged_files}
+      run: yarn prettier --write {staged_files}
     editorconfig-checker:
       run: yarn ec

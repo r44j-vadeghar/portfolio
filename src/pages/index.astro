@@ -1,7 +1,16 @@
 ---
+import Main from "../components/Main.astro";
 import Layout from "../layouts/Layout.astro";
+
+import HeroSection from "@/components/HeroSection.astro";
+import ReviewSection from "@/components/ReviewSection.astro";
+import WorkSection from "@/components/WorkSection.astro";
 ---
 
 <Layout title="Coding with Raj | Portfolio">
-  <main class="text-8xl">hello world</main>
+  <Main>
+    <HeroSection />
+    <WorkSection />
+    <ReviewSection />
+  </Main>
 </Layout>

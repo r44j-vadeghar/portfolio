@@ -1,0 +1,12 @@
+---
+type Props = {
+  className: string;
+  id?: string;
+};
+
+const { className, ...rest } = Astro.props;
+---
+
+<section {...rest} class=`py-10 ${className}`>
+  <slot />
+</section>
