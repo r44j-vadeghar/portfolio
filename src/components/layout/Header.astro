@@ -1,41 +1,55 @@
 ---
 import HeaderNavItem from "./HeaderNavItem.astro";
-import Socials from "./Socials.astro";
+import Socials from "../Socials.astro";
+const pathname = Astro.url.pathname;
 ---
 
 <header
-  class="absolute inset-x-0 mx-auto flex max-w-screen-2xl items-center justify-center overflow-x-hidden p-8 px-16 sm:justify-between"
+  class={`absolute inset-x-0 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-8 sm:justify-between ${
+    pathname === "/" ? "grid-cols-3" : "grid-cols-1 shadow-sm border-b"
+  }`}
 >
-  <div id="profile" class="flex scale-90 items-center gap-3">
-    <img
-      id="profile-img"
-      src="/me.png"
-      alt="raj"
-      class="z-10 h-12 w-12 whitespace-nowrap rounded-full"
-    />
-    <div id="profile-divider" class="h-10 w-1 rounded-full bg-black/60"></div>
-    <div id="profile-data" class="flex flex-col gap-2">
-      <p id="name" class="font-medium">Full Stack Developer</p>
-      <Socials className="flex items-center gap-2" />
-    </div>
-  </div>
-  <!-- <div id="burger" class="group flex cursor-pointer flex-col items-end gap-2">
-    <div
-      class="h-0.5 w-8 rounded-full bg-black transition-all group-data-[active]:rotate-45"
-    >
-    </div>
-    <div
-      class="h-0.5 w-4 rounded-full bg-black transition-all group-data-[active]:-mt-2 group-data-[active]:w-8 group-data-[active]:-rotate-45"
-    >
-    </div>
-  </div> -->
+  {
+    pathname === "/" && (
+      <div id="profile" class="flex items-center gap-3">
+        <a href="/about">
+          <img
+            transition:name="raj-vadeghar-image"
+            id="profile-img"
+            src="/me.png"
+            alt="raj"
+            class="z-10 h-12 w-12 whitespace-nowrap rounded-full"
+          />
+        </a>
+        <div id="profile-divider" class="h-10 w-1 rounded-full bg-black/60" />
+        <div id="profile-data" class="flex flex-col gap-2">
+          <a href="/about" id="name" class="font-medium">
+            Full Stack Developer
+          </a>
+          <Socials className="flex items-center gap-2" />
+        </div>
+      </div>
+    )
+  }
 
-  <nav class="hidden items-center font-medium sm:flex">
+  <nav class="hidden items-center justify-center font-medium sm:flex">
+    <HeaderNavItem href="/">Home</HeaderNavItem>
     <HeaderNavItem href="#my-work">My work</HeaderNavItem>
     <HeaderNavItem href="#services">Services</HeaderNavItem>
     <!-- <HeaderNavItem href="#testimonials">Testimonials</HeaderNavItem>
     <HeaderNavItem href="">How much I charge</HeaderNavItem> -->
   </nav>
+
+  {
+    pathname === "/" && (
+      <a
+        href="https://calendly.com/r44j/30min"
+        class="w-fit justify-self-end rounded-lg bg-black px-6 py-2 text-sm font-bold text-white ring-black ring-offset-2 hover:ring-2 focus:ring-2"
+      >
+        Book a free meeting
+      </a>
+    )
+  }
 </header>
 
 <script>

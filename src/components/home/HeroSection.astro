@@ -1,6 +1,6 @@
 ---
 import WorkVideo from "@/assets/work.mp4";
-import Section from "./Section.astro";
+import Section from "../Section.astro";
 
 const { default: funStar } = await import(`@/assets/fun-star.svg?raw`);
 const { default: rocket } = await import(`@/assets/rocket.svg?raw`);
@@ -27,7 +27,7 @@ const { default: rocket } = await import(`@/assets/rocket.svg?raw`);
     >
       Book a free meeting</a
     >
-    <p class="max-w-md pt-5 font-medium text-black/50">
+    <p class="max-w-md pt-5 font-medium text-black/60">
       From design to growth, I cover it all—development, maintenance,
       management. You name it, I've got it covered.
     </p>
@@ -51,10 +51,11 @@ const { default: rocket } = await import(`@/assets/rocket.svg?raw`);
           <Fragment set:html={rocket} />
         </span>
       </h2>
-      <ul class="flex flex-col gap-5 text-gray-700">
+      <p class="pb-5">
         My daily routine revolves around extensive development, especially
         within startup environments.
-
+      </p>
+      <ul class="flex flex-col gap-5 text-gray-700">
         <li class="flex items-center gap-3">
           <div
             class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gray-200 font-audiowide text-gray-500"

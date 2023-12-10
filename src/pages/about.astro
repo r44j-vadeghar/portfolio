@@ -1,0 +1,112 @@
+---
+import ManifoldLogo from "@/assets/manifold_ventures_llc_logo.jpeg";
+import Main from "@/components/Main.astro";
+import Socials from "@/components/Socials.astro";
+import Organization from "@/components/about/Organization.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+---
+
+<Layout title="About R44J">
+  <Main>
+    <div
+      class="mx-auto flex w-full max-w-screen-lg gap-10 overflow-x-hidden px-8 py-44"
+    >
+      <img
+        transition:name="raj-vadeghar-image"
+        id="profile-img"
+        src="/me.png"
+        alt="raj"
+        class="z-10 h-44 w-44 whitespace-nowrap rounded-full"
+      />
+
+      <div class="flex w-full flex-col gap-5 border p-5">
+        <div class="flex w-full justify-between gap-5 border-b pb-5">
+          <div class="flex flex-col gap-3">
+            <h1 class="text-3xl font-light">Vadeghar 🅡aja Narayana</h1>
+            <Socials
+              className="flex items-center gap-2 [&_svg]:h-5 [&_svg]:w-5"
+            />
+          </div>
+
+          <div class="flex flex-col items-end gap-2 text-right font-medium">
+            <p class="text-xl font-bold">
+              <span class="text-accent">Full Stack</span>
+               Developer
+            </p>
+            <div class="flex items-center gap-2">
+              <Image src={ManifoldLogo} alt="" class="h-5 w-5" />
+              <span> Manifold Ventures</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-b py-5">
+          Hi there 👋,<br />
+           I'm a full stack web developer with a year and half experience at
+          Manifold Ventures LLC 🏢, a US-based startup. I specialize in<br />
+           ▻ React JS<br />
+           ▻ Next.js<br />
+           ▻ Tailwind CSS<br />
+           ▻ Chrome Extension development<br />
+           ▻ and SEO<br />
+           to create engaging web applications.<br />
+           With proficiency in<br />
+           ▻ Node JS<br />
+           ▻ CSS<br />
+           ▻ Vite<br />
+           ▻ Sanity.io<br />
+           ▻ Firebase<br />
+           ▻ GitHub<br />
+           ▻ MongoDB and more<br />
+           I also build scalable software solutions 🛠️.<br />
+          <br />
+           I enjoy collaborating with teams 👥 and constantly seek to enhance my
+          skills by exploring docs(sometimes code) of new frameworks and tools
+          🧰.<br />
+          <br />
+           If you're seeking a skilled and dedicated developer 👨‍💻, web designer
+          🎨, or software engineer to bring your vision to life, let's connect!
+          🔗
+        </div>
+
+        <div class="flex flex-col gap-5 py-5">
+          <h2 class="pb-5 text-3xl font-medium text-accent">Work</h2>
+
+          <Organization
+            title="Manifold Ventures"
+            span="2022 - Working"
+            jobType="Full Time"
+          >
+            <p>
+              Manifold Ventures has established MeaVana as its dedicated branch
+              for developing Chrome extensions.<br />Since it's a startup. We
+              pretty much handle most of the things on our own.
+            </p>
+
+            <ul class="list-inside list-disc">
+              <li>Landing Page - NEXT JS</li>
+              <li>Chrome Extensions - REACT JS</li>
+              <li>Figma Designs</li>
+              <li>Search Engine Optimization</li>
+              <li>and more...</li>
+            </ul>
+          </Organization>
+
+          <Organization title="Kairos Club" span="2023" jobType="Freelance">
+            <p>Kairos Club is a e-commerce marketing agency</p>
+          </Organization>
+
+          <Organization title="Advaita Exports" span="2023" jobType="Freelance">
+            <p>
+              Advaita Export, takes immense pride in dealing with a wide range
+              of products, including Cotton Bales, Cotton Yarn, Pulses, Spices,
+              Agri Produce, and Rice, catering to the diverse needs of our
+              valued clientele.
+            </p>
+          </Organization>
+        </div>
+      </div>
+    </div>
+  </Main>
+</Layout>

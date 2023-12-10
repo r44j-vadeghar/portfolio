@@ -1,0 +1,23 @@
+---
+type Props = {
+  title: string;
+  span: string;
+  jobType: string;
+};
+
+const { title, span, jobType } = Astro.props;
+---
+
+<div class="border p-5">
+  <div class="flex justify-between pb-5">
+    <div class="">
+      <h3 class="text-xl font-bold">{title}</h3>
+      <small>{span}</small>
+    </div>
+
+    <p class="h-fit rounded-md border-[0.5px] bg-accent2 px-1 text-white">
+      {jobType}
+    </p>
+  </div>
+  <slot />
+</div>
