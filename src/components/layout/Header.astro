@@ -5,13 +5,18 @@ const pathname = Astro.url.pathname;
 ---
 
 <header
-  class={`absolute inset-x-0 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-8 sm:justify-between ${
-    pathname === "/" ? "grid-cols-3" : "grid-cols-1 shadow-sm border-b"
+  class={`absolute inset-x-0 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-8 sm:justify-between place-items-center ${
+    pathname === "/"
+      ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+      : "grid-cols-1 shadow-sm border-b"
   }`}
 >
   {
     pathname === "/" && (
-      <div id="profile" class="flex items-center gap-3">
+      <div
+        id="profile"
+        class="flex items-center gap-3 justify-self-center sm:justify-self-start"
+      >
         <a href="/about">
           <img
             transition:name="raj-vadeghar-image"
@@ -32,7 +37,11 @@ const pathname = Astro.url.pathname;
     )
   }
 
-  <nav class="hidden items-center justify-center font-medium sm:flex">
+  <nav
+    class={`${
+      pathname === "/" ? "hidden sm:flex" : "flex"
+    } items-center font-medium`}
+  >
     <HeaderNavItem href="/">Home</HeaderNavItem>
     <HeaderNavItem href="#my-work">My work</HeaderNavItem>
     <HeaderNavItem href="#services">Services</HeaderNavItem>
@@ -44,7 +53,7 @@ const pathname = Astro.url.pathname;
     pathname === "/" && (
       <a
         href="https://calendly.com/r44j/30min"
-        class="w-fit justify-self-end rounded-lg bg-black px-6 py-2 text-sm font-bold text-white ring-black ring-offset-2 hover:ring-2 focus:ring-2"
+        class="hidden w-fit justify-self-end rounded-lg bg-black px-6 py-2 text-sm font-bold text-white ring-black ring-offset-2 hover:ring-2 focus:ring-2 sm:block"
       >
         Book a free meeting
       </a>
@@ -62,12 +71,13 @@ const pathname = Astro.url.pathname;
   mm.add(
     {
       isDesktop: `(min-width: ${breakPoint}px)`,
+      isSmallScreen: `(max-width: 640px)`,
       isMobile: `(max-width: ${breakPoint - 1}px)`,
       reduceMotion: "(prefers-reduced-motion: reduce)"
     },
     (context) => {
       // @ts-ignore
-      const { isDesktop } = context.conditions;
+      const { isDesktop, isSmallScreen } = context.conditions;
       const main = document.querySelector("main");
       const nav = document.querySelector("nav");
       const footer = document.querySelector("footer");
@@ -117,7 +127,16 @@ const pathname = Astro.url.pathname;
         .to(main, { display: "flex", opacity: 1, duration: 1 })
         .to(
           nav,
-          { display: isDesktop ? "flex" : "none", opacity: 1, duration: 1 },
+          {
+            display:
+              window.location.pathname === "/"
+                ? isDesktop
+                  ? "flex"
+                  : "none"
+                : "flex",
+            opacity: 1,
+            duration: 1
+          },
           "<+=0.2"
         )
         .to(footer, { display: "block", opacity: 1, duration: 1 }, "<+=0.2")
