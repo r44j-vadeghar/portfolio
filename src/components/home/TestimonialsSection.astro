@@ -1,0 +1,86 @@
+---
+import KairosTechnologiesList from "@/assets/testimonials/kairos-technologies-list.png";
+import Kairos from "@/assets/testimonials/kairos.png";
+import Tail from "@/assets/testimonials/tail.png";
+import { Image } from "astro:assets";
+import Section from "../Section.astro";
+---
+
+<Section id="services" className="w-full">
+  <div class="bg-black py-20 text-white md:py-36">
+    <div
+      class="mx-auto flex w-full max-w-screen-2xl flex-col gap-10 overflow-x-hidden px-10"
+    >
+      <header class="mx-auto flex flex-col gap-5 text-center">
+        <h2 class="text-4xl font-medium">
+          Client Success Stories: <br />Your Success is My Mission.
+        </h2>
+
+        <p class="text-white/60">
+          In my journey as a freelancer, it's the successful partnerships and
+          satisfied clients that truly measure my impact.<br /> Hear directly
+          from those who've transformed their businesses with my services
+          (including my friends)
+        </p>
+      </header>
+
+      <!-- testimonial cards -->
+      <div class="mx-auto grid w-full max-w-4xl grid-cols-3 gap-5 pt-20">
+        <div
+          class="col-span-3 flex flex-col items-center justify-center gap-7 rounded-xl border border-[#383737] bg-[#181818] p-10"
+        >
+          <div class="flex gap-14">
+            <Image src={Kairos} alt="kairos club" class="h-20 w-20" />
+
+            <div class="flex flex-col gap-10">
+              <p class="text-2xl font-medium">Kairos Club</p>
+              <div class="flex flex-col gap-3">
+                <p class="text-xs text-white/70">
+                  Janhvi Rawat | Marketing Head | Kairos Club
+                </p>
+                <div
+                  class="relative z-10 max-w-md flex-1 rounded-lg bg-[#262629] p-3 text-sm"
+                >
+                  <Image
+                    src={Tail}
+                    alt="kairos club"
+                    class="absolute -bottom-1 -left-2 z-0 h-7 w-7 rotate-45"
+                  />
+                  <p class="relative z-10">
+                    Raj and Subhash transformed our vision into a stunning
+                    reality for Kairos Club. <br />
+
+                     Their expertise and dedication shone through, delivering a website
+                    that brilliantly captures our essence. The seamless blend of
+                    design and functionality showcases their talent. <br />
+
+                     We wholeheartedly recommend their team for their exceptional
+                    work and commitment to excellence. Thank you for elevating our
+                    online presence.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-3">
+                <p class="text-xs text-white/70">Technologies Used</p>
+                <Image
+                  src={KairosTechnologiesList}
+                  alt="Client technologies used"
+                  class="h-14 object-contain"
+                />
+              </div>
+              <!-- <div">
+              <Fragment set:html={kairos} />
+            </div"> -->
+            </div>
+          </div>
+        </div>
+        <!-- <div
+          class="flex flex-col items-center justify-center gap-3 rounded-md bg-[#181818] p-10"
+        >
+          <p>Advaita</p>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</Section>
