@@ -6,13 +6,13 @@ const pathname = Astro.url.pathname;
 
 <header
   class={`absolute inset-x-0 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-8 sm:justify-between place-items-center ${
-    pathname === "/"
+    pathname !== "/about"
       ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
       : "grid-cols-1 shadow-sm border-b"
   }`}
 >
   {
-    pathname === "/" && (
+    pathname !== "/about" && (
       <div
         id="profile"
         class="flex items-center gap-3 justify-self-center sm:justify-self-start"
@@ -39,18 +39,18 @@ const pathname = Astro.url.pathname;
 
   <nav
     class={`${
-      pathname === "/" ? "hidden sm:flex" : "flex"
+      pathname !== "/about" ? "hidden sm:flex" : "flex"
     } items-center font-medium`}
   >
     <HeaderNavItem href="/">Home</HeaderNavItem>
-    <HeaderNavItem href="#my-work">My work</HeaderNavItem>
-    <HeaderNavItem href="#services">Services</HeaderNavItem>
+    <HeaderNavItem href="/#my-work">My work</HeaderNavItem>
+    <HeaderNavItem href="/#services">Services</HeaderNavItem>
     <!-- <HeaderNavItem href="#testimonials">Testimonials</HeaderNavItem>
     <HeaderNavItem href="">How much I charge</HeaderNavItem> -->
   </nav>
 
   {
-    pathname === "/" && (
+    pathname !== "/about" && (
       <a
         href="https://calendly.com/r44j/30min"
         class="hidden w-fit justify-self-end rounded-lg bg-black px-6 py-2 text-sm font-bold text-white ring-black ring-offset-2 hover:ring-2 focus:ring-2 sm:block"

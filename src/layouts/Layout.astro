@@ -1,13 +1,14 @@
 ---
 interface Props {
   title: string;
+  className?: string;
 }
 
 import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import { ViewTransitions } from "astro:transitions";
-const { title } = Astro.props;
+const { title, className } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +22,7 @@ const { title } = Astro.props;
     <ViewTransitions />
     <title>{title}</title>
   </head>
-  <body class="bg-white text-black antialiased">
+  <body class={`${className ?? "bg-white text-black"} antialiased`}>
     <Header />
     <slot />
     <Footer />

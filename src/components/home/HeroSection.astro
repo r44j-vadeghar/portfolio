@@ -7,7 +7,7 @@ const { default: rocket } = await import(`@/assets/rocket.svg?raw`);
 ---
 
 <Section
-  className="mx-auto grid w-full max-w-screen-2xl place-items-center overflow-x-hidden px-8 pt-44"
+  className="mx-auto grid w-full max-w-screen-2xl place-items-center overflow-x-hidden px-8 pt-12 md:pt-44"
 >
   <div class="flex w-full flex-col items-center gap-5 text-center">
     <p class="text-3xl font-semibold leading-tight sm:text-4xl md:text-5xl">
@@ -51,10 +51,9 @@ const { default: rocket } = await import(`@/assets/rocket.svg?raw`);
           <Fragment set:html={rocket} />
         </span>
       </h2>
-      <p class="pb-5">
-        My daily routine revolves around extensive development, especially
-        within startup environments.
-      </p>
+      <strong class="block pb-10 font-semibold">
+        Streamlined Development, Powerful Results
+      </strong>
       <ul class="flex flex-col gap-5 text-gray-700">
         <li class="flex items-center gap-3">
           <div
@@ -63,7 +62,9 @@ const { default: rocket } = await import(`@/assets/rocket.svg?raw`);
             1
           </div>
           <div class="flex-shrink">
-            My efficiency stems from a strategic approach rather than haste.
+            <strong>Automation:</strong>
+             Aliases, snippets, and scripts streamline my workflow, freeing up
+            time for creative problem-solving.
           </div>
         </li>
         <li class="flex items-center gap-3">
@@ -73,11 +74,12 @@ const { default: rocket } = await import(`@/assets/rocket.svg?raw`);
             2
           </div>
           <div class="flex-shrink">
-            I streamline tasks through aliases, code snippets, and bash scripts,
-            automating a significant portion of my workload.
+            <strong>Agility:</strong>
+             I navigate complex tasks with ease, using shortcuts to deliver
+            solutions with speed and precision.
           </div>
         </li>
-        <li class="flex items-center gap-3">
+        <!-- <li class="flex items-center gap-3">
           <div
             class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gray-200 font-audiowide text-gray-500"
           >
@@ -99,11 +101,11 @@ const { default: rocket } = await import(`@/assets/rocket.svg?raw`);
             problem-solving. Simplifying work processes allows me to deliver
             with speed and precision.
           </div>
-        </li>
+        </li> -->
       </ul>
       <p class="pt-10">
-        For top-tier web solutions, count on my streamlined and effective
-        approach to development.
+        For top-tier web solutions, trust my streamlined approach to
+        development.
       </p>
     </div>
   </div>
