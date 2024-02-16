@@ -10,7 +10,7 @@ export default defineConfig({
     tailwind(),
     astroMetaTags(),
     sitemap({
-      filter: (page) => page !== "https://r44j.dev/xerox"
+      filter: (page) => page !== "https://r44j.dev/xerox/"
     })
   ]
 });
