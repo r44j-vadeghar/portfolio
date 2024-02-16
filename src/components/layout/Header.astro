@@ -5,63 +5,51 @@ const pathname = Astro.url.pathname;
 ---
 
 <header
-  class={`absolute inset-x-0 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-5 sm:justify-between place-items-center ${
-    pathname !== "/about"
-      ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
-      : "grid-cols-1 shadow-sm border-b border-white/20"
-  }`}
+  class={`absolute inset-x-0 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-5 sm:justify-between place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3`}
 >
-  {
-    pathname !== "/about" && (
-      <div
-        id="profile"
-        class="flex items-center gap-3 justify-self-center sm:justify-self-start"
-      >
-        <a href="/about">
-          <img
-            transition:name="raj-vadeghar-image"
-            id="profile-img"
-            src="/me.png"
-            alt="raj"
-            class="z-10 h-12 w-12 whitespace-nowrap rounded-full"
-          />
-        </a>
-        <div
-          id="profile-divider"
-          class="h-10 w-[0.5px] rounded-full bg-white/70"
-        />
-        <div id="profile-data" class="flex flex-col gap-2">
-          <a href="/about" id="name" class="font-medium">
-            Full Stack Developer
-          </a>
-          <Socials className="flex items-center gap-2" />
-        </div>
-      </div>
-    )
-  }
-
-  <nav
-    class={`${
-      pathname !== "/about" ? "hidden sm:flex" : "flex"
-    } items-center font-medium`}
+  <div
+    id="profile"
+    class="flex items-center gap-3 justify-self-center sm:justify-self-start"
   >
-    <HeaderNavItem href="/">Home</HeaderNavItem>
-    <HeaderNavItem href="/#my-work">My work</HeaderNavItem>
-    <HeaderNavItem href="/#services">Services</HeaderNavItem>
+    <a href="/">
+      <img
+        id="profile-img"
+        src="/me.png"
+        alt="raj"
+        class="z-10 h-12 w-12 whitespace-nowrap rounded-full"
+      />
+    </a>
+    <div id="profile-divider" class="h-10 w-[0.5px] rounded-full bg-white/70">
+    </div>
+    <div id="profile-data" class="flex flex-col gap-2">
+      <a href="/about" id="name" class="font-medium"> Full Stack Developer</a>
+      <Socials className="flex items-center gap-2" />
+    </div>
+  </div>
+
+  <nav class={`flex items-center font-medium`}>
+    <HeaderNavItem active={pathname === "/"} href="/">Home</HeaderNavItem>
+    <HeaderNavItem active={pathname === "/about"} href="/about">
+      About
+    </HeaderNavItem>
+    <!-- {
+      pathname === "/xerox" && (
+        <HeaderNavItem active={pathname === "/xerox"} href="/xerox">
+          Xerox
+        </HeaderNavItem>
+      )
+    } -->
+
     <!-- <HeaderNavItem href="#testimonials">Testimonials</HeaderNavItem>
     <HeaderNavItem href="">How much I charge</HeaderNavItem> -->
   </nav>
 
-  {
-    pathname !== "/about" && (
-      <a
-        href="https://calendly.com/r44j/30min"
-        class="hidden w-fit justify-self-end rounded-lg bg-gray-800 px-6 py-2 text-sm font-bold text-white ring-gray-800 ring-offset-2 ring-offset-black hover:ring-2 focus:ring-2 sm:block"
-      >
-        Book a free meeting
-      </a>
-    )
-  }
+  <a
+    href="https://calendly.com/r44j/30min"
+    class="hidden w-fit justify-self-end rounded-lg bg-gray-800 px-6 py-2 text-sm font-bold text-white ring-gray-800 ring-offset-2 ring-offset-black hover:ring-2 focus:ring-2 sm:block"
+  >
+    Book a free meeting
+  </a>
 </header>
 
 <script>

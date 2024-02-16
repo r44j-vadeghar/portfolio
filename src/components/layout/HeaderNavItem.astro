@@ -1,17 +1,26 @@
 ---
 type Props = {
   href: string;
+  active: boolean;
 };
 
-const { href } = Astro.props;
+const { href, active } = Astro.props;
 ---
 
 <a
   href={href}
-  class="group block cursor-pointer px-3 font-medium capitalize text-white/70 no-underline outline-none transition-all last:pl-3 last:pr-0 hover:text-white"
+  class={`relative group block cursor-pointer font-medium capitalize outline-none transition-all hover:text-white px-3 p-1 ${
+    active ? "text-white" : "text-white/70 no-underline"
+  }`}
 >
   <slot />
-  <span
-    class="block h-[3px] max-w-0 rounded-full bg-accent2 text-yellow-500 transition-all duration-200 group-hover:max-w-full"
-  ></span>
+
+  {
+    active && (
+      <span
+        transition:name="active-underline"
+        class="absolute inset-0 rounded-lg bg-white/10"
+      />
+    )
+  }
 </a>
