@@ -1,3 +1,4 @@
+import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import astroMetaTags from "astro-meta-tags";
@@ -11,6 +12,11 @@ export default defineConfig({
     astroMetaTags(),
     sitemap({
       filter: (page) => page !== "https://r44j.dev/xerox/"
+    }),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"]
+      }
     })
   ]
 });
