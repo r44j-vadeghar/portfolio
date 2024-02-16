@@ -5,10 +5,10 @@ const pathname = Astro.url.pathname;
 ---
 
 <header
-  class={`absolute inset-x-0 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-8 sm:justify-between place-items-center ${
+  class={`absolute inset-x-0 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-5 sm:justify-between place-items-center ${
     pathname !== "/about"
       ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
-      : "grid-cols-1 shadow-sm border-b"
+      : "grid-cols-1 shadow-sm border-b border-white/20"
   }`}
 >
   {
@@ -26,7 +26,10 @@ const pathname = Astro.url.pathname;
             class="z-10 h-12 w-12 whitespace-nowrap rounded-full"
           />
         </a>
-        <div id="profile-divider" class="h-10 w-1 rounded-full bg-black/60" />
+        <div
+          id="profile-divider"
+          class="h-10 w-[0.5px] rounded-full bg-white/70"
+        />
         <div id="profile-data" class="flex flex-col gap-2">
           <a href="/about" id="name" class="font-medium">
             Full Stack Developer
@@ -53,7 +56,7 @@ const pathname = Astro.url.pathname;
     pathname !== "/about" && (
       <a
         href="https://calendly.com/r44j/30min"
-        class="hidden w-fit justify-self-end rounded-lg bg-black px-6 py-2 text-sm font-bold text-white ring-black ring-offset-2 hover:ring-2 focus:ring-2 sm:block"
+        class="hidden w-fit justify-self-end rounded-lg bg-gray-800 px-6 py-2 text-sm font-bold text-white ring-gray-800 ring-offset-2 ring-offset-black hover:ring-2 focus:ring-2 sm:block"
       >
         Book a free meeting
       </a>
@@ -123,7 +126,6 @@ const pathname = Astro.url.pathname;
         .to("#profile-divider", { height: "2.5rem", opacity: 1 })
         .to("#profile-data", { opacity: 1 })
         .add(staggerTl)
-        .to("body", { backgroundColor: "#fff", color: "#000" }, "<+=1")
         .to(main, { display: "flex", opacity: 1, duration: 1 })
         .to(
           nav,
@@ -139,12 +141,7 @@ const pathname = Astro.url.pathname;
           },
           "<+=0.2"
         )
-        .to(footer, { display: "block", opacity: 1, duration: 1 }, "<+=0.2")
-        .to(
-          "#profile-divider",
-          { backgroundColor: "rgb(0 0 0 / 0.6)" },
-          "<-=0.5"
-        );
+        .to(footer, { display: "block", opacity: 1, duration: 1 }, "<+=0.2");
     }
   );
 </script>

@@ -20,8 +20,10 @@ import { Image } from "astro:assets";
         class="z-10 h-44 w-44 whitespace-nowrap rounded-full"
       />
 
-      <div class="flex w-full flex-col gap-5 border p-5">
-        <div class="flex w-full justify-between gap-5 border-b pb-5">
+      <div class="flex w-full flex-col gap-5 border border-white/20 p-5">
+        <div
+          class="flex w-full justify-between gap-5 border-b border-white/10 pb-5"
+        >
           <div class="flex flex-col gap-3">
             <h1 class="text-3xl font-light">Vadeghar 🅡aja Narayana</h1>
             <Socials
@@ -41,7 +43,7 @@ import { Image } from "astro:assets";
           </div>
         </div>
 
-        <div class="border-b py-5">
+        <div class="border-b border-white/20 py-5">
           Hi there 👋,<br />
            I'm a full stack web developer with a year and half experience at
           Manifold Ventures LLC 🏢, a US-based startup. I specialize in<br />
@@ -77,6 +79,7 @@ import { Image } from "astro:assets";
             title="Manifold Ventures"
             span="2022 - Working"
             jobType="Full Time"
+            link="https://www.meavana.com"
           >
             <p>
               Manifold Ventures has established MeaVana as its dedicated branch
@@ -93,11 +96,21 @@ import { Image } from "astro:assets";
             </ul>
           </Organization>
 
-          <Organization title="Kairos Club" span="2023" jobType="Freelance">
+          <Organization
+            title="Kairos Club"
+            span="2023"
+            jobType="Freelance"
+            link="https://kairos-club.com"
+          >
             <p>Kairos Club is a e-commerce marketing agency</p>
           </Organization>
 
-          <Organization title="Advaita Exports" span="2023" jobType="Freelance">
+          <Organization
+            title="Advaita Exports"
+            span="2023"
+            jobType="Freelance"
+            link="https://advaitaexport.com/"
+          >
             <p>
               Advaita Export, takes immense pride in dealing with a wide range
               of products, including Cotton Bales, Cotton Yarn, Pulses, Spices,

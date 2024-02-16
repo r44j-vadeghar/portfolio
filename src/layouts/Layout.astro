@@ -52,7 +52,7 @@ const { title, description, className } = Astro.props;
 
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
-  <body class={`${className ?? "bg-white text-black"} antialiased`}>
+  <body class={`${className ?? "bg-black text-white"} antialiased`}>
     <Header />
     <slot />
     <Footer />
