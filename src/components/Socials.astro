@@ -4,29 +4,36 @@ interface Props {
 }
 
 const { className } = Astro.props;
-import { Icon } from "astro-icon";
+import GithubSvgReference from "@/assets/socials/github.svg";
+import InstagramSvgReference from "@/assets/socials/instagram.svg";
+import LinkedinSvgReference from "@/assets/socials/linkedin.svg";
+import MailSvgReference from "@/assets/socials/mail.svg";
+import TwitterSvgReference from "@/assets/socials/twitter.svg";
 ---
 
 <div id="socials" class={className}>
   <a href="mailto:vadegharraj@gmail.com" title="Raj Vadeghar Gmail">
-    <Icon
-      name="mdi:gmail"
-      class="h-4 w-4 transition-transform hover:rotate-12 hover:scale-[2] hover:text-[#6C63FF]"
+    <img
+      src={MailSvgReference.src}
+      alt="mail"
+      class="h-4 w-4 opacity-70 transition-all hover:scale-110 hover:opacity-100"
+    />
+  </a>
+  <a href="https://github.com/RajVadeghar" title="Raj Vadeghar Github">
+    <img
+      src={GithubSvgReference.src}
+      alt="github"
+      class="h-4 w-4 opacity-70 transition-all hover:scale-110 hover:opacity-100"
     />
   </a>
   <a
     href="https://www.linkedin.com/in/rajvadeghar2000/"
     title="Raj Vadeghar LinkedIn"
   >
-    <Icon
-      name="mdi:linkedin"
-      class="h-4 w-4 transition-transform hover:rotate-12 hover:scale-[2] hover:text-[#6C63FF]"
-    />
-  </a>
-  <a href="https://github.com/RajVadeghar" title="Raj Vadeghar Github">
-    <Icon
-      name="mdi:github"
-      class="h-4 w-4 transition-transform hover:rotate-12 hover:scale-[2] hover:text-[#6C63FF]"
+    <img
+      src={LinkedinSvgReference.src}
+      alt="linkedin"
+      class="h-4 w-4 opacity-70 transition-all hover:scale-110 hover:opacity-100"
     />
   </a>
   <!-- <a href="" title="Raj Vadeghar Facebook">
@@ -35,28 +42,31 @@ import { Icon } from "astro-icon";
       class="h-4 w-4 transition-transform hover:rotate-12 hover:scale-[2] hover:text-[#6C63FF]"
     />
   </a> -->
-  <a href="https://gitlab.com/rajvadeghar" title="Raj Vadeghar Gitlab">
+  <!-- <a href="https://gitlab.com/rajvadeghar" title="Raj Vadeghar Gitlab">
     <Icon
       name="mdi:gitlab"
       class="h-4 w-4 transition-transform hover:rotate-12 hover:scale-[2] hover:text-[#6C63FF]"
     />
-  </a>
+  </a> -->
   <a
     href="https://www.instagram.com/raj.vadeghar/"
     title="Raj Vadeghar Instagram"
   >
-    <Icon
-      name="mdi:instagram"
-      class="h-4 w-4 transition-transform hover:rotate-12 hover:scale-[2] hover:text-[#6C63FF]"
+    <img
+      src={InstagramSvgReference.src}
+      alt="Instagram"
+      class="h-4 w-4 opacity-70 transition-all hover:scale-110 hover:opacity-100"
     />
   </a>
   <a href="https://twitter.com/VadegharRaj" title="Raj Vadeghar Twitter">
-    <!-- <Icon
-      name="devicon:twitter"
-      /> -->
+    <img
+      src={TwitterSvgReference.src}
+      alt="Twitter"
+      class="h-4 w-4 opacity-70 transition-all hover:scale-110 hover:opacity-100"
+    />
 
-    <svg
-      class="h-3 w-3 transition-transform hover:rotate-12 hover:scale-[2] hover:fill-[#6C63FF]"
+    <!-- <svg
+      class="h-3 w-3 fill-white transition-transform hover:rotate-12 hover:scale-[2] hover:fill-[#6C63FF]"
       xmlns="http://www.w3.org/2000/svg"
       width="128"
       height="128"
@@ -64,6 +74,6 @@ import { Icon } from "astro-icon";
       ><path
         d="M75.916 54.2L122.542 0h-11.05L71.008 47.06L38.672 0H1.376l48.898 71.164L1.376 128h11.05L55.18 78.303L89.328 128h37.296L75.913 54.2ZM60.782 71.79l-4.955-7.086l-39.42-56.386h16.972L65.19 53.824l4.954 7.086l41.353 59.15h-16.97L60.782 71.793Z"
       ></path></svg
-    >
+    > -->
   </a>
 </div>
