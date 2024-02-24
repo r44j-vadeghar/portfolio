@@ -51,6 +51,26 @@ const { title, description, className } = Astro.props;
     />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+    </script>
+
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-T3FDZDQ2");
+    </script>
   </head>
   <body class={`${className ?? "bg-black text-white/60"} antialiased`}>
     <Header />
@@ -100,5 +120,13 @@ const { title, description, className } = Astro.props;
 
       gtag("config", "G-5Q5PC91CFN");
     </script>
+
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-T3FDZDQ2"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
   </body>
 </html>
