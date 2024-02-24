@@ -1,29 +1,30 @@
 ---
 import Main from "@/components/Main.astro";
 import Layout from "@/layouts/Layout.astro";
-import { sanityClient } from "sanity:client";
-import PortableText from "../../components/sanity/portable-text.astro";
+// import { sanityClient } from "sanity:client";
+// import PortableText from "../../components/sanity/portable-text.astro";
 
-export async function getStaticPaths() {
-  const posts = await sanityClient.fetch(`*[_type == "post"]`);
+// export async function getStaticPaths() {
+//   const posts = await sanityClient.fetch(`*[_type == "post"]`);
 
-  return posts.map((post) => {
-    return {
-      params: {
-        slug: post.slug?.current || ""
-      },
-      props: { ...post }
-    };
-  });
-}
+//   return posts.map((post: unknown) => {
+//     return {
+//       params: {
+//         slug: post.slug?.current || ""
+//       },
+//       props: { ...post }
+//     };
+//   });
+// }
 
-const { title, body } = Astro.props;
+// const { title, body } = Astro.props;
 ---
 
-<Layout title={title}>
+<Layout title={"title"}>
   <Main>
-    <h1>{title}</h1>
+    <h1>title</h1>
+    <!-- <h1>{title}</h1> -->
 
-    <PortableText portableText={body} />
+    <!-- <PortableText portableText={body} /> -->
   </Main>
 </Layout>
