@@ -5,7 +5,7 @@ const pathname = Astro.url.pathname;
 ---
 
 <header
-  class={`absolute inset-x-0 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-5 sm:justify-between place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3`}
+  class={`w-full z-50 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-5 sm:justify-between place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3`}
 >
   <div
     id="profile"
@@ -37,8 +37,8 @@ const pathname = Astro.url.pathname;
     <HeaderNavItem active={pathname === "/uses"} href="/uses">
       Uses
     </HeaderNavItem>
-    <HeaderNavItem active={pathname === "/blogs"} href="/blogs">
-      Blogs
+    <HeaderNavItem active={pathname === "/blog"} href="/blog">
+      Blog
     </HeaderNavItem>
     <!-- {
       pathname === "/xerox" && (

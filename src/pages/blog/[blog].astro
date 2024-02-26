@@ -1,0 +1,103 @@
+---
+import TableOfContent from "@/components/blog/table-of-content.astro";
+import PortableText from "@/components/sanity/portable-text.astro";
+import { parseOutline, urlForImage } from "@/helpers/sanity";
+import { getBlogs } from "@/helpers/server-actions";
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+export async function getStaticPaths() {
+  const posts = await getBlogs();
+
+  return posts.map((post) => {
+    return {
+      params: { blog: post.slug.current },
+      props: { post }
+    };
+  });
+}
+
+const { post } = Astro.props;
+
+const filteredRelated = post.related.filter(
+  (related) => related.slug.current !== post.slug.current
+);
+
+console.log(post);
+const outline = parseOutline(post.body);
+---
+
+<Layout title={post.seoTitle}>
+  <main>
+    <div class="fixed inset-0 -z-50 grid place-items-center">
+      <div class="fixed inset-0 z-10 bg-black/10"></div>
+      <Image
+        transition:name={post.slug.current}
+        src={urlForImage(post.mainImage.asset).url()}
+        alt={post.title}
+        class="absolute inset-0 h-full w-full object-cover opacity-50"
+        width="400"
+        height="250"
+      />
+      <h1
+        class="text-balance relative max-w-md pb-4 text-center text-5xl font-bold text-white"
+      >
+        {post.title}
+      </h1>
+
+      <div class="absolute inset-x-0 bottom-10 z-10 text-center text-white">
+        Scroll 👇
+      </div>
+    </div>
+
+    <div class="relative mt-[calc(100vh_-_40px)] w-full bg-black">
+      <div class="mx-auto max-w-screen-xl p-6 px-4 py-12 sm:px-6 lg:px-8">
+        <div class="flex flex-row-reverse gap-10">
+          <div class="sticky top-14 flex h-fit flex-col gap-28">
+            <div class="flex flex-col gap-5">
+              <h5 class="text-2xl text-white/80">Table of contents</h5>
+              <TableOfContent outline={outline} />
+            </div>
+          </div>
+
+          <article class="mx-auto max-w-3xl">
+            <div
+              class="prose lg:prose-lg prose-headings:text-white prose-p:text-white/70 prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-strong:text-white"
+            >
+              <PortableText portableText={post.body} />
+            </div>
+
+            <div
+              id="related-posts"
+              class="mt-28 flex flex-col gap-5 border-t border-gray-800 pt-28"
+            >
+              <h5 class="text-2xl text-white/80">Related posts</h5>
+
+              <div class="flex flex-wrap gap-5">
+                {
+                  filteredRelated.map((related) => (
+                    <a
+                      href={related.slug.current}
+                      class="w-fit rounded-3xl bg-gradient-to-b from-blue-800 to-purple-800 p-px"
+                    >
+                      <div class="flex flex-col gap-3 rounded-[calc(1.5rem-1px)] bg-black p-2">
+                        <Image
+                          src={urlForImage(related.mainImage.asset).url()}
+                          alt={related.title}
+                          class="aspect-video rounded-[calc(1.5rem-2px)] object-cover"
+                          width="400"
+                          height="250"
+                        />
+                        <p class="p-2">{related.title}</p>
+                      </div>
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

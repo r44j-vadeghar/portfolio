@@ -5,6 +5,13 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            color: "rgb(255 255 255 / 0.7)"
+          }
+        }
+      },
       fontFamily: {
         "rubik-glitch": ['"Rubik Glitch"', ...defaultTheme.fontFamily.sans],
         syncopate: ["Syncopate", ...defaultTheme.fontFamily.sans],
@@ -20,5 +27,5 @@ export default {
       }
     }
   },
-  plugins: []
+  plugins: [require("@tailwindcss/typography")]
 };

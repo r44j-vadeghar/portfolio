@@ -1,3 +1,11 @@
-<main class="flex min-h-screen w-full flex-col gap-14 pt-24">
+---
+const { className }: { className?: string } = Astro.props;
+---
+
+<main
+  class={`flex min-h-screen w-full flex-col gap-14 px-4 py-12 pt-24 sm:px-6 lg:px-8 ${
+    className ? className : ""
+  }`}
+>
   <slot />
 </main>

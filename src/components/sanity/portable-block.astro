@@ -1,0 +1,12 @@
+---
+import { Block } from "astro-portabletext/components";
+import type { Props } from "astro-portabletext/types";
+
+const props = Astro.props;
+---
+
+<Block {...props}>
+  <props.node.style id={props.node._key}>
+    <slot />
+  </props.node.style>
+</Block>

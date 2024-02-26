@@ -1,0 +1,27 @@
+---
+const props = Astro.props;
+
+// @ts-ignore
+const getChildrenText = (props) =>
+  props.children
+    // @ts-ignore
+    .map((node) => (typeof node === "string" ? node : node.text || ""))
+    .join("");
+---
+
+<ol class="flex flex-col gap-3 text-white/60">
+  {
+    // @ts-ignore
+    props.outline.map((heading) => (
+      <li id={heading} class="transition-all hover:text-white/90">
+        <a href={"#" + heading._key}>{getChildrenText(heading)}</a>
+        {heading.subheadings.length > 0 && (
+          <Astro.self outline={heading.subheadings} />
+        )}
+      </li>
+    ))
+  }
+  <li class="transition-all hover:text-white/90">
+    <a href="#related-posts">Related posts</a>
+  </li>
+</ol>

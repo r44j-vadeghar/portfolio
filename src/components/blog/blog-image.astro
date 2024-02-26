@@ -1,0 +1,18 @@
+---
+import { urlForImage } from "@/helpers/sanity";
+import type { Blog } from "@/helpers/server-actions";
+import { Image } from "astro:assets";
+
+const { isCard, post } = Astro.props as { isCard: boolean; post: Blog };
+---
+
+<div class={`relative  ${isCard ? "h-48" : "mx-auto aspect-video w-2/3"}`}>
+  <Image
+    transition:name={post.slug.current}
+    src={urlForImage(post.mainImage.asset).url()}
+    alt={post.title}
+    class={isCard ? "w-full" : "rounded-lg"}
+    width="400"
+    height="250"
+  />
+</div>

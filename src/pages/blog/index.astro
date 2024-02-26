@@ -1,0 +1,29 @@
+---
+import BlogCard from "@/components/blog/blog-card.astro";
+import { getBlogs } from "@/helpers/server-actions";
+import Main from "../../components/Main.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const blogs = await getBlogs();
+---
+
+<Layout title="R44J - Blogs">
+  <Main className="mx-auto max-w-4xl pt-48">
+    {
+      blogs.length > 0 ? (
+        <>
+          <h1 class="bg-gradient-to-r from-[#ffff80] to-[#ff80bf] to-[60%] bg-clip-text text-5xl font-bold text-transparent sm:text-4xl">
+            Discover: Blog Articles and More
+          </h1>
+          <div class="mt-10 flex flex-col gap-5">
+            {blogs.map((blog) => (
+              <BlogCard key={blog._id} blog={blog} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <p class="text-center text-2xl">No blogs found</p>
+      )
+    }
+  </Main>
+</Layout>
