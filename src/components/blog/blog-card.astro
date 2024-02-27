@@ -9,21 +9,23 @@ const { blog } = Astro.props as { blog: Blog };
 <div
   class="flex h-full items-center rounded-3xl bg-gradient-to-b from-blue-800 to-purple-800 p-px"
 >
-  <div
-    class="flex h-full w-full overflow-hidden rounded-[calc(1.5rem-1px)] bg-black p-3"
+  <article
+    class="flex h-full w-full flex-col overflow-hidden rounded-[calc(1.5rem-1px)] bg-black p-3 sm:flex-row"
   >
     <Image
       transition:name={blog.slug.current}
       src={urlForImage(blog.mainImage.asset).url()}
       alt={blog.title}
-      class="min-h-72 aspect-video w-[50%] rounded-[calc(1.5rem-2px)] object-cover"
+      class="min-h-72 aspect-video w-full rounded-[calc(1.5rem-2px)] object-cover sm:w-[50%]"
       object-fit="cover"
       width="400"
       height="250"
     />
-    <div class="flex flex-1 flex-col justify-between p-6">
-      <div class="flex flex-col gap-4">
-        <h2 class="mb-1 line-clamp-2 text-xl font-bold text-white">
+    <div class="flex flex-1 flex-col justify-between p-3 sm:p-6">
+      <div class="flex flex-col gap-4 text-sm sm:text-base">
+        <h2
+          class="mb-1 line-clamp-2 text-base font-bold text-white sm:text-lg md:text-xl"
+        >
           {blog.title}
         </h2>
 
@@ -39,11 +41,11 @@ const { blog } = Astro.props as { blog: Blog };
       <div class="flex flex-row-reverse items-center justify-between">
         <a
           href={`/blog/${blog.slug?.current}`}
-          class="rounded bg-accent p-1.5 px-3 text-sm font-bold text-white shadow-lg ring-accent ring-offset-2 ring-offset-black transition-all hover:ring-2"
+          class="rounded bg-accent p-1.5 px-3 text-xs font-bold text-white shadow-lg ring-accent ring-offset-2 ring-offset-black transition-all hover:ring-2 sm:text-sm"
         >
           Read More
         </a>
       </div>
     </div>
-  </div>
+  </article>
 </div>

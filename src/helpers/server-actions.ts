@@ -97,7 +97,7 @@ export async function getBlogs(page: number = 1): Promise<Blog[]> {
 
 export async function getAllBlogs(): Promise<Blog[]> {
   const blogs = await sanityClient.fetch(
-    `*[_type == "blog"] | order(orderRank)`
+    `*[_type == "post"] | order(orderRank)`
   );
 
   return blogs;
