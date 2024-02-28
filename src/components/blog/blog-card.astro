@@ -8,7 +8,7 @@ const { blog } = Astro.props as { blog: Blog };
 
 <a href={`/blog/${blog.slug?.current}`} class="group relative">
   <div
-    class="animate-tilt absolute -inset-0.5 -z-10 rounded-3xl bg-gradient-to-r from-blue-800 to-purple-800 opacity-60 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200"
+    class="absolute -inset-0.5 -z-10 animate-tilt rounded-3xl bg-gradient-to-r from-blue-800 to-purple-800 opacity-60 blur transition duration-1000 group-hover:opacity-100 group-hover:blur-md group-hover:duration-100"
   >
   </div>
   <article

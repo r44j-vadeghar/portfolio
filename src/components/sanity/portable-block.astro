@@ -5,8 +5,6 @@ import type { Props } from "astro-portabletext/types";
 const props = Astro.props;
 ---
 
-<Block {...props}>
-  <props.node.style id={props.node._key}>
-    <slot />
-  </props.node.style>
+<Block id={props.node._key} {...props}>
+  <slot />
 </Block>
