@@ -3,6 +3,7 @@ interface Props {
   title: string;
   description?: string;
   className?: string;
+  keywords?: string | undefined;
 }
 
 import Footer from "@/components/layout/Footer.astro";
@@ -10,7 +11,7 @@ import Header from "@/components/layout/Header.astro";
 import GoogleAnalytics from "@/components/google-analytics.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import { ViewTransitions } from "astro:transitions";
-const { title, description, className } = Astro.props;
+const { title, description, className, keywords } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,6 +22,7 @@ const { title, description, className } = Astro.props;
     <meta name="description" content="Full Stack Developer" />
     <link rel="icon" type="image/png" href="/icon-256x256.png" />
     <meta name="generator" content={Astro.generator} />
+    {keywords && <meta name="keywords" content={keywords} />}
     <ViewTransitions />
     <title>{title}</title>
     <meta

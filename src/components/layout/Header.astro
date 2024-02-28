@@ -1,6 +1,7 @@
 ---
 import HeaderNavItem from "./HeaderNavItem.astro";
 import Socials from "../Socials.astro";
+import { Image } from "astro:assets";
 const pathname = Astro.url.pathname;
 ---
 
@@ -12,7 +13,9 @@ const pathname = Astro.url.pathname;
     class="flex items-center gap-3 justify-self-center sm:justify-self-start"
   >
     <a href="/">
-      <img
+      <Image
+        width={100}
+        height={100}
         id="profile-img"
         src="/me.png"
         alt="raj"
@@ -79,7 +82,6 @@ const pathname = Astro.url.pathname;
       // @ts-ignore
       const { isDesktop, isSmallScreen } = context.conditions;
       const main = document.querySelector("main");
-      const footer = document.querySelector("footer");
       const letters = new SplitType("#name", { split: "chars" }).chars;
       const duration = 0.3;
 
@@ -122,8 +124,7 @@ const pathname = Astro.url.pathname;
         .to("#profile-divider", { height: "2.5rem", opacity: 1 })
         .to("#profile-data", { opacity: 1 })
         .add(staggerTl)
-        .to(main, { display: "flex", opacity: 1, duration: 1 })
-        .to(footer, { display: "block", opacity: 1, duration: 1 }, "<+=0.2");
+        .to(main, { display: "flex", opacity: 1, duration: 1 });
     }
   );
 </script>

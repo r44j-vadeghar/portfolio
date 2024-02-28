@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { urlForImage } from "../../helpers/sanity";
 const { asset, alt } = Astro.props.node;
 
@@ -7,6 +8,6 @@ const webpUrl = urlForImage(asset).format("webp").url();
 ---
 
 <picture class="w-full">
-  <source srcset={webpUrl} type="image/webp" />
-  <img class="w-fit" src={url} alt={alt} />
+  {!webpUrl.includes(".gif") && <source srcset={webpUrl} type="image/webp" />}
+  <Image height={1024} width={850} src={url} alt={alt ?? ""} class="w-fit" />
 </picture>

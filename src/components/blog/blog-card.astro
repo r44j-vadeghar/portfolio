@@ -16,7 +16,7 @@ const { blog } = Astro.props as { blog: Blog };
   >
     <Image
       transition:name={blog.slug.current}
-      src={urlForImage(blog.mainImage.asset).url()}
+      src={urlForImage(blog.mainImage.asset).format("webp").url()}
       alt={blog.title}
       class="min-h-72 aspect-video w-full rounded-[calc(1.5rem-2px)] object-cover sm:w-[50%]"
       object-fit="cover"

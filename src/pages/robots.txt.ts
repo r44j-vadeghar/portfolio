@@ -4,6 +4,10 @@ const robotsTxt = `
 User-agent: *
 Allow: /
 
+User-agent: *
+Disallow: /xerox
+
+
 Sitemap: ${new URL("sitemap-index.xml", import.meta.env.SITE).href}
 `.trim();
 

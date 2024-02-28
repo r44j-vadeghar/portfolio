@@ -1,9 +1,10 @@
 ---
 interface Props {
   className: string;
+  id?: string;
 }
 
-const { className } = Astro.props;
+const { className, id = "socials" } = Astro.props;
 import GithubSvgReference from "@/assets/socials/github.svg";
 import InstagramSvgReference from "@/assets/socials/instagram.svg";
 import LinkedinSvgReference from "@/assets/socials/linkedin.svg";
@@ -11,7 +12,7 @@ import MailSvgReference from "@/assets/socials/mail.svg";
 import TwitterSvgReference from "@/assets/socials/twitter.svg";
 ---
 
-<div id="socials" class={className}>
+<div id={id} class={className}>
   <a href="mailto:vadegharraj@gmail.com" title="Raj Vadeghar Gmail">
     <img
       src={MailSvgReference.src}
