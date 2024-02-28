@@ -56,7 +56,7 @@ const outline = parseOutline(post.body);
       <div
         class="mx-auto w-full max-w-screen-xl p-6 px-4 py-12 sm:px-6 lg:px-8"
       >
-        <div class="flex w-full flex-col gap-10 md:flex-row-reverse">
+        <div class="flex w-full flex-col gap-20 md:flex-row-reverse">
           <div class="top-14 flex h-fit flex-col gap-28 md:sticky">
             <div class="flex flex-col gap-5">
               <h5 class="text-2xl text-white/80">Table of contents</h5>
@@ -114,3 +114,54 @@ const outline = parseOutline(post.body);
     </div>
   </article>
 </Layout>
+
+<script define:vars={{ outline }}>
+  function getAllKeys(headings) {
+    const result = [];
+
+    headings.forEach((heading) => {
+      result.push(heading._key);
+      if (heading.subheadings.length > 0) {
+        result.push(...getAllKeys(heading.subheadings));
+      }
+    });
+
+    return result;
+  }
+
+  const keys = getAllKeys(outline);
+
+  function setDefaultColorOnAllKeys(keys) {
+    keys.forEach((key) => {
+      const element = document.getElementById(`toc-${key}`);
+      element.style.color = "rgba(255,255,255,0.5)";
+    });
+  }
+
+  const handleIntersection = (entries) => {
+    entries.forEach((entry) => {
+      const key = entry.target.id.replace(/^toc-/, "");
+      const targetElement = document.getElementById(`toc-${key}`);
+
+      if (entry.isIntersecting && targetElement) {
+        setDefaultColorOnAllKeys(keys);
+        targetElement.style.color = "white";
+      }
+    });
+  };
+
+  const setupIntersectionObserver = (keys) => {
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.5
+    });
+
+    keys.forEach((key) => {
+      const element = document.getElementById(`${key}`);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+  };
+
+  setupIntersectionObserver(keys);
+</script>
