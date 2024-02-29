@@ -5,6 +5,7 @@ import { parseOutline, urlForImage } from "@/helpers/sanity";
 import { getBlogs } from "@/helpers/server-actions";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
+import ShareLinks from "@/components/share-links.astro";
 
 export async function getStaticPaths() {
   const posts = await getBlogs();
@@ -56,23 +57,27 @@ const outline = parseOutline(post.body);
   keywords={post.seoKeywords}
 >
   <article>
-    <div class="fixed inset-0 -z-50 grid place-items-center">
-      <div class="fixed inset-0 z-10 bg-black/10"></div>
+    <div
+      class="pointer-events-auto fixed inset-0 -z-50 grid place-items-center"
+    >
+      <div class="pointer-events-none fixed inset-0 z-10 bg-black/10"></div>
       <Image
         transition:name={post.slug.current}
         src={urlForImage(post.mainImage.asset).format("webp").url()}
         alt={post.title}
-        class="absolute inset-0 h-full w-full object-cover opacity-50"
+        class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
         width="400"
         height="250"
       />
       <h1
-        class="text-balance relative max-w-2xl pb-4 text-center text-xl font-bold text-white sm:text-5xl"
+        class="text-balance pointer-events-none relative max-w-2xl pb-4 text-center text-xl font-bold text-white sm:text-5xl"
       >
         {post.title}
       </h1>
 
-      <div class="absolute inset-x-0 bottom-10 z-10 text-center text-white">
+      <div
+        class="pointer-events-none absolute inset-x-0 bottom-10 z-10 text-center text-white"
+      >
         Scroll 👇
       </div>
     </div>
@@ -95,6 +100,7 @@ const outline = parseOutline(post.body);
                   </li>
                 )
               }
+              <ShareLinks url={`https://r44j.dev/blog/${post.slug.current}`} />
             </div>
           </div>
 
