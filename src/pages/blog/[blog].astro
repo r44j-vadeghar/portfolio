@@ -28,8 +28,31 @@ const outline = parseOutline(post.body);
 ---
 
 <Layout
-  title={post.seoTitle}
-  description={post.seoDescription}
+  seo={{
+    title: post.seoTitle,
+    description: post.seoDescription,
+    openGraph: {
+      article: {
+        authors: ["Raj Vadeghar"],
+        publishedTime: post.publishedAt,
+        modifiedTime: post._updatedAt,
+        tags: post.categories.map((c) => c.title)
+      },
+      basic: {
+        image: urlForImage(post.mainImage.asset).url(),
+        title: post.seoTitle,
+        type: "article",
+        url: `https://r44j.dev/blog/${post.slug.current}`
+      },
+      image: {
+        url: urlForImage(post.mainImage.asset).url(),
+        alt: post.title
+      },
+      optional: {
+        description: post.seoDescription
+      }
+    }
+  }}
   keywords={post.seoKeywords}
 >
   <article>

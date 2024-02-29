@@ -7,42 +7,45 @@ import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 ---
 
-<Layout title="About R44J">
+<Layout
+  seo={{
+    title: "About R44J"
+  }}
+>
   <Main>
     <div
-      class="mx-auto flex w-full max-w-screen-lg flex-col items-center gap-10 overflow-x-hidden px-5 py-32 md:flex-row md:items-start md:py-44"
+      class="mx-auto flex w-full max-w-4xl flex-col items-center gap-10 overflow-x-hidden px-5 pt-20 md:flex-row md:items-start"
     >
-      <Image
-        height={200}
-        width={200}
-        id="profile-img"
-        src="/linkedin.jpg"
-        alt="raj"
-        class="z-10 h-44 w-44 whitespace-nowrap rounded-full"
-      />
+      <div class="flex w-full flex-col gap-5 p-5">
+        <div class="flex w-full items-center gap-8 pb-5">
+          <Image
+            height={200}
+            width={200}
+            id="profile-img"
+            src="/linkedin.jpg"
+            alt="raj"
+            class="z-10 h-44 w-44 whitespace-nowrap rounded-full"
+          />
+          <div class="flex w-full items-center justify-between">
+            <div class="flex flex-col gap-3">
+              <h1 class="text-3xl font-light text-white">
+                Vadeghar Raja Narayana
+              </h1>
+              <p class="text-xl font-bold">
+                <span class="text-accent">Full Stack</span>
+                 Developer
+              </p>
+            </div>
 
-      <div class="flex w-full flex-col gap-5 border border-white/20 p-5">
-        <div
-          class="flex w-full justify-between gap-5 border-b border-white/10 pb-5"
-        >
-          <div class="flex flex-col gap-3">
-            <h1 class="text-3xl font-light text-white">
-              Vadeghar Raja Narayana
-            </h1>
-            <Socials
-              id="about-socials"
-              className="flex items-center gap-2 [&_svg]:h-5 [&_svg]:w-5"
-            />
-          </div>
-
-          <div class="flex flex-col items-end gap-2 text-right font-medium">
-            <p class="text-xl font-bold">
-              <span class="text-accent">Full Stack</span>
-               Developer
-            </p>
-            <div class="flex items-center gap-2">
-              <Image src={ManifoldLogo} alt="" class="h-5 w-5" />
-              <span> Manifold Ventures</span>
+            <div class="flex flex-col items-end gap-2 text-right font-medium">
+              <div class="flex items-center gap-2">
+                <Image src={ManifoldLogo} alt="" class="h-5 w-5" />
+                <span> Manifold Ventures</span>
+              </div>
+              <Socials
+                id="about-socials"
+                className="flex items-center gap-2 pt-1.5 [&_svg]:h-5 [&_svg]:w-5"
+              />
             </div>
           </div>
         </div>
