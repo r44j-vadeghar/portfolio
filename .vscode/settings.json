@@ -5,6 +5,13 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   },
-  "prettier.documentSelectors": ["**/*.svg"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "typescriptreact" // Enable .tsx
+  ],
+  "prettier.documentSelectors": ["**/*.svg", "**/*.astro"],
   "liveServer.settings.port": 5501
 }

@@ -6,6 +6,8 @@ commit-msg:
 pre-commit:
   parallel: true
   commands:
+    eslint:
+      run: yarn eslint "src/**/*.{js,astro}"
     prettier:
       glob: "*.{ts,tsx,js,mjs,cjs,jsx,html,css,json,yaml,yml,svg,md,astro}"
       run: yarn prettier --write {staged_files}

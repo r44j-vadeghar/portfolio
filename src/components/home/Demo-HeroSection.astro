@@ -20,6 +20,7 @@ import Section from "../Section.astro";
 </Section>
 
 <script>
+  // empty
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -76,22 +77,22 @@ import Section from "../Section.astro";
     }
   }
 
+  function clearNextLetter(index: number, letters: HTMLCollection) {
+    if (index < letters.length) {
+      gsap.to(letters[index]!, { filter: "blur(0px)", duration: 0.5 });
+      index++;
+      if (index < letters.length) {
+        setTimeout(clearNextLetter, 100);
+      }
+    }
+  }
+
   function animateBlurEffect() {
     if (placeholder) {
       const letters = placeholder.children;
       let index = 0;
 
-      function clearNextLetter() {
-        if (index < letters.length) {
-          gsap.to(letters[index]!, { filter: "blur(0px)", duration: 0.5 });
-          index++;
-          if (index < letters.length) {
-            setTimeout(clearNextLetter, 100);
-          }
-        }
-      }
-
-      setTimeout(clearNextLetter, 0);
+      setTimeout(() => clearNextLetter(index, letters), 0);
     }
   }
 

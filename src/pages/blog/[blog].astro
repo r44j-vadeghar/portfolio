@@ -25,7 +25,7 @@ const filteredRelated = post.related.filter(
 );
 const hasRelatedPosts = filteredRelated.length > 0;
 
-const outline = parseOutline(post.body);
+const blocks = parseOutline(post.body);
 ---
 
 <Layout
@@ -60,12 +60,13 @@ const outline = parseOutline(post.body);
     <div
       class="pointer-events-auto fixed inset-0 -z-50 grid place-items-center"
     >
-      <div class="pointer-events-none fixed inset-0 z-10 bg-black/10"></div>
+      <div class="pointer-events-none fixed inset-0 bg-black/70 transition-all">
+      </div>
       <Image
         transition:name={post.slug.current}
         src={urlForImage(post.mainImage.asset).format("webp").url()}
         alt={post.title}
-        class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-50"
+        class="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover"
         width="400"
         height="250"
       />
@@ -92,7 +93,7 @@ const outline = parseOutline(post.body);
           <div class="top-14 flex h-fit flex-col gap-28 md:sticky">
             <div class="flex flex-col gap-5">
               <h5 class="text-2xl text-white/80">Table of contents</h5>
-              <TableOfContent outline={outline} />
+              <TableOfContent blocks={blocks} />
               {
                 hasRelatedPosts && (
                   <li class="list-none transition-all hover:text-white/90">
@@ -148,7 +149,7 @@ const outline = parseOutline(post.body);
   </article>
 </Layout>
 
-<script define:vars={{ outline }}>
+<script define:vars={{ blocks }}>
   function getAllKeys(headings) {
     const result = [];
 
@@ -162,7 +163,7 @@ const outline = parseOutline(post.body);
     return result;
   }
 
-  const keys = getAllKeys(outline);
+  const keys = getAllKeys(blocks);
 
   function setDefaultColorOnAllKeys(keys) {
     keys.forEach((key) => {

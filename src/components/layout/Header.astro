@@ -57,14 +57,14 @@ const pathname = Astro.url.pathname;
 
   <a
     href="https://calendly.com/r44j/30min"
-    class="hidden w-fit justify-self-end rounded-lg bg-gray-800 px-6 py-2 text-sm font-bold text-white ring-gray-800 ring-offset-2 ring-offset-black hover:ring-2 focus:ring-2 sm:block"
+    class="hidden w-fit justify-self-end rounded-lg bg-white/10 px-6 py-2 text-sm font-bold text-white ring-gray-800 ring-offset-2 ring-offset-black transition-all hover:bg-white/20 hover:ring-2 focus:ring-2 sm:block"
   >
     Book a free meeting
   </a>
 </header>
 
 <script>
-  console.log("header");
+  // header
   import gsap from "gsap";
   import SplitType from "split-type";
 
@@ -78,9 +78,7 @@ const pathname = Astro.url.pathname;
       isMobile: `(max-width: ${breakPoint - 1}px)`,
       reduceMotion: "(prefers-reduced-motion: reduce)"
     },
-    (context) => {
-      // @ts-ignore
-      const { isDesktop, isSmallScreen } = context.conditions;
+    () => {
       const main = document.querySelector("main");
       const letters = new SplitType("#name", { split: "chars" }).chars;
       const duration = 0.3;

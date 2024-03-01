@@ -8,7 +8,7 @@ type Base = {
   _updatedAt: string;
 };
 
-interface Span {
+export interface Span {
   _key: string;
   _type: "span";
   marks: string[];
@@ -34,9 +34,10 @@ export interface Block {
   _key: string;
   _type: "block";
   children: Span[];
-  markDefs: any[];
+  markDefs: unknown[];
   style: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
   split: (separator: string | RegExp) => string[];
+  subheadings?: Block[];
 }
 
 export interface Category extends Base {

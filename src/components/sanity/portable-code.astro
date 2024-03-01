@@ -22,7 +22,6 @@ const { code, language, _key } = Astro.props.node;
       window.getSelection()?.removeAllRanges();
       window.getSelection()?.addRange(range);
       if (!navigator.clipboard) {
-        // if not use the old execCommand() way
         document.execCommand("copy");
       } else {
         try {

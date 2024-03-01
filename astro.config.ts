@@ -7,7 +7,7 @@ import { defineConfig } from "astro/config";
 import { loadEnv } from "vite";
 
 const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = loadEnv(
-  process.env.NODE_ENV,
+  process.env.NODE_ENV as string,
   process.cwd(),
   ""
 );
@@ -17,8 +17,8 @@ export default defineConfig({
   site: "https://r44j.dev",
   integrations: [
     sanityIntegration({
-      projectId: SANITY_STUDIO_PROJECT_ID,
-      dataset: SANITY_STUDIO_PROJECT_DATASET,
+      projectId: SANITY_STUDIO_PROJECT_ID ?? "",
+      dataset: SANITY_STUDIO_PROJECT_DATASET ?? "production",
       apiVersion: "2023-02-08",
       useCdn: false
     }),
