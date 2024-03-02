@@ -12,21 +12,25 @@ import { Image } from "astro:assets";
     title: "About R44J"
   }}
 >
-  <Main>
+  <Main className="pt-8 sm:pt-20">
     <div
-      class="mx-auto flex w-full max-w-4xl flex-col items-center gap-10 overflow-x-hidden px-5 pt-20 md:flex-row md:items-start"
+      class="mx-auto flex w-full max-w-4xl flex-col items-center gap-10 overflow-x-hidden sm:pt-16 md:flex-row md:items-start"
     >
       <div class="flex w-full flex-col gap-5 p-5">
-        <div class="flex w-full items-center gap-8 pb-5">
+        <div
+          class="flex w-full flex-col items-center gap-8 rounded-sm border-white/20 pb-5 max-[640px]:border max-[640px]:p-5 sm:flex-row"
+        >
           <Image
             height={200}
             width={200}
             id="profile-img"
             src="/linkedin.jpg"
             alt="raj"
-            class="z-10 h-44 w-44 whitespace-nowrap rounded-full"
+            class="z-10 h-36 w-36 whitespace-nowrap rounded-full sm:h-44 sm:w-44"
           />
-          <div class="flex w-full items-center justify-between">
+          <div
+            class="flex w-full flex-col items-center justify-between gap-3 sm:flex-row"
+          >
             <div class="flex flex-col gap-3">
               <h1 class="text-3xl font-light text-white">
                 Vadeghar Raja Narayana
@@ -37,7 +41,9 @@ import { Image } from "astro:assets";
               </p>
             </div>
 
-            <div class="flex flex-col items-end gap-2 text-right font-medium">
+            <div
+              class="flex w-full flex-col items-start gap-2 font-medium sm:w-fit sm:items-end sm:text-right"
+            >
               <div class="flex items-center gap-2">
                 <Image src={ManifoldLogo} alt="" class="h-5 w-5" />
                 <span> Manifold Ventures</span>

@@ -2,7 +2,6 @@
 import HeaderNavItem from "./HeaderNavItem.astro";
 import Socials from "../Socials.astro";
 import { Image } from "astro:assets";
-const pathname = Astro.url.pathname;
 ---
 
 <header
@@ -33,19 +32,13 @@ const pathname = Astro.url.pathname;
   </div>
 
   <nav class={`flex items-center font-medium`}>
-    <HeaderNavItem active={pathname === "/"} href="/">Localhost</HeaderNavItem>
-    <HeaderNavItem active={pathname === "/about"} href="/about">
-      About
-    </HeaderNavItem>
-    <HeaderNavItem active={pathname === "/uses"} href="/uses">
-      Uses
-    </HeaderNavItem>
-    <HeaderNavItem active={pathname === "/blog"} href="/blog">
-      Blog
-    </HeaderNavItem>
+    <HeaderNavItem href="/">Localhost</HeaderNavItem>
+    <HeaderNavItem href="/about"> About </HeaderNavItem>
+    <HeaderNavItem href="/uses"> Uses </HeaderNavItem>
+    <HeaderNavItem href="/blog"> Blog </HeaderNavItem>
     <!-- {
       pathname === "/xerox" && (
-        <HeaderNavItem active={pathname === "/xerox"} href="/xerox">
+        <HeaderNavItem href="/xerox">
           Xerox
         </HeaderNavItem>
       )
