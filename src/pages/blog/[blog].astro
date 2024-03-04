@@ -124,10 +124,11 @@ const blocks = parseOutline(post.body);
                     {filteredRelated.map((related) => (
                       <a
                         href={related.slug.current}
-                        class="w-fit rounded-3xl bg-gradient-to-b from-blue-800 to-purple-800 p-px"
+                        class="w-fit max-w-sm rounded-3xl bg-gradient-to-b from-blue-800 to-purple-800 p-px"
                       >
                         <div class="flex flex-col gap-3 rounded-[calc(1.5rem-1px)] bg-black p-2">
                           <Image
+                            transition:name={related.slug.current}
                             src={urlForImage(related.mainImage.asset).url()}
                             alt={related.title}
                             class="aspect-video rounded-[calc(1.5rem-2px)] object-cover"

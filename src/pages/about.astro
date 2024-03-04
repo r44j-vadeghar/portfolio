@@ -3,13 +3,15 @@ import ManifoldLogo from "@/assets/manifold_ventures_llc_logo.jpeg";
 import Main from "@/components/Main.astro";
 import Socials from "@/components/Socials.astro";
 import Organization from "@/components/about/Organization.astro";
+import SiteData from "@/constants/siteData.json";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 ---
 
 <Layout
   seo={{
-    title: "About R44J"
+    title: SiteData.pages.about.title,
+    description: SiteData.pages.about.description
   }}
 >
   <Main className="pt-8 sm:pt-20">

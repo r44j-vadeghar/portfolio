@@ -1,5 +1,6 @@
 ---
 import BlogCard from "@/components/blog/blog-card.astro";
+import SiteData from "@/constants/siteData.json";
 import { getBlogs } from "@/helpers/server-actions";
 import Main from "../../components/Main.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -7,7 +8,13 @@ import Layout from "../../layouts/Layout.astro";
 const blogs = await getBlogs();
 ---
 
-<Layout seo={{ title: "R44J - Blogs" }}>
+<Layout
+  seo={{
+    title: SiteData.pages.blog.title,
+    description: SiteData.pages.blog.description
+  }}
+  keywords={SiteData.pages.blog.keywords}
+>
   <Main className="mx-auto max-w-4xl pt-20 sm:pt-48">
     {
       blogs.length > 0 ? (

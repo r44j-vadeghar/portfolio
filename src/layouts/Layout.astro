@@ -11,6 +11,7 @@ import Footer from "@/components/layout/Footer.astro";
 import Header from "@/components/layout/Header.astro";
 import GoogleAnalytics from "@/components/google-analytics.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import SiteData from "@/constants/siteData.json";
 import { ViewTransitions } from "astro:transitions";
 const { className, seo, keywords } = Astro.props;
 ---
@@ -31,27 +32,24 @@ const { className, seo, keywords } = Astro.props;
     />
     <SEO
       {...seo}
-      title={seo?.title ?? "R44J | Full Stack Developer - Portfolio"}
-      description={seo?.description ??
-        "R44J, a Full Stack Developer skilled in Figma designs, scalable architectures, backend and frontend development, SEO, chrome extensions, and e-commerce. Explore my diverse expertise and collaborations in IOS apps, mobile apps, and PWAs."}
+      title={seo?.title ?? SiteData.default.title}
+      description={seo?.description ?? SiteData.default.description}
       openGraph={seo?.openGraph ?? {
         basic: {
-          image: "",
-          title: "R44J | Full Stack Developer - Portfolio",
-          type: "website",
-          url: "https://r44j.dev"
+          image: SiteData.default.openGraph.image,
+          title: SiteData.default.openGraph.title,
+          type: SiteData.default.openGraph.type,
+          url: SiteData.default.openGraph.url
         },
         optional: {
-          description:
-            "Explore R44J's skills in Figma designs, scalable architectures, frontend and backend development, SEO, and more. Specializing in Chrome extensions, e-commerce, and collaborating on IOS apps, mobile apps, and PWAs.",
-          siteName: "R44J Vadeghar - Full Stack Developer"
+          description: SiteData.default.openGraph.description,
+          siteName: SiteData.default.openGraph.title
         }
       }}
       twitter={seo?.twitter ?? {
-        title: "R44J | Full Stack Developer - Portfolio",
-        description:
-          "Discover R44J's expertise in Figma designs, scalable architectures, frontend and backend development, SEO, and more. Specializing in Chrome extensions, e-commerce, and collaborating on IOS apps, mobile apps, and PWAs.",
-        creator: "@VadegharRaj"
+        title: SiteData.default.twitter.title,
+        description: SiteData.default.twitter.description,
+        creator: SiteData.default.twitter.creator
       }}
     />
 

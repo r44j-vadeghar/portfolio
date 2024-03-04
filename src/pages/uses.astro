@@ -1,10 +1,17 @@
 ---
+import SiteData from "@/constants/siteData.json";
 import Main from "../components/Main.astro";
 import HeroUses from "../components/uses/hero-uses.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout seo={{ title: "R44J - Tools" }}>
+<Layout
+  seo={{
+    title: SiteData.pages.uses.title,
+    description: SiteData.pages.uses.description
+  }}
+  keywords={SiteData.pages.uses.keywords}
+>
   <Main>
     <HeroUses />
   </Main>
