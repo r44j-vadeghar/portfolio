@@ -1,11 +1,15 @@
 ---
+import AdvaitaLogo from "@/assets/advaita-192x192.png";
 import ManifoldLogo from "@/assets/manifold_ventures_llc_logo.jpeg";
+import TcsLogo from "@/assets/tcs-48.png";
+import KairosLogo from "@/assets/testimonials/kairos.png";
 import Main from "@/components/Main.astro";
 import Socials from "@/components/Socials.astro";
 import Organization from "@/components/about/Organization.astro";
 import SiteData from "@/constants/siteData.json";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
+import type { Person, WithContext } from "schema-dts";
 ---
 
 <Layout
@@ -13,6 +17,31 @@ import { Image } from "astro:assets";
     title: SiteData.pages.about.title,
     description: SiteData.pages.about.description
   }}
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "R44J Vadeghar - Full Stack Developer",
+    alternateName: "Raj Vadeghar",
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: ["Kakatiya University", "Government Institute of Electronics"]
+    },
+    knowsAbout: [
+      "Python",
+      "ReactJS",
+      "React",
+      "Typescript",
+      "Javascript",
+      "NextJS",
+      "TailwindCSS",
+      "Python",
+      "Chrome Extensions",
+      "Styled Components",
+      "Astro",
+      "Search Engine Optimization",
+      "Computer Science"
+    ]
+  } as WithContext<Person>}
 >
   <Main className="pt-8 sm:pt-20">
     <div
@@ -47,8 +76,8 @@ import { Image } from "astro:assets";
               class="flex w-full flex-col items-start gap-2 font-medium sm:w-fit sm:items-end sm:text-right"
             >
               <div class="flex items-center gap-2">
-                <Image src={ManifoldLogo} alt="" class="h-5 w-5" />
-                <span> Manifold Ventures</span>
+                <Image src={TcsLogo} alt="" class="h-7 w-7" />
+                <span> Tata Consultancy Servcies</span>
               </div>
               <Socials
                 id="about-socials"
@@ -61,8 +90,9 @@ import { Image } from "astro:assets";
         <div class="border-b border-white/20 py-5">
           Hi there 👋, <strong class="text-white">I'm Raj</strong><br />
           <strong class="text-white">
-            Full-stack web dev with 1.5 years at a US startup.
+            Systems Engineer at Tata Consultancy Services.
           </strong>
+          Previously a Full-stack web dev with 1.5 years at a US startup. <br />
           Skilled in React, Next.js, Tailwind, Chrome extensions & SEO. I Build engaging
           & scalable web apps. Looking to bring your vision to life? Let's connect
         </div>
@@ -71,10 +101,25 @@ import { Image } from "astro:assets";
           <h2 class="pb-5 text-3xl font-medium text-accent">Work</h2>
 
           <Organization
-            title="Manifold Ventures"
-            span="2022 - Working"
+            title="Tata Consultancy Services"
+            span="2024 - Working"
             jobType="Full Time"
+            designation="Systems Engineer"
+            link="https://www.tcs.com/"
+            logo={TcsLogo}
+          >
+            <ul class="list-inside list-disc">
+              <li>Python</li>
+            </ul>
+          </Organization>
+
+          <Organization
+            title="Manifold Ventures"
+            span="2022 - 2024"
+            jobType="Full Time"
+            designation="Full Stack Developer"
             link="https://www.meavana.com"
+            logo={ManifoldLogo}
           >
             <p>
               Manifold Ventures has established MeaVana as its dedicated branch
@@ -95,7 +140,9 @@ import { Image } from "astro:assets";
             title="Kairos Club"
             span="2023"
             jobType="Freelance"
+            designation="Full Stack Developer"
             link="https://kairos-club.com"
+            logo={KairosLogo}
           >
             <p>Kairos Club is a e-commerce marketing agency</p>
           </Organization>
@@ -104,7 +151,9 @@ import { Image } from "astro:assets";
             title="Advaita Exports"
             span="2023"
             jobType="Freelance"
+            designation="Full Stack Developer"
             link="https://advaitaexport.com/"
+            logo={AdvaitaLogo}
           >
             <p>
               Advaita Export, takes immense pride in dealing with a wide range

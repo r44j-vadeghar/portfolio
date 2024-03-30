@@ -2555,6 +2555,11 @@ astro-portabletext@^0.9.6:
     "@portabletext/toolkit" "^2.0.10"
     "@portabletext/types" "^2.0.8"
 
+astro-seo-schema@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/astro-seo-schema/-/astro-seo-schema-4.0.0.tgz#d77727689d59121f3b24ad887ff1839446816fbd"
+  integrity sha512-ZcpxuQWSlyOVru+sN5LwUHqfrQpOEyv6Ksxq6WBNhycEHE0AEgGdiHkfhAmQbVqT4HXM8bmZOZlYlwwsYkfPAw==
+
 astro-seo@^0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/astro-seo/-/astro-seo-0.8.2.tgz#bc1d9477796c4aebab364ce4239f386877be5da7"
@@ -8098,6 +8103,11 @@ scheduler@^0.23.0:
   integrity sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==
   dependencies:
     loose-envify "^1.1.0"
+
+schema-dts@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/schema-dts/-/schema-dts-1.1.2.tgz#82ccf71b5dcb80065a1cc5941888507a4ce1e44b"
+  integrity sha512-MpNwH0dZJHinVxk9bT8XUdjKTxMYrA5bLtrrGmFA6PTLwlOKnhi67XoRd6/ty+Djt6ZC0slR57qFhZDNMI6DhQ==
 
 scroll-into-view-if-needed@^3.0.3, scroll-into-view-if-needed@^3.1.0:
   version "3.1.0"

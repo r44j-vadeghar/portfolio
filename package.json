@@ -26,10 +26,12 @@
     "astro-meta-tags": "^0.2.1",
     "astro-portabletext": "^0.9.6",
     "astro-seo": "^0.8.2",
+    "astro-seo-schema": "^4.0.0",
     "gsap": "^3.12.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanity": "*",
+    "schema-dts": "^1.1.2",
     "split-type": "^0.3.4",
     "typescript": "^5.3.2"
   },

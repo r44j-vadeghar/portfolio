@@ -6,6 +6,7 @@ import { getBlogs } from "@/helpers/server-actions";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import ShareLinks from "@/components/share-links.astro";
+import type { BlogPosting, WithContext } from "schema-dts";
 
 export async function getStaticPaths() {
   const posts = await getBlogs();
@@ -54,6 +55,25 @@ const blocks = parseOutline(post.body);
       }
     }
   }}
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${post.slug.current}`
+    },
+    headline: post.title,
+    description: post.seoDescription,
+    image: urlForImage(post.mainImage.asset).url(),
+    keywords: post.seoKeywords,
+    author: {
+      "@type": "Person",
+      name: "Raj Vadeghar",
+      url: "https://r44j.dev"
+    },
+    datePublished: new Date(post.publishedAt).toISOString().substring(0, 10),
+    dateModified: new Date(post._updatedAt).toISOString().substring(0, 10)
+  } as WithContext<BlogPosting>}
   keywords={post.seoKeywords}
 >
   <article>

@@ -11,17 +11,16 @@ const active = pathname === href;
 <a
   href={href}
   class={`relative group block cursor-pointer font-medium capitalize outline-none transition-all hover:text-white px-3 p-1 ${
-    active ? "text-white" : "text-white/70 no-underline"
+    active ? "text-white" : "text-white/70 no-underline group"
   }`}
 >
   <slot />
 
-  {
-    active && (
-      <span
-        transition:name="active-underline"
-        class="absolute inset-0 rounded-lg bg-white/10"
-      />
-    )
-  }
+  {active && <span class="absolute inset-0 rounded-lg bg-white/10" />}
+
+  <span
+    transition:name="active-underline"
+    class={`absolute inset-0 rounded-lg bg-white/10 opacity-0 ${
+      active ? "" : "group-hover:opacity-100"
+    }`}></span>
 </a>

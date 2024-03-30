@@ -1,10 +1,13 @@
 ---
 import { SEO, type Props as SEOProps } from "astro-seo";
-interface Props {
+import { Schema } from "astro-seo-schema";
+
+type Props<T extends Thing> = {
+  schema?: Graph | WithContext<Thing> | WithContext<T>;
   className?: string;
   keywords?: string | undefined;
   seo?: SEOProps;
-}
+};
 
 import "@fontsource/outfit";
 import Footer from "@/components/layout/Footer.astro";
@@ -13,7 +16,8 @@ import GoogleAnalytics from "@/components/google-analytics.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import SiteData from "@/constants/siteData.json";
 import { ViewTransitions } from "astro:transitions";
-const { className, seo, keywords } = Astro.props;
+import type { Graph, Thing, WebSite, WithContext } from "schema-dts";
+const { className, seo, keywords, schema } = Astro.props;
 ---
 
 <!doctype html>
@@ -29,6 +33,16 @@ const { className, seo, keywords } = Astro.props;
     <meta
       name="keywords"
       content="R44J, Full Stack Developer, Figma designs, Scalable Architectures, Backend Development, Frontend Development, SEO, Chrome Extensions, E-commerce, IOS Apps, Mobile Apps, PWA"
+    />
+    <Schema
+      item={schema ??
+        ({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: SiteData.default.title,
+          url: "https://r44j.dev",
+          image: "/linkedin.jpg"
+        } as WithContext<WebSite>)}
     />
     <SEO
       {...seo}
