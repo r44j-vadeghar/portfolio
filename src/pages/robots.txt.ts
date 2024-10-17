@@ -10,6 +10,9 @@ Disallow: /xerox
 User-agent: *
 Disallow: /privacy-policy
 
+User-agent: *
+Disallow: /uniconnect
+
 
 Sitemap: ${new URL("sitemap-index.xml", import.meta.env.SITE).href}
 `.trim();
