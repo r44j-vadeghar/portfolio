@@ -30,9 +30,15 @@ const { className, seo, keywords, schema } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     {keywords && <meta name="keywords" content={keywords} />}
     <script
+      is:inline
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8750631183642200"
       crossorigin="anonymous"></script>
+    <script
+      is:inline
+      async
+      custom-element="amp-ad"
+      src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
     <ViewTransitions />
     <meta
       name="keywords"

@@ -8,6 +8,12 @@ import { Image } from "astro:assets";
 import ShareLinks from "@/components/share-links.astro";
 import type { BlogPosting, WithContext } from "schema-dts";
 
+declare global {
+  interface Window {
+    adsbygoogle: unknown[];
+  }
+}
+
 export async function getStaticPaths() {
   const posts = await getBlogs();
 
@@ -123,6 +129,17 @@ const blocks = parseOutline(post.body);
               }
               <ShareLinks url={`https://r44j.dev/blog/${post.slug.current}`} />
             </div>
+            <amp-ad
+              width="100vw"
+              height="320"
+              type="adsense"
+              data-ad-client="ca-pub-8750631183642200"
+              data-ad-slot="6587918713"
+              data-auto-format="rspv"
+              data-full-width=""
+            >
+              <div></div>
+            </amp-ad>
           </div>
 
           <div class="mx-auto w-full max-w-3xl">
@@ -132,6 +149,32 @@ const blocks = parseOutline(post.body);
               <PortableText portableText={post.body} />
             </div>
 
+            <amp-ad
+              width="100vw"
+              height="320"
+              type="adsense"
+              data-ad-client="ca-pub-8750631183642200"
+              data-ad-slot="6587918713"
+              data-auto-format="rspv"
+              data-full-width=""
+            >
+              <div></div>
+            </amp-ad>
+            <script
+              async
+              src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8750631183642200"
+              crossorigin="anonymous"></script>
+            <!-- Test -->
+            <ins
+              class="adsbygoogle"
+              style="display:block"
+              data-ad-client="ca-pub-8750631183642200"
+              data-ad-slot="6587918713"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+            <script>
+              (window.adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
             {
               hasRelatedPosts && (
                 <div
