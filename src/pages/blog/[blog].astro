@@ -2,7 +2,7 @@
 import TableOfContent from "@/components/blog/table-of-content.astro";
 import PortableText from "@/components/sanity/portable-text.astro";
 import { parseOutline, urlForImage } from "@/helpers/sanity";
-import { getBlogs } from "@/helpers/server-actions";
+import { getAllBlogs } from "@/helpers/server-actions";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import ShareLinks from "@/components/share-links.astro";
@@ -15,7 +15,7 @@ declare global {
 }
 
 export async function getStaticPaths() {
-  const posts = await getBlogs();
+  const posts = await getAllBlogs();
 
   return posts.map((post) => {
     return {
@@ -183,8 +183,8 @@ const blocks = parseOutline(post.body);
                 >
                   <h5 class="text-2xl text-white/80">Related posts</h5>
 
-                  <div class="flex flex-wrap gap-5">
-                    {filteredRelated.map((related) => (
+                  <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                    {filteredRelated.slice(0, 4).map((related) => (
                       <a
                         href={related.slug.current}
                         class="w-fit max-w-sm rounded-3xl bg-gradient-to-b from-blue-800 to-purple-800 p-px"

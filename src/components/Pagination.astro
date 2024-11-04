@@ -1,0 +1,84 @@
+---
+import Link from "./Link.astro";
+
+const { currentPage, lastPage, prevUrl, nextUrl, firstUrl, lastUrl } =
+  Astro.props;
+
+const getPageNumbers = (current: number, last: number) => {
+  const range = [];
+  for (
+    let i = Math.max(1, current - 2);
+    i <= Math.min(last, current + 2);
+    i++
+  ) {
+    range.push(i);
+  }
+  return range;
+};
+
+const pageNumbers = getPageNumbers(currentPage, lastPage);
+const urlParam = Astro.url.pathname;
+---
+
+<div class="mt-8 flex items-center justify-center space-x-3">
+  {
+    firstUrl && currentPage > 1 && (
+      <Link
+        text="First"
+        href={firstUrl}
+        style="secondary"
+        classes="text-sm hover:bg-blue-50"
+      />
+    )
+  }
+
+  {
+    urlParam !== "/blog" && (
+      <Link
+        text="Previous"
+        href={prevUrl}
+        style="secondary"
+        icon={{ name: "tabler:arrow-big-left-line", side: "left" }}
+        classes="flex gap-2 items-center text-sm hover:bg-blue-50"
+      />
+    )
+  }
+
+  {
+    pageNumbers.map((page) => (
+      <Link
+        text={`${page}`}
+        href={page === 1 ? "/blog" : `/blog/${page}`}
+        style={page === currentPage ? "primary" : "secondary"}
+        classes={`rounded-full w-10 h-10 flex items-center justify-center ${
+          page === currentPage
+            ? "bg-blue-500 text-white"
+            : "bg-gray-100 text-gray-700 hover:bg-blue-50"
+        }`}
+      />
+    ))
+  }
+
+  {
+    nextUrl && (
+      <Link
+        text="Next"
+        href={nextUrl}
+        style="secondary"
+        icon={{ name: "tabler:arrow-big-right-line", side: "right" }}
+        classes="flex gap-2 items-center text-sm hover:bg-blue-50"
+      />
+    )
+  }
+
+  {
+    lastUrl && currentPage < lastPage && (
+      <Link
+        text="Last"
+        href={lastUrl}
+        style="secondary"
+        classes="text-sm hover:bg-blue-50"
+      />
+    )
+  }
+</div>

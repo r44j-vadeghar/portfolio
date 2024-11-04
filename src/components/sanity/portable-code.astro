@@ -5,7 +5,10 @@ const { code, language, _key } = Astro.props.node;
 ---
 
 <div id={`code-${_key}-block`} class="relative w-full">
-  <button id={`${_key}-copy-code`} class="absolute bottom-3 right-2 z-10">
+  <button
+    id={`${_key}-copy-code`}
+    class="absolute right-2 top-3 z-10 rounded-lg bg-zinc-900 p-3"
+  >
     <Clipboard />
   </button>
   <Code lang={language} code={code} theme="slack-dark" />

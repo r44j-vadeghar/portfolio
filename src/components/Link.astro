@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon";
+
+interface Props {
+  text: string;
+  href: string;
+  style: "primary" | "secondary";
+  icon?: {
+    name: string;
+    side: "left" | "right";
+  };
+  isFilled?: boolean;
+  borderVisible?: boolean;
+  classes?: string;
+}
+
+const {
+  text,
+  href,
+  style,
+  icon,
+  isFilled = true,
+  borderVisible = false,
+  classes,
+  ...rest
+} = Astro.props as Props;
+---
+
+<a
+  href={href}
+  class={`${
+    style === "primary" ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-600"
+  } ${isFilled ? "rounded-full px-3 py-2" : "px-3 py-1"} ${
+    borderVisible ? "border border-gray-300" : ""
+  } ${classes} hover:shadow-md transition-all duration-150 ease-in-out`}
+  {...rest}
+>
+  {icon && icon.side === "left" && <Icon name={icon.name} class="w-5" />}
+  {text}
+  {icon && icon.side === "right" && <Icon name={icon.name} class="w-5" />}
+</a>
