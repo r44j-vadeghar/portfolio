@@ -32,42 +32,42 @@ export default function ModernHero() {
   const containerRef = useRef(null);
   const skillsRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        defaults: { duration: 0.2, ease: "power2.out" }
-      });
-      gsap.set(".skill-item", { opacity: 0, y: 30 });
-      tl.from(containerRef.current, {
-        opacity: 0,
-        y: 20,
-        duration: 0.1,
-        ease: "power2.out",
-        delay: 0.5
-      });
-      if (skillsRef.current) {
-        const skillItems = gsap.utils.toArray<HTMLElement>(".skill-item");
+  // useEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     const tl = gsap.timeline({
+  //       defaults: { duration: 0.2, ease: "power2.out" }
+  //     });
+  //     gsap.set(".skill-item", { opacity: 0, y: 30 });
+  //     tl.from(containerRef.current, {
+  //       opacity: 0,
+  //       y: 20,
+  //       duration: 0.1,
+  //       ease: "power2.out",
+  //       delay: 0.5
+  //     });
+  //     if (skillsRef.current) {
+  //       const skillItems = gsap.utils.toArray<HTMLElement>(".skill-item");
 
-        tl.to(skillItems, {
-          opacity: 1,
-          y: 0,
-          stagger: 0.15,
-          ease: "power2.out"
-        });
-        ScrollTrigger.create({
-          trigger: skillsRef.current,
-          start: "top center+=100",
-          once: true,
-          animation: tl
-        });
-      }
-    });
+  //       tl.to(skillItems, {
+  //         opacity: 1,
+  //         y: 0,
+  //         stagger: 0.15,
+  //         ease: "power2.out"
+  //       });
+  //       ScrollTrigger.create({
+  //         trigger: skillsRef.current,
+  //         start: "top center+=100",
+  //         once: true,
+  //         animation: tl
+  //       });
+  //     }
+  //   });
 
-    return () => ctx.revert();
-  }, []);
+  //   return () => ctx.revert();
+  // }, []);
 
   return (
-    <div className="relative w-full bg-black px-4 pt-20">
+    <div className="relative w-full bg-black md:px-4 md:pt-20">
       <CinematicGrid />
       <div ref={containerRef} className="mx-auto max-w-6xl">
         <div className="mb-16 text-center">

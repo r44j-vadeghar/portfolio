@@ -9,7 +9,7 @@
     "astro": "astro"
   },
   "engines": {
-    "node": "20"
+    "node": "22"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.3",
