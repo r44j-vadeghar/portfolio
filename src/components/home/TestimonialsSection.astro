@@ -2,13 +2,13 @@
 import KairosTechnologiesList from "@/assets/testimonials/kairos-technologies-list.png";
 import Kairos from "@/assets/testimonials/kairos.png";
 import Tail from "@/assets/testimonials/tail.png";
-import Icon from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import Section from "../Section.astro";
 ---
 
 <Section id="services" className="w-full">
-  <div class="bg-black text-white md:py-36">
+  <div class="bg-black text-white">
     <div
       class="mx-auto flex w-full max-w-screen-2xl flex-col gap-10 overflow-x-hidden px-5"
     >
@@ -24,8 +24,6 @@ import Section from "../Section.astro";
           friends)
         </p>
       </header>
-
-      <!-- testimonial cards -->
       <div
         class="mx-auto grid w-full max-w-4xl grid-cols-3 gap-5 pt-5 sm:pt-20"
       >
@@ -84,17 +82,9 @@ import Section from "../Section.astro";
                   class="h-14 object-contain"
                 />
               </div>
-              <!-- <div">
-              <Fragment set:html={kairos} />
-            </div"> -->
             </div>
           </div>
         </a>
-        <!-- <div
-          class="flex flex-col items-center justify-center gap-3 rounded-md bg-[#181818] p-10"
-        >
-          <p>Advaita</p>
-        </div> -->
       </div>
     </div>
   </div>

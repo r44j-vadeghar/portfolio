@@ -3,6 +3,7 @@ import InstagramSvgReference from "@/assets/socials/instagram.svg";
 import LinkedinSvgReference from "@/assets/socials/linkedin.svg";
 import MailSvgReference from "@/assets/socials/mail.svg";
 import TwitterSvgReference from "@/assets/socials/twitter.svg";
+import YoutubeSvgReference from "@/assets/socials/youtube.svg";
 
 export default {
   mail: {
@@ -29,5 +30,10 @@ export default {
     url: "https://twitter.com/VadegharRaj",
     title: "Raj Vadeghar Twitter",
     icon: TwitterSvgReference.src
+  },
+  youtube: {
+    url: "https://www.youtube.com/@rajvadeghar",
+    title: "Raj Vadeghar YouTube",
+    icon: YoutubeSvgReference.src
   }
 };

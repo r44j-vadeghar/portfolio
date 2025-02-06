@@ -83,19 +83,6 @@ export async function getBlogs(page: number = 1): Promise<Blog[]> {
   return blogs;
 }
 
-// export async function getRelatedBlogs(slug: string): Promise<Blog[]> {
-//   const blogs = await sanityClient.fetch(
-//     `*[_type == "post" && slug.current == ${slug}][0] {
-//       title,
-//       categories[]->,
-
-//     }
-//     `
-//   );
-
-//   return blogs;
-// }
-
 export async function getAllBlogs(): Promise<Blog[]> {
   const blogs = await sanityClient.fetch(
     `*[_type == "post"] | order(orderRank) {

@@ -1,13 +1,18 @@
+// @ts-check
+import { defineConfig } from "astro/config";
+
+import tailwindcss from "@tailwindcss/vite";
+
+import icon from "astro-icon";
+import sanity from "@sanity/astro";
+import react from "@astrojs/react";
+import astroMetaTags from "astro-meta-tags";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
-import { sanityIntegration } from "@sanity/astro";
-import astroMetaTags from "astro-meta-tags";
-import { defineConfig } from "astro/config";
 import { loadEnv } from "vite";
 
 const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = loadEnv(
-  process.env.NODE_ENV as string,
+  String(process.env.NODE_ENV),
   process.cwd(),
   ""
 );
@@ -15,14 +20,25 @@ const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = loadEnv(
 // https://astro.build/config
 export default defineConfig({
   site: "https://r44j.dev",
+
+  vite: {
+    plugins: [tailwindcss()]
+  },
+
   integrations: [
-    sanityIntegration({
+    sanity({
       projectId: SANITY_STUDIO_PROJECT_ID ?? "",
       dataset: SANITY_STUDIO_PROJECT_DATASET ?? "production",
       apiVersion: "2023-02-08",
       useCdn: false
     }),
-    tailwind(),
+    icon({
+      include: {
+        mdi: ["*"],
+        tabler: ["arrow-big-left-line", "arrow-big-right-line"]
+      }
+    }),
+    react(),
     astroMetaTags(),
     sitemap({
       filter: (page) => page !== "https://r44j.dev/xerox/"
@@ -32,5 +48,5 @@ export default defineConfig({
         forward: ["dataLayer.push"]
       }
     })
-  ],
+  ]
 });

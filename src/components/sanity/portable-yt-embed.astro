@@ -1,0 +1,78 @@
+---
+const { url } = Astro.props.node;
+function getYouTubeDetails(videoUrl: string) {
+  const urlObj = new URL(videoUrl);
+  const videoId = urlObj.searchParams.get("v");
+  return {
+    embedUrl: videoId
+      ? `https://www.youtube.com/embed/${videoId}?autoplay=1`
+      : "",
+    thumbnailUrl: videoId
+      ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+      : ""
+  };
+}
+const { embedUrl, thumbnailUrl } = getYouTubeDetails(url);
+import { Youtube } from "lucide-react";
+---
+
+<div
+  class="youtube-lazy-load group relative aspect-video h-fit w-full cursor-pointer overflow-hidden rounded-2xl"
+  data-embed-url={embedUrl}
+>
+  <img
+    src={thumbnailUrl}
+    alt="YouTube Video Thumbnail"
+    class="w-full transition-transform duration-300 group-hover:scale-105"
+  />
+  <div class="play-button absolute inset-0 z-10 flex items-end justify-end">
+    <div class="absolute inset-0 grid place-items-center">
+      <button
+        class="flex h-16 w-16 transform items-center justify-center rounded-full bg-red-600 text-white opacity-50 transition-all duration-300 group-hover:scale-125 group-hover:opacity-100"
+      >
+        ▶
+      </button>
+    </div>
+    <a
+      href="https://www.youtube.com/@rajvadeghar"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group m-4 flex w-full items-center gap-3 rounded-lg border border-red-500/90 bg-red-500/70 px-4 py-2 no-underline backdrop-blur-2xl backdrop-filter transition-all hover:bg-red-500/30 [&>svg]:text-red-200 [&>svg]:transition-all hover:[&>svg]:scale-125"
+    >
+      <Youtube />
+      <span class="text-sm font-medium text-white/90">
+        Subscribe to My Channel
+      </span>
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+  const lazyContainers = document.querySelectorAll(".youtube-lazy-load");
+
+  lazyContainers.forEach((container) => {
+    const playButton = container.querySelector(".play-button");
+    const subscribeLink = container.querySelector("a");
+
+    playButton.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const embedUrl = container.getAttribute("data-embed-url");
+      container.innerHTML = `
+          <iframe
+            width="560"
+            height="315"
+            src="${embedUrl}"
+            title="YouTube video player"
+            class="aspect-video w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        `;
+    });
+
+    subscribeLink.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  });
+</script>

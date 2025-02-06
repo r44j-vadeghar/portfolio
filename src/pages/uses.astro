@@ -1,8 +1,9 @@
 ---
 import SiteData from "@/constants/siteData.json";
-import Main from "../components/Main.astro";
-import HeroUses from "../components/uses/hero-uses.astro";
 import Layout from "../layouts/Layout.astro";
+import HeroUses from "../components/uses/hero-uses.astro";
+import Main from "@/components/Main.astro";
+import CinematicGrid from "@/components/home/CinematicGrid";
 ---
 
 <Layout
@@ -12,7 +13,20 @@ import Layout from "../layouts/Layout.astro";
   }}
   keywords={SiteData.pages.uses.keywords}
 >
-  <Main>
-    <HeroUses />
+  <Main class="min-h-screen bg-gray-900 text-white">
+    <CinematicGrid client:only="react" />
+    <div class="mx-auto max-w-6xl px-4 py-16">
+      <header class="mb-12 text-center">
+        <h1 class="mb-4 text-4xl font-bold text-white md:text-5xl">
+          My Digital Toolkit
+        </h1>
+        <p class="mx-auto max-w-2xl text-xl text-gray-400">
+          A curated collection of devices and tools that power my productivity
+          and creativity.
+        </p>
+      </header>
+
+      <HeroUses />
+    </div>
   </Main>
 </Layout>

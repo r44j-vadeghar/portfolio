@@ -1,6 +1,7 @@
 ---
 import { SEO, type Props as SEOProps } from "astro-seo";
 import { Schema } from "astro-seo-schema";
+import "../styles/global.css";
 
 type Props<T extends Thing> = {
   schema?: Graph | WithContext<Thing> | WithContext<T>;

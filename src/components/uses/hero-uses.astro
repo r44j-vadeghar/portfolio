@@ -1,27 +1,81 @@
 ---
 import Uses from "@/constants/uses";
-import Section from "../Section.astro";
+import { Laptop, Headphones, Watch, Printer, Fan, Mic } from "lucide-react";
+
+const iconMap: Record<string, any> = {
+  "Macbook Air": Laptop,
+  Airpods: Headphones,
+  "JBL Earphones": Mic,
+  "Amazon Alexa": Watch,
+  "Epson Printer": Printer,
+  "Mini Fan": Fan,
+  "Noise Smart Watch": Watch,
+  "Mini Sealer": Fan
+};
 ---
 
-<Section
-  className="mx-auto grid w-full max-w-4xl place-items-center overflow-x-hidden px-5 sm:pt-20"
->
-  <div class="flex w-full flex-col gap-5">
+<section class="container mx-auto px-4 py-16">
+  <div class="grid gap-6 md:grid-cols-3">
     {
-      Uses.map((use) => (
-        <div class="">
-          <a
-            class="text-white underline transition-all hover:text-inherit"
-            href={use.link}
-            title={use.name}
-            target="_blank"
-            rel="noreferrer"
+      Uses.map((use) => {
+        const Icon = iconMap[use.name] || Laptop;
+        return (
+          <div
+            class="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 transition-all hover:border-white/20"
+            data-uses-item
           >
-            {use.name}
-          </a>
-          {use.description}
-        </div>
-      ))
+            <Icon className="mb-4 h-10 w-10 text-cyan-400" />
+            <h3 class="mb-2 text-xl font-semibold text-white">{use.name}</h3>
+            <p class="mb-4 text-white/60">{use.description}</p>
+            {use.link && (
+              <a
+                href={use.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center text-cyan-500 hover:text-cyan-300 hover:underline"
+              >
+                View Product
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="ml-2 h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </a>
+            )}
+          </div>
+        );
+      })
     }
   </div>
-</Section>
+</section>
+<!-- 
+<script>
+  import gsap from "gsap";
+  
+  document.addEventListener('astro:page-load', () => {
+    const items = document.querySelectorAll('[data-uses-item]');
+    
+    gsap.fromTo(items, 
+      { 
+        opacity: 0, 
+        y: 50 
+      },
+      { 
+        opacity: 1, 
+        y: 0, 
+        duration: 0.5, 
+        stagger: 0.1,
+        ease: 'power2.out'
+      }
+    );
+  });
+</script> -->

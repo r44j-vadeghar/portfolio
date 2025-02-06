@@ -1,11 +1,11 @@
 ---
+import ModernHero from "@/components/home/HeroSection";
+import ModernServicesSection from "@/components/home/ServicesSection";
 import Main from "../components/Main.astro";
 import Layout from "../layouts/Layout.astro";
-
-import HeroSection from "@/components/home/HeroSection.astro";
-import ServicesSection from "@/components/home/ServicesSection.astro";
-import TestimonialsSection from "@/components/home/TestimonialsSection.astro";
 import SiteData from "@/constants/siteData.json";
+import TestimonialsSection from "@/components/home/TestimonialsSection.astro";
+import CinematicGrid from "@/components/home/CinematicGrid";
 ---
 
 <Layout
@@ -15,10 +15,8 @@ import SiteData from "@/constants/siteData.json";
   }}
 >
   <Main>
-    <HeroSection />
-    <!-- < /> -->
-    <ServicesSection />
+    <ModernHero client:only="react" />
+    <ModernServicesSection client:only="react" />
     <TestimonialsSection />
-    <!-- <ReviewSection /> -->
   </Main>
 </Layout>

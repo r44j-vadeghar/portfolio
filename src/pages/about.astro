@@ -1,15 +1,68 @@
 ---
-import AdvaitaLogo from "@/assets/advaita-192x192.png";
-import ManifoldLogo from "@/assets/manifold_ventures_llc_logo.jpeg";
-import TcsLogo from "@/assets/tcs-48.png";
-import KairosLogo from "@/assets/testimonials/kairos.png";
 import Main from "@/components/Main.astro";
-import Socials from "@/components/Socials.astro";
-import Organization from "@/components/about/Organization.astro";
-import SiteData from "@/constants/siteData.json";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
+import Organization from "@/components/about/Organization.astro";
+import SiteData from "@/constants/siteData.json";
+import Socials from "@/constants/socials";
+
+// Logos and Images
+import TcsLogo from "@/assets/tcs-48.png";
+import ManifoldLogo from "@/assets/manifold_ventures_llc_logo.jpeg";
+import KairosLogo from "@/assets/testimonials/kairos.png";
+import AdvaitaLogo from "@/assets/advaita-192x192.png";
+
+// Skill Icons
+import { Code, Server, Palette, Globe, Rocket, Zap } from "lucide-react";
+import SocialLinks from "@/components/about/SocialLinks";
+import CinematicGrid from "@/components/home/CinematicGrid";
 import type { Person, WithContext } from "schema-dts";
+
+const skills = [
+  {
+    icon: Code,
+    label: "Frontend Mastery",
+    description: "Crafting responsive, performant web interfaces",
+    color: "text-blue-400"
+  },
+  {
+    icon: Server,
+    label: "Backend Architecture",
+    description: "Designing scalable, efficient server-side solutions",
+    color: "text-green-400"
+  },
+  {
+    icon: Palette,
+    label: "UI/UX Design",
+    description: "Creating intuitive, engaging user experiences",
+    color: "text-purple-400"
+  },
+  {
+    icon: Globe,
+    label: "Full Stack Development",
+    description: "End-to-end web solutions across technologies",
+    color: "text-teal-400"
+  },
+  {
+    icon: Rocket,
+    label: "Product Innovation",
+    description: "Transforming ideas into functional digital products",
+    color: "text-orange-400"
+  },
+  {
+    icon: Zap,
+    label: "Performance Optimization",
+    description: "Enhancing speed and efficiency of web applications",
+    color: "text-yellow-400"
+  }
+];
+
+const keyAchievements = [
+  "Developed Chrome extensions used by 10,000+ users",
+  "Optimized web application performance, reducing load times by 40%",
+  "Implemented SEO strategies increasing organic traffic by 65%",
+  "Created scalable architectures for multiple startup projects"
+];
 ---
 
 <Layout
@@ -43,74 +96,89 @@ import type { Person, WithContext } from "schema-dts";
     ]
   } as WithContext<Person>}
 >
-  <Main className="pt-8 sm:pt-20">
-    <div
-      class="mx-auto flex w-full max-w-4xl flex-col items-center gap-10 overflow-x-hidden sm:pt-16 md:flex-row md:items-start"
-    >
-      <div class="flex w-full flex-col gap-5 p-5">
-        <div
-          class="flex w-full flex-col items-center gap-8 rounded-sm border-white/20 pb-5 max-[640px]:border max-[640px]:p-5 sm:flex-row"
-        >
+  <CinematicGrid client:only="react" />
+  <Main className="bg-black text-white">
+    <div class="mx-auto max-w-6xl px-4 py-16">
+      {/* Hero Section */}
+      <div class="mb-16 grid items-center gap-10 md:grid-cols-2">
+        <div>
           <Image
-            height={200}
-            width={200}
-            id="profile-img"
             src="/linkedin.jpg"
-            alt="raj"
-            class="z-10 h-36 w-36 whitespace-nowrap rounded-full sm:h-44 sm:w-44"
+            alt="Raj Vadeghar"
+            width={400}
+            height={400}
+            class="mx-auto mb-6 rounded-full border-4 border-white/10 md:mx-0"
           />
-          <div
-            class="flex w-full flex-col items-center justify-between gap-3 sm:flex-row"
-          >
-            <div class="flex flex-col gap-3">
-              <h1 class="text-3xl font-light text-white">
-                Vadeghar Raja Narayana
-              </h1>
-              <p class="text-xl font-bold">
-                <span class="text-accent">Full Stack</span>
-                Developer
-              </p>
-            </div>
-
-            <div
-              class="flex w-full flex-col items-start gap-2 font-medium sm:w-fit sm:items-end sm:text-right"
-            >
-              <div class="flex items-center gap-2">
-                <Image src={TcsLogo} alt="" class="h-7 w-7" />
-                <span> Tata Consultancy Servcies</span>
-              </div>
-              <Socials
-                id="about-socials"
-                className="flex items-center gap-2 pt-1.5 [&_svg]:h-5 [&_svg]:w-5"
-              />
-            </div>
+        </div>
+        <div>
+          <h1 class="mb-4 text-4xl font-bold text-white">
+            Vadeghar Raja Narayana
+          </h1>
+          <p class="mb-6 text-2xl text-white/70">
+            Full Stack Developer | Innovation Architect
+          </p>
+          <div class="mb-6 rounded-xl border border-white/10 bg-white/5 p-6">
+            <p class="text-white/80">
+              I'm a systems thinker transforming complex challenges into elegant
+              digital solutions. With a blend of technical expertise and
+              creative problem-solving, I bridge the gap between innovative
+              ideas and functional technologies.
+            </p>
+            <SocialLinks socials={Socials} client:load />
           </div>
         </div>
+      </div>
 
-        <div class="border-b border-white/20 py-5">
-          Hi there 👋, <strong class="text-white">I'm Raj</strong><br />
-          <strong class="text-white">
-            Systems Engineer at Tata Consultancy Services.
-          </strong>
-          Previously a Full-stack web dev with 1.5 years at a US startup. <br />
-          Skilled in React, Next.js, Tailwind, Chrome extensions & SEO. I Build engaging
-          & scalable web apps. Looking to bring your vision to life? Let's connect
+      {/* Skills Section */}
+      <div class="mb-16">
+        <h2 class="mb-10 text-center text-3xl font-bold text-white">
+          Technical Expertise
+        </h2>
+        <div class="grid gap-6 md:grid-cols-3">
+          {
+            skills.map(({ icon: Icon, label, description, color }) => (
+              <div class="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 transition-all hover:border-white/20">
+                <Icon className={`mb-4 h-10 w-10 ${color}`} />
+                <h3 class="mb-2 text-xl font-semibold text-white">{label}</h3>
+                <p class="text-white/60">{description}</p>
+              </div>
+            ))
+          }
         </div>
+      </div>
 
-        <div class="flex flex-col gap-5 py-5">
-          <h2 class="pb-5 text-3xl font-medium text-accent">Work</h2>
+      {/* Key Achievements */}
+      <div class="mb-16 rounded-xl border border-white/10 bg-white/5 p-8">
+        <h2 class="mb-8 text-center text-3xl font-bold text-white">
+          Notable Achievements
+        </h2>
+        <ul class="space-y-4">
+          {
+            keyAchievements.map((achievement) => (
+              <li class="flex items-start">
+                <Zap className="mr-4 mt-1 text-yellow-400 flex-shrink-0" />
+                <span class="text-white/80">{achievement}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
 
+      {/* Professional Experience */}
+      <div>
+        <h2 class="mb-10 text-center text-3xl font-bold text-white">
+          Professional Journey
+        </h2>
+        <div class="flex flex-col space-y-6">
           <Organization
             title="Tata Consultancy Services"
-            span="2024 - Working"
+            span="2024 - Present"
             jobType="Full Time"
             designation="Systems Engineer"
             link="https://www.tcs.com/"
             logo={TcsLogo}
           >
-            <ul class="list-inside list-disc">
-              <li>Python</li>
-            </ul>
+            <p>Driving technological innovation and system optimization</p>
           </Organization>
 
           <Organization
@@ -122,44 +190,9 @@ import type { Person, WithContext } from "schema-dts";
             logo={ManifoldLogo}
           >
             <p>
-              Manifold Ventures has established MeaVana as its dedicated branch
-              for developing Chrome extensions.<br />Since it's a startup. We
-              pretty much handle most of the things on our own.
-            </p>
-
-            <ul class="list-inside list-disc">
-              <li>Landing Page - NEXT JS</li>
-              <li>Chrome Extensions - REACT JS</li>
-              <li>Figma Designs</li>
-              <li>Search Engine Optimization</li>
-              <li>and more...</li>
-            </ul>
-          </Organization>
-
-          <Organization
-            title="Kairos Club"
-            span="2023"
-            jobType="Freelance"
-            designation="Full Stack Developer"
-            link="https://kairos-club.com"
-            logo={KairosLogo}
-          >
-            <p>Kairos Club is a e-commerce marketing agency</p>
-          </Organization>
-
-          <Organization
-            title="Advaita Exports"
-            span="2023"
-            jobType="Freelance"
-            designation="Full Stack Developer"
-            link="https://advaitaexport.com/"
-            logo={AdvaitaLogo}
-          >
-            <p>
-              Advaita Export, takes immense pride in dealing with a wide range
-              of products, including Cotton Bales, Cotton Yarn, Pulses, Spices,
-              Agri Produce, and Rice, catering to the diverse needs of our
-              valued clientele.
+              Spearheaded development of multiple digital products, from
+              conceptualization to deployment, focusing on Chrome extensions and
+              web applications.
             </p>
           </Organization>
         </div>

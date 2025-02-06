@@ -34,5 +34,39 @@
       "description": "Unlock a world of knowledge and inspiration through my diverse blog articles. From tech tips to lifestyle insights, find captivating reads that cater to your interests.",
       "keywords": "blogs, articles, insights, tech, trends, tips, lifestyle, diverse topics, knowledge hub, informative content, reading collection"
     }
+  },
+  "personal": {
+    "role": "Full Stack Developer",
+    "tagline": "Development Ally for Innovators",
+    "shortDescription": "Quickly crafts frontend designs, codes templates, and excels in both backend development and design.",
+    "calendlyUrl": "https://calendly.com/r44j/30min",
+    "avatar": "/me.png"
+  },
+  "services": {
+    "primary": [
+      "Figma designs",
+      "Scalable Architectures",
+      "Backend Development",
+      "Frontend Development",
+      "Search Engine Optimization",
+      "Mail Campaigns + Landing Pages",
+      "Chrome Extensions",
+      "E-commerce"
+    ],
+    "network": ["IOS Apps", "Mobile Apps", "PWA", "Everything mentioned above"]
+  },
+  "social": {
+    "github": {
+      "url": "https://github.com/yourusername",
+      "title": "GitHub Profile"
+    },
+    "linkedin": {
+      "url": "https://linkedin.com/in/yourusername",
+      "title": "LinkedIn Profile"
+    },
+    "mail": {
+      "url": "mailto:your-email@example.com",
+      "title": "Email Me"
+    }
   }
 }

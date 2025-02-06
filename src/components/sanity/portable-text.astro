@@ -3,12 +3,14 @@ import { PortableText as PortableTextInternal } from "astro-portabletext";
 import PortableBlock from "./portable-block.astro";
 import PortableCode from "./portable-code.astro";
 import PortableTextImage from "./portable-text-image.astro";
+import PortableYtEmbed from "./portable-yt-embed.astro";
 const { portableText } = Astro.props;
 
 const components = {
   type: {
     image: PortableTextImage,
-    code: PortableCode
+    code: PortableCode,
+    youtube: PortableYtEmbed
   },
   block: PortableBlock
 };
