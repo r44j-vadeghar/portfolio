@@ -1,91 +1,238 @@
 ---
-import WorkVideo from "@/assets/work.mp4";
-import Section from "../Section.astro";
+import { Code, Server, Palette, ArrowRight } from "lucide-react";
+import SiteData from "@/constants/siteData.json";
+import CinematicGrid from "./CinematicGrid.astro";
 
-const { default: funStar } = await import(`@/assets/fun-star.svg?raw`);
-const { default: rocket } = await import(`@/assets/rocket.svg?raw`);
+const skills = [
+  {
+    icon: Code,
+    label: "Frontend Development",
+    color: "blue",
+    delay: 0
+  },
+  {
+    icon: Server,
+    label: "Backend Architecture",
+    color: "green",
+    delay: 0.1
+  },
+  {
+    icon: Palette,
+    label: "UI/UX Design",
+    color: "purple",
+    delay: 0.2
+  }
+];
 ---
 
-<Section
-  className="mx-auto grid w-full max-w-screen-2xl place-items-center overflow-x-hidden px-5 md:pt-24"
->
-  <div class="flex w-full flex-col items-center gap-5 text-center">
-    <p class="text-3xl leading-tight font-semibold sm:text-4xl md:text-5xl">
-      I'm a <span class="text-white">Development Ally</span><br />for Innovators
-
-      <span class="[&>svg]:inline-block [&>svg]:h-8 [&>svg]:w-8">
-        <Fragment set:html={funStar} />
-      </span>
-    </p>
-    <p class="text-lg font-medium text-white/70">
-      Quickly crafts frontend designs, codes templates, and excels <br /> in both
-      backend development and design.
-    </p>
-
-    <a
-      href="https://calendly.com/r44j/30min"
-      class="bg-accent2 ring-accent2 rounded-lg px-6 py-2 text-xl font-bold text-white ring-offset-2 ring-offset-black hover:ring-2 focus:ring-2"
-      transition:name="hero-call-to-action"
-    >
-      Book a free meeting</a
-    >
-    <p class="max-w-md pt-5 font-medium text-white/60">
-      From design to growth, I cover it all—development, maintenance,
-      management. You name it, I've got it covered.
-    </p>
-  </div>
-
-  <div
-    id="my-work"
-    class="mt-20 grid grid-cols-1 gap-10 md:mt-36 md:grid-cols-2"
-  >
-    <video
-      src={WorkVideo}
-      loop
-      muted
-      autoplay
-      class="aspect-square rounded-xl object-cover"></video>
-
-    <div class="">
-      <h2 class="pb-10 text-2xl font-semibold text-white">
-        Efficiently craft Responsive Web designs
-        <span class="[&>svg]:inline-block [&>svg]:h-8 [&>svg]:w-8">
-          <Fragment set:html={rocket} />
-        </span>
-      </h2>
-      <strong class="block pb-10 font-semibold">
-        Streamlined Development, Powerful Results
-      </strong>
-      <ul class="flex flex-col gap-5 text-white/70">
-        <li class="flex items-center gap-3">
-          <div
-            class="font-audiowide grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gray-800 text-white/80"
-          >
-            1
-          </div>
-          <div class="flex-shrink">
-            <strong class="text-white/90">Automation:</strong>
-            Aliases, snippets, and scripts streamline my workflow, freeing up time
-            for creative problem-solving.
-          </div>
-        </li>
-        <li class="flex items-center gap-3">
-          <div
-            class="font-audiowide grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gray-800 text-white/80"
-          >
-            2
-          </div>
-          <div class="flex-shrink">
-            <strong class="text-white/90">Agility:</strong>
-            I navigate complex tasks with ease, using shortcuts to deliver solutions
-            with speed and precision.
-          </div>
-        </li>
-      </ul>
-      <p class="pt-10">
-        For top-tier web solutions, trust my streamlined approach to
-        development.
+<div class="hero-section">
+  <CinematicGrid />
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        {SiteData.personal.tagline}
+      </h1>
+      <p class="hero-description">
+        {SiteData.personal.shortDescription}
       </p>
+      <div class="hero-cta">
+        <a href={SiteData.personal.calendlyUrl} class="cta-button">
+          <span class="cta-text">
+            Book a free meeting
+            <ArrowRight className="cta-icon" />
+          </span>
+        </a>
+        <div class="cta-background"></div>
+      </div>
+    </div>
+    <div class="skills-grid">
+      {
+        skills.map(({ icon: Icon, label, color }) => (
+          <div class="skill-card">
+            <div class="skill-background" />
+            <Icon className={`skill-icon skill-icon-${color}`} />
+            <h3 class="skill-label">{label}</h3>
+            <p class="skill-description">
+              Delivering robust solutions with modern technologies and best
+              practices.
+            </p>
+          </div>
+        ))
+      }
     </div>
   </div>
-</Section>
+</div>
+
+<style>
+  .hero-section {
+    position: relative;
+    width: 100%;
+    background-color: black;
+  }
+
+  @media (min-width: 768px) {
+    .hero-section {
+      padding-top: 5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  .hero-container {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+
+  .hero-content {
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+
+  .hero-title {
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, white, white 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: 4rem;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-title {
+        font-size: 4.5rem;
+      }
+    }
+  }
+
+  .hero-description {
+    max-width: 42rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .hero-cta {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-button {
+    position: relative;
+    overflow: hidden;
+    border-radius: 9999px;
+    background-color: white;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    color: black;
+    transition: all 0.3s;
+  }
+
+  .cta-text {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .cta-icon {
+    transition: transform 0.3s;
+  }
+
+  .cta-button:hover .cta-icon {
+    transform: translateX(0.25rem);
+  }
+
+  .cta-background {
+    position: absolute;
+    inset: 0;
+    transform: translateY(100%);
+    background: linear-gradient(to right, blue, purple);
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 0;
+  }
+
+  .cta-button:hover .cta-background {
+    transform: translateY(0);
+    opacity: 0.1;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .skill-card {
+    position: relative;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s;
+  }
+
+  .skill-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+
+  .skill-background {
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.02)
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .skill-card:hover .skill-background {
+    opacity: 1;
+  }
+
+  .skill-icon {
+    margin-bottom: 1rem;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .skill-icon-blue {
+    color: #60a5fa;
+  }
+  .skill-icon-green {
+    color: #4ade80;
+  }
+  .skill-icon-purple {
+    color: #a78bfa;
+  }
+
+  .skill-label {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .skill-description {
+    color: rgba(255, 255, 255, 0.6);
+  }
+</style>

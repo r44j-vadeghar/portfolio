@@ -1,60 +1,210 @@
 ---
-import Section from "../Section.astro";
+import { ArrowUpRight } from "lucide-react";
+import SiteData from "@/constants/siteData.json";
 ---
 
-<Section id="services" className="w-full">
-  <div
-    class="mx-auto flex max-w-screen-xl flex-col items-center justify-center gap-20 overflow-x-hidden py-10 sm:py-20 md:gap-48 md:py-36"
-  >
-    <div
-      class="flex w-full flex-col justify-between gap-10 overflow-x-hidden px-5 md:flex-row md:px-10"
-    >
-      <div class="w-full text-center sm:text-left md:w-[60%]">
-        <h2
-          class="font-audiowide text-2xl font-semibold uppercase text-white md:text-3xl"
-        >
-          What I can do
-        </h2>
-
-        <h3 class="pt-5 text-white/70">You choose, I deliver.</h3>
-      </div>
-      <div class="flex flex-col gap-8 text-xl md:text-2xl">
-        <p>Figma designs</p>
-        <p>Scalable Architectures</p>
-        <p>Backend Development</p>
-        <p>Frontend Development</p>
-        <p>Search Engine Optimization</p>
-        <p>Mail Campaigns + Landing Pages</p>
-        <p>Chrome Extensions</p>
-        <p>E Commerce</p>
+<div class="services-section">
+  <div class="services-container">
+    <div class="section-title">
+      <h2>What I can do</h2>
+      <p>You choose, I deliver.</p>
+    </div>
+    <div class="primary-services">
+      <div class="primary-services-grid">
+        {
+          SiteData.services.primary.map((service, index) => (
+            <div class="service-card">
+              <div class="service-card-content">
+                <h3>{service}</h3>
+                <ArrowUpRight className="service-icon" />
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
-    <div
-      class="flex w-full flex-col justify-between gap-10 overflow-x-hidden px-5 md:flex-row md:px-10"
-    >
-      <div class="flex w-full flex-col justify-between md:w-[60%] md:text-left">
-        <h2
-          class="font-audiowide text-2xl font-semibold uppercase text-white md:text-3xl"
-        >
-          What my friends can do
-        </h2>
-
-        <p class="">
-          I fulfill your requests—<span class="text-white">no exceptions.</span>
-          <br />Explore our dedicated friends' section. Over the years,
-          <br /><span class="text-white"
-            >my network of high-performers stands ready for collaboration.</span
-          >
-          <br />Once we engage, I can handle introductions
-          <br />or orchestrate the entire collaboration effortlessly for you.
+    <div class="network-services">
+      <div class="network-services-content">
+        <h2>What my friends can do</h2>
+        <p>
+          I fulfill your requests—
+          <span class="highlight">no exceptions.</span>
+          <br />
+          Over the years,{" "}
+          <span class="highlight">
+            my network of high-performers stands ready for collaboration.
+          </span>
+          <br />
+          Once we engage, I can handle introductions or orchestrate the entire collaboration
+          effortlessly for you.
         </p>
       </div>
-      <div class="flex flex-col gap-8 text-xl md:text-2xl">
-        <p>Pretty much everything that I do, and</p>
-        <p>IOS Apps</p>
-        <p>Mobile Apps</p>
-        <p>PWA, etc</p>
+
+      <div class="network-services-grid">
+        {
+          SiteData.services.network.map((service, index) => (
+            <div class="network-service-item">{service}</div>
+          ))
+        }
       </div>
     </div>
   </div>
-</Section>
+</div>
+
+<style>
+  .services-section {
+    width: 100%;
+    background-color: black;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .services-section {
+      padding: 6rem 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-section {
+      padding: 6rem 1rem;
+    }
+  }
+
+  .services-container {
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .section-title h2 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .section-title p {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .primary-services {
+    margin-bottom: 6rem;
+  }
+
+  .primary-services-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .primary-services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .primary-services-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .service-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .service-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+
+  .service-card-content {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+  }
+
+  .service-card-content h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .service-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover .service-icon {
+    transform: translate(0.125rem, -0.125rem);
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .network-services {
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+  }
+
+  .network-services-content {
+    margin-bottom: 2rem;
+  }
+
+  .network-services-content h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .network-services-content p {
+    max-width: 42rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .highlight {
+    color: white;
+  }
+
+  .network-services-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .network-services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .network-services-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .network-service-item {
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 1rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+  }
+</style>

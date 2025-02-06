@@ -15,7 +15,7 @@ import AdvaitaLogo from "@/assets/advaita-192x192.png";
 // Skill Icons
 import { Code, Server, Palette, Globe, Rocket, Zap } from "lucide-react";
 import SocialLinks from "@/components/about/SocialLinks";
-import CinematicGrid from "@/components/home/CinematicGrid";
+import CinematicGrid from "@/components/home/CinematicGrid.astro";
 import type { Person, WithContext } from "schema-dts";
 
 const skills = [
@@ -96,7 +96,7 @@ const keyAchievements = [
     ]
   } as WithContext<Person>}
 >
-  <CinematicGrid client:only="react" />
+  <CinematicGrid />
   <Main className="bg-black text-white">
     <div class="mx-auto max-w-6xl md:px-4 md:py-16">
       {/* Hero Section */}

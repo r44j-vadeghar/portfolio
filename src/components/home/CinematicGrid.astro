@@ -1,13 +1,22 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
+---
+// Note: GSAP animation removed as it requires client-side scripting
+// You'll want to use Astro's client:load or client:visible directive with a script
+---
 
-const CinematicGrid: React.FC = () => {
-  const gridRef = useRef<HTMLDivElement>(null);
+<div
+  class="pointer-events-none fixed inset-0 z-10 ml-18 overflow-hidden"
+  id="cinematic-grid"
+>
+</div>
 
-  useEffect(() => {
-    const grid = gridRef.current;
-    if (!grid) return;
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+  gsap.registerPlugin(ScrollTrigger);
+
+  const grid = document.getElementById("cinematic-grid");
+  if (grid) {
     // Create grid lines
     const gridSize = 20;
     const gridCells: HTMLDivElement[] = [];
@@ -24,7 +33,6 @@ const CinematicGrid: React.FC = () => {
 
     // Animate grid, excluding the first column
     const cellsToAnimate = gridCells.filter((cell, index) => {
-      // Exclude the first column (index % gridSize === 0)
       return index % gridSize !== 0;
     });
 
@@ -50,14 +58,14 @@ const CinematicGrid: React.FC = () => {
         scrub: true
       }
     });
-  }, []);
+  }
+</script>
 
-  return (
-    <div
-      ref={gridRef}
-      className="pointer-events-none fixed inset-0 z-10 ml-18 overflow-hidden"
-    />
-  );
-};
-
-export default CinematicGrid;
+<style>
+  .grid-cell {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 1px;
+    height: 1px;
+  }
+</style>
