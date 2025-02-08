@@ -85,7 +85,7 @@ export async function getBlogs(page: number = 1): Promise<Blog[]> {
 
 export async function getAllBlogs(): Promise<Blog[]> {
   const blogs = await sanityClient.fetch(
-    `*[_type == "post"] | order(orderRank) {
+    `*[_type == "post"] | order(publishedAt desc, _createdAt desc) {
       ...,
       categories[]->,
       "related": *[_type == "post" && count(categories[@._ref in ^.^.categories[]._ref]) > 0] | order(publishedAt desc, _createdAt desc) [0..5] {

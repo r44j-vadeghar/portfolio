@@ -41,7 +41,28 @@ export default defineConfig({
     react(),
     astroMetaTags(),
     sitemap({
-      filter: (page) => page !== "https://r44j.dev/xerox/"
+      filter: (page) =>
+        !page.includes("/xerox/") &&
+        !page.includes("/privacy-policy/") &&
+        !page.includes("/uniconnect/") &&
+        !page.includes("/blog/2/") &&
+        !page.includes("/blog/3/"),
+      customPages: ["https://r44j.dev/blog/"],
+      changefreq: "weekly",
+      priority: 0.7,
+      lastmod: new Date(),
+      // @ts-ignore
+      serialize: (item) => {
+        if (item.url.includes("/blog/")) {
+          return {
+            ...item,
+            changefreq: "weekly",
+            priority: 0.9,
+            lastmod: new Date()
+          };
+        }
+        return item;
+      }
     }),
     partytown({
       config: {

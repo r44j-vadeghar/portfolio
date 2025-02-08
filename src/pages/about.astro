@@ -21,7 +21,7 @@ import type { Person, WithContext } from "schema-dts";
 const skills = [
   {
     icon: Code,
-    label: "Frontend Mastery",
+    label: "Frontend Development",
     description: "Crafting responsive, performant web interfaces",
     color: "text-blue-400"
   },
@@ -96,6 +96,7 @@ const keyAchievements = [
     ]
   } as WithContext<Person>}
 >
+  <div transition:animate="slide"></div>
   <CinematicGrid />
   <Main className="bg-black text-white">
     <div class="mx-auto max-w-6xl md:px-4 md:py-16">
@@ -137,7 +138,10 @@ const keyAchievements = [
         <div class="grid gap-6 md:grid-cols-3">
           {
             skills.map(({ icon: Icon, label, description, color }) => (
-              <div class="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 transition-all hover:border-white/20">
+              <div
+                transition:name={label}
+                class="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 transition-all hover:border-white/20"
+              >
                 <Icon className={`mb-4 h-10 w-10 ${color}`} />
                 <h3 class="mb-2 text-xl font-semibold text-white">{label}</h3>
                 <p class="text-white/60">{description}</p>

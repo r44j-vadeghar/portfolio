@@ -7,6 +7,9 @@ import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import ShareLinks from "@/components/share-links.astro";
 import type { BlogPosting, WithContext } from "schema-dts";
+import socials from "@/constants/socials";
+import { toPlainText } from "@portabletext/toolkit";
+import { estimateReadingTime } from "@/helpers";
 
 declare global {
   interface Window {
@@ -33,6 +36,40 @@ const filteredRelated = post.related.filter(
 const hasRelatedPosts = filteredRelated.length > 0;
 
 const blocks = parseOutline(post.body);
+const content = toPlainText(post.body);
+const readingTime = estimateReadingTime(content);
+
+const blogSchema: WithContext<BlogPosting> = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://r44j.dev/blog/${post.slug.current}`
+  },
+  headline: post.title,
+  description: post.seoDescription,
+  image: urlForImage(post.mainImage.asset).url(),
+  keywords: post.seoKeywords,
+  author: {
+    "@type": "Person",
+    name: "Raj Vadeghar",
+    url: "https://r44j.dev",
+    image: "https://r44j.dev/me.png",
+    sameAs: [socials.twitter.url, socials.github.url, socials.linkedin.url]
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "R44j Vadeghar",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://r44j.dev/icon-256x256.png"
+    }
+  },
+  datePublished: new Date(post.publishedAt).toISOString(),
+  dateModified: new Date(post._updatedAt).toISOString(),
+  wordCount: content.split(/\s+/).length,
+  timeRequired: `PT${Math.ceil(readingTime)}M`
+};
 ---
 
 <Layout
@@ -44,7 +81,8 @@ const blocks = parseOutline(post.body);
         authors: ["Raj Vadeghar"],
         publishedTime: post.publishedAt,
         modifiedTime: post._updatedAt,
-        tags: post.categories.map((c) => c.title)
+        tags: post.categories.map((c) => c.title),
+        section: post.categories[0]?.title || "Technology"
       },
       basic: {
         image: urlForImage(post.mainImage.asset).url(),
@@ -54,67 +92,70 @@ const blocks = parseOutline(post.body);
       },
       image: {
         url: urlForImage(post.mainImage.asset).url(),
-        alt: post.title
+        alt: post.title,
+        width: 1200,
+        height: 630
       },
       optional: {
-        description: post.seoDescription
+        description: post.seoDescription,
+        siteName: "R44j Vadeghar Blog",
+        locale: "en_US"
       }
     }
   }}
-  schema={{
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `${post.slug.current}`
-    },
-    headline: post.title,
-    description: post.seoDescription,
-    image: urlForImage(post.mainImage.asset).url(),
-    keywords: post.seoKeywords,
-    author: {
-      "@type": "Person",
-      name: "Raj Vadeghar",
-      url: "https://r44j.dev"
-    },
-    datePublished: new Date(post.publishedAt).toISOString().substring(0, 10),
-    dateModified: new Date(post._updatedAt).toISOString().substring(0, 10)
-  } as WithContext<BlogPosting>}
+  schema={blogSchema}
   keywords={post.seoKeywords}
 >
   <article>
-    <div
-      class="pointer-events-auto fixed inset-0 -z-50 grid place-items-center"
-    >
-      <div class="pointer-events-none fixed inset-0 bg-black/70 transition-all">
-      </div>
-      <Image
-        transition:name={post.slug.current}
-        src={urlForImage(post.mainImage.asset).format("webp").url()}
-        alt={post.title}
-        class="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover"
-        width="400"
-        height="250"
-      />
-      <h1
-        class="text-balance pointer-events-none relative max-w-2xl pb-4 text-center text-xl font-bold text-white sm:text-5xl"
-      >
-        {post.title}
-      </h1>
-
-      <div
-        class="pointer-events-none absolute inset-x-0 bottom-10 z-10 text-center text-white"
-      >
-        Scroll 👇
-      </div>
-    </div>
-
-    <div
-      class="relative mt-[calc(100vh_-_80px)] w-full bg-black sm:mt-[calc(100vh_-_40px)]"
-    >
+    <div class="relative w-full bg-black">
       <div
         class="mx-auto w-full max-w-screen-xl p-6 px-4 py-12 sm:px-6 lg:px-8"
       >
+        <div class="pointer-events-auto -z-50 flex gap-8 py-22">
+          <Image
+            transition:name={post.slug.current}
+            src={urlForImage(post.mainImage.asset).format("webp").url()}
+            alt={post.title}
+            class="pointer-events-none z-10 h-fit w-1/2 rounded-2xl object-cover"
+            width="400"
+            height="250"
+          />
+          <div class="flex flex-col justify-between gap-3">
+            <div class="flex flex-col gap-3">
+              <h1
+                transition:name={post.title}
+                class="pb-4 text-xl font-bold text-balance text-white sm:text-5xl"
+              >
+                {post.title}
+              </h1>
+              <h2 transition:name={post.seoDescription}>
+                {post.seoDescription}
+              </h2>
+              <div class="mt-2 flex flex-wrap gap-2">
+                {
+                  post.categories.map((category) => (
+                    <span
+                      transition:name={category._id}
+                      class="rounded-full bg-zinc-800/50 px-3 py-1 text-xs text-zinc-300"
+                    >
+                      {category.title}
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
+
+            <p>
+              Last updated on: {
+                new Date(post.publishedAt).toLocaleDateString("en-us", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "short"
+                })
+              }
+            </p>
+          </div>
+        </div>
         <div class="flex w-full flex-col gap-20 md:flex-row-reverse">
           <div class="top-14 flex h-fit flex-col gap-28 md:sticky">
             <div class="flex flex-col gap-5">
@@ -144,7 +185,7 @@ const blocks = parseOutline(post.body);
 
           <div class="mx-auto w-full max-w-3xl">
             <div
-              class="prose w-full lg:prose-lg prose-headings:text-white prose-p:text-white/70 prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-blockquote:text-white/50 prose-strong:text-white"
+              class="prose lg:prose-lg prose-headings:text-white prose-p:text-white/70 prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-blockquote:text-white/50 prose-strong:text-white w-full"
             >
               <PortableText portableText={post.body} />
             </div>

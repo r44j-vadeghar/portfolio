@@ -48,7 +48,7 @@ const skills = [
     <div class="skills-grid">
       {
         skills.map(({ icon: Icon, label, color }) => (
-          <div class="skill-card">
+          <div transition:name={label} class="skill-card">
             <div class="skill-background" />
             <Icon className={`skill-icon skill-icon-${color}`} />
             <h3 class="skill-label">{label}</h3>
