@@ -38,8 +38,26 @@ export default defineConfig({
     }),
     icon({
       include: {
-        mdi: ["*"],
-        tabler: ["arrow-big-left-line", "arrow-big-right-line"]
+        tabler: ["arrow-big-left-line", "arrow-big-right-line"],
+        ph: [
+          "code-bold",
+          "database-bold",
+          "paint-brush-bold",
+          "arrow-right-bold",
+          "laptop-bold",
+          "headphones-bold",
+          "microphone-bold",
+          "watch-bold",
+          "printer-bold",
+          "fan-bold",
+          "globe-bold",
+          "rocket-bold",
+          "lightning-bold",
+          "youtube-logo-bold",
+          "youtube-logo",
+          "arrow-up-right-bold",
+          "caret-up-bold"
+        ]
       }
     }),
     react(),

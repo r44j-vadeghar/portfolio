@@ -1,0 +1,43 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Social {
+  url: string;
+  icon: string;
+  title: string;
+}
+
+interface Props {
+  socials: Record<string, Social>;
+}
+
+const { socials } = Astro.props;
+---
+
+<div class="mt-6 space-y-4">
+  <div class="flex flex-wrap gap-3">
+    {
+      Object.entries(socials).map(([key, { url, icon, title }]) => (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 transition-all hover:bg-white/10"
+        >
+          <img src={icon} alt={title} class="h-5 w-5" />
+        </a>
+      ))
+    }
+  </div>
+  <a
+    href="https://www.youtube.com/@rajvadeghar"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="group flex items-center gap-3 rounded-lg border border-red-500/20 bg-red-500/10 px-4 py-2 transition-all hover:bg-red-500/20"
+  >
+    <Icon name="ph:youtube-logo" class="h-5 w-5 text-red-500" />
+    <span class="text-sm font-medium text-white/90"
+      >Subscribe to My Channel</span
+    >
+  </a>
+</div>

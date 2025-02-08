@@ -18,6 +18,7 @@
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/vercel": "^8.0.6",
     "@fontsource/outfit": "^5.1.1",
+    "@iconify-json/ph": "^1.2.2",
     "@iconify-json/tabler": "^1.2.15",
     "@portabletext/toolkit": "^2.0.17",
     "@sanity/astro": "^3.1.11",
@@ -36,7 +37,6 @@
     "astro-seo": "^0.8.4",
     "astro-seo-schema": "^5.0.0",
     "gsap": "^3.12.7",
-    "lucide-react": "^0.474.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-player": "^2.16.0",
@@ -50,7 +50,6 @@
   "devDependencies": {
     "@commitlint/cli": "^19.7.1",
     "@commitlint/config-conventional": "^19.7.1",
-    "@iconify-json/mdi": "^1.2.3",
     "@types/sanitize-html": "^2.13.0",
     "editorconfig-checker": "^6.0.1",
     "lefthook": "^1.10.10",

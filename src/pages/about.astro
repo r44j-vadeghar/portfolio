@@ -13,44 +13,44 @@ import KairosLogo from "@/assets/testimonials/kairos.png";
 import AdvaitaLogo from "@/assets/advaita-192x192.png";
 
 // Skill Icons
-import { Code, Server, Palette, Globe, Rocket, Zap } from "lucide-react";
-import SocialLinks from "@/components/about/SocialLinks";
+import SocialLinks from "@/components/about/SocialLinks.astro";
 import CinematicGrid from "@/components/home/CinematicGrid.astro";
 import type { Person, WithContext } from "schema-dts";
+import { Icon } from "astro-icon/components";
 
 const skills = [
   {
-    icon: Code,
+    icon: "ph:code-bold",
     label: "Frontend Development",
     description: "Crafting responsive, performant web interfaces",
     color: "text-blue-400"
   },
   {
-    icon: Server,
+    icon: "ph:database-bold",
     label: "Backend Architecture",
     description: "Designing scalable, efficient server-side solutions",
     color: "text-green-400"
   },
   {
-    icon: Palette,
+    icon: "ph:paint-brush-bold",
     label: "UI/UX Design",
     description: "Creating intuitive, engaging user experiences",
     color: "text-purple-400"
   },
   {
-    icon: Globe,
+    icon: "ph:globe-bold",
     label: "Full Stack Development",
     description: "End-to-end web solutions across technologies",
     color: "text-teal-400"
   },
   {
-    icon: Rocket,
+    icon: "ph:rocket-bold",
     label: "Product Innovation",
     description: "Transforming ideas into functional digital products",
     color: "text-orange-400"
   },
   {
-    icon: Zap,
+    icon: "ph:lightning-bold",
     label: "Performance Optimization",
     description: "Enhancing speed and efficiency of web applications",
     color: "text-yellow-400"
@@ -126,7 +126,7 @@ const keyAchievements = [
               creative problem-solving, I bridge the gap between innovative
               ideas and functional technologies.
             </p>
-            <SocialLinks socials={Socials} client:load />
+            <SocialLinks socials={Socials} />
           </div>
         </div>
       </div>
@@ -138,12 +138,12 @@ const keyAchievements = [
         </h2>
         <div class="grid gap-6 md:grid-cols-3">
           {
-            skills.map(({ icon: Icon, label, description, color }) => (
+            skills.map(({ icon, label, description, color }) => (
               <div
                 transition:name={label}
                 class="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 p-6 transition-all hover:border-white/20"
               >
-                <Icon className={`mb-4 h-10 w-10 ${color}`} />
+                <Icon name={icon} class={`mb-4 h-10 w-10 ${color}`} />
                 <h3 class="mb-2 text-xl font-semibold text-white">{label}</h3>
                 <p class="text-white/60">{description}</p>
               </div>
@@ -161,7 +161,10 @@ const keyAchievements = [
           {
             keyAchievements.map((achievement) => (
               <li class="flex items-start">
-                <Zap className="mr-4 mt-1 text-yellow-400 flex-shrink-0" />
+                <Icon
+                  name="ph:lightning-bold"
+                  class="mt-1 mr-4 flex-shrink-0 text-yellow-400"
+                />
                 <span class="text-white/80">{achievement}</span>
               </li>
             ))

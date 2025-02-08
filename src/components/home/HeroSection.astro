@@ -1,23 +1,23 @@
 ---
-import { Code, Server, Palette, ArrowRight } from "lucide-react";
 import SiteData from "@/constants/siteData.json";
 import CinematicGrid from "./CinematicGrid.astro";
+import { Icon } from "astro-icon/components";
 
 const skills = [
   {
-    icon: Code,
+    icon: "ph:code-bold",
     label: "Frontend Development",
     color: "blue",
     delay: 0
   },
   {
-    icon: Server,
+    icon: "ph:database-bold",
     label: "Backend Architecture",
     color: "green",
     delay: 0.1
   },
   {
-    icon: Palette,
+    icon: "ph:paint-brush-bold",
     label: "UI/UX Design",
     color: "purple",
     delay: 0.2
@@ -39,7 +39,7 @@ const skills = [
         <a href={SiteData.personal.calendlyUrl} class="cta-button">
           <span class="cta-text">
             Book a free meeting
-            <ArrowRight className="cta-icon" />
+            <Icon name="ph:arrow-right-bold" class="cta-icon" />
           </span>
         </a>
         <div class="cta-background"></div>
@@ -47,10 +47,10 @@ const skills = [
     </div>
     <div class="skills-grid">
       {
-        skills.map(({ icon: Icon, label, color }) => (
+        skills.map(({ icon, label, color }) => (
           <div transition:name={label} class="skill-card">
             <div class="skill-background" />
-            <Icon className={`skill-icon skill-icon-${color}`} />
+            <Icon name={icon} class={`skill-icon skill-icon-${color}`} />
             <h3 class="skill-label">{label}</h3>
             <p class="skill-description">
               Delivering robust solutions with modern technologies and best
@@ -144,6 +144,7 @@ const skills = [
 
   .cta-icon {
     transition: transform 0.3s;
+    font-weight: bold;
   }
 
   .cta-button:hover .cta-icon {
