@@ -10,6 +10,7 @@ import astroMetaTags from "astro-meta-tags";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import { loadEnv } from "vite";
+import vercel from "@astrojs/vercel";
 
 const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = loadEnv(
   String(process.env.NODE_ENV),
@@ -20,6 +21,9 @@ const { SANITY_STUDIO_PROJECT_ID, SANITY_STUDIO_PROJECT_DATASET } = loadEnv(
 // https://astro.build/config
 export default defineConfig({
   site: "https://r44j.dev",
+
+  output: "server",
+  adapter: vercel(),
 
   vite: {
     plugins: [tailwindcss()]
@@ -44,9 +48,7 @@ export default defineConfig({
       filter: (page) =>
         !page.includes("/xerox/") &&
         !page.includes("/privacy-policy/") &&
-        !page.includes("/uniconnect/") &&
-        !page.includes("/blog/2/") &&
-        !page.includes("/blog/3/"),
+        !page.includes("/uniconnect/"),
       customPages: ["https://r44j.dev/blog/"],
       changefreq: "weekly",
       priority: 0.7,
@@ -57,7 +59,7 @@ export default defineConfig({
           return {
             ...item,
             changefreq: "weekly",
-            priority: 0.9,
+            priority: item.url.includes("?page=") ? 0.6 : 0.9,
             lastmod: new Date()
           };
         }

@@ -2,7 +2,7 @@
 import TableOfContent from "@/components/blog/table-of-content.astro";
 import PortableText from "@/components/sanity/portable-text.astro";
 import { parseOutline, urlForImage } from "@/helpers/sanity";
-import { getAllBlogs } from "@/helpers/server-actions";
+import { getAllBlogs, getBlogPost } from "@/helpers/server-actions";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import ShareLinks from "@/components/share-links.astro";
@@ -17,18 +17,12 @@ declare global {
   }
 }
 
-export async function getStaticPaths() {
-  const posts = await getAllBlogs();
+const { blog } = Astro.params;
+const post = await getBlogPost(blog);
 
-  return posts.map((post) => {
-    return {
-      params: { blog: post.slug.current },
-      props: { post }
-    };
-  });
+if (!post) {
+  return Astro.redirect("/404");
 }
-
-const { post } = Astro.props;
 
 const filteredRelated = post.related.filter(
   (related) => related.slug.current !== post.slug.current
@@ -76,6 +70,7 @@ const blogSchema: WithContext<BlogPosting> = {
   seo={{
     title: post.seoTitle,
     description: post.seoDescription,
+    canonical: `https://r44j.dev/blog/${post.slug.current}`,
     openGraph: {
       article: {
         authors: ["Raj Vadeghar"],

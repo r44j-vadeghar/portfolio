@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 interface Props {
   text: string;
   href: string;
+  rel?: string | undefined;
   style: "primary" | "secondary";
   icon?: {
     name: string;
@@ -16,6 +17,7 @@ interface Props {
 
 const {
   text,
+  rel,
   href,
   style,
   icon,
@@ -28,6 +30,7 @@ const {
 
 <a
   href={href}
+  rel={rel ?? ""}
   class={`${
     style === "primary" ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-600"
   } ${isFilled ? "rounded-full px-3 py-2" : "px-3 py-1"} ${

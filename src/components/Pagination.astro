@@ -23,24 +23,23 @@ const urlParam = Astro.url.pathname;
 <div class="mt-8 flex items-center justify-center space-x-3">
   {
     firstUrl && currentPage > 1 && (
-      <Link
-        text="First"
-        href={firstUrl}
-        style="secondary"
-        classes="text-sm hover:bg-blue-50"
-      />
-    )
-  }
-
-  {
-    urlParam !== "/blog" && (
-      <Link
-        text="Previous"
-        href={prevUrl}
-        style="secondary"
-        icon={{ name: "tabler:arrow-big-left-line", side: "left" }}
-        classes="flex gap-2 items-center text-sm hover:bg-blue-50"
-      />
+      <>
+        <Link
+          rel="canonical"
+          text="First"
+          href={firstUrl}
+          style="secondary"
+          classes="text-sm hover:bg-blue-50"
+        />
+        <Link
+          text="Previous"
+          rel="prev"
+          href={prevUrl}
+          style="secondary"
+          icon={{ name: "tabler:arrow-big-left-line", side: "left" }}
+          classes="flex gap-2 items-center text-sm hover:bg-blue-50"
+        />
+      </>
     )
   }
 
@@ -48,7 +47,8 @@ const urlParam = Astro.url.pathname;
     pageNumbers.map((page) => (
       <Link
         text={`${page}`}
-        href={page === 1 ? "/blog" : `/blog/${page}`}
+        rel="canonical"
+        href={page === 1 ? "/blog" : `/blog?page=${page}`}
         style={page === currentPage ? "primary" : "secondary"}
         classes={`rounded-full w-10 h-10 flex items-center justify-center ${
           page === currentPage
@@ -63,6 +63,7 @@ const urlParam = Astro.url.pathname;
     nextUrl && (
       <Link
         text="Next"
+        rel="next"
         href={nextUrl}
         style="secondary"
         icon={{ name: "tabler:arrow-big-right-line", side: "right" }}
@@ -75,6 +76,7 @@ const urlParam = Astro.url.pathname;
     lastUrl && currentPage < lastPage && (
       <Link
         text="Last"
+        rel="canonical"
         href={lastUrl}
         style="secondary"
         classes="text-sm hover:bg-blue-50"

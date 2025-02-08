@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/blog/:page/",
+      "destination": "/blog?page=:page",
+      "permanent": true
+    }
+  ]
+}

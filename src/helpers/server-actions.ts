@@ -64,12 +64,14 @@ export interface Blog extends Base {
   ];
 }
 
-export async function getBlogs(page: number = 1): Promise<Blog[]> {
-  const pageSize = 9;
+export async function getBlogs(
+  page: number = 1,
+  pageSize: number = 5
+): Promise<Blog[]> {
   const start = (page - 1) * pageSize;
   const end = start + pageSize;
   const blogs = await sanityClient.fetch(
-    `*[_type == "post"] | order(orderRank) [${start}...${end}] {
+    `*[_type == "post"] | order(publishedAt desc, _createdAt desc) [${start}...${end}] {
       ...,
       categories[]->,
       "related": *[_type == "post" && count(categories[@._ref in ^.^.categories[]._ref]) > 0] | order(publishedAt desc, _createdAt desc) [0..5] {
@@ -81,6 +83,22 @@ export async function getBlogs(page: number = 1): Promise<Blog[]> {
   );
 
   return blogs;
+}
+
+export async function getBlogPost(
+  slug: string | undefined
+): Promise<Blog | null> {
+  const query = `*[_type == "post" && slug.current == $slug][0]{
+    ...,
+    categories[]->,
+    "related": *[_type == "post" && count(categories[@._ref in ^.^.categories[]._ref]) > 0] | order(publishedAt desc, _createdAt desc) [0..5] {
+      title,
+      slug,
+      mainImage
+    }
+  }`;
+  const params = { slug };
+  return slug ? await sanityClient.fetch(query, params) : null;
 }
 
 export async function getAllBlogs(): Promise<Blog[]> {

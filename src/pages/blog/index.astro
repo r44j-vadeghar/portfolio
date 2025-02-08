@@ -1,58 +1,50 @@
 ---
+export const prerender = false;
 import Main from "@/components/Main.astro";
 import Pagination from "@/components/Pagination.astro";
 import BlogCard from "@/components/blog/blog-card.astro";
 import SiteData from "@/constants/siteData.json";
-import { getAllBlogs } from "@/helpers/server-actions";
+import { getBlogs } from "@/helpers/server-actions";
 import Layout from "@/layouts/Layout.astro";
-import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { sanityClient } from "sanity:client";
 
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const currentPage = parseInt(Astro.url.searchParams.get("page") || "1", 10);
+const pageSize = 5;
+const blogs = await getBlogs(currentPage, pageSize);
+const totalPosts = await sanityClient.fetch('count(*[_type == "post"])');
+const lastPage = Math.ceil(totalPosts / pageSize);
 
-export const getStaticPaths = (async ({ paginate }) => {
-  const blogs = await getAllBlogs();
-
-  return paginate(blogs, {
-    pageSize: 5
-  });
-}) satisfies GetStaticPaths;
-
-const { page } = Astro.props;
-
-const firstUrl = page.currentPage > 1 ? `/blog` : undefined;
-const lastUrl =
-  page.currentPage < page.lastPage ? `/blog/${page.lastPage}` : undefined;
-const prevUrl =
-  page.currentPage > 2 ? `/blog/${page.currentPage - 1}` : "/blog";
+const firstUrl = `/blog?page=1`;
+const lastUrl = currentPage < lastPage ? `/blog?page=${lastPage}` : undefined;
+const prevUrl = currentPage > 1 ? `/blog?page=${currentPage - 1}` : undefined;
 const nextUrl =
-  page.currentPage < page.lastPage
-    ? `/blog/${page.currentPage + 1}`
-    : undefined;
+  currentPage < lastPage ? `/blog?page=${currentPage + 1}` : undefined;
 ---
 
 <Layout
   seo={{
     title: SiteData.pages.blog.title,
-    description: SiteData.pages.blog.description
+    description: SiteData.pages.blog.description,
+    canonical: `https://r44j.dev/blog?page=${currentPage}`
   }}
   keywords={SiteData.pages.blog.keywords}
 >
   <Main className="mx-auto max-w-4xl pt-20 sm:pt-48">
     {
-      page.data.length > 0 ? (
+      blogs.length > 0 ? (
         <>
           <h1 class="bg-gradient-to-r from-[#ffff80] to-[#ff80bf] to-[60%] bg-clip-text pb-2 text-center text-2xl font-bold text-transparent sm:text-left sm:text-4xl md:text-5xl">
             Discover: Blog Articles and More
           </h1>
           <div class="flex flex-col gap-10">
-            {page.data.map((blog) => (
+            {blogs.map((blog) => (
               <BlogCard key={blog._id} blog={blog} />
             ))}
           </div>
 
           <Pagination
-            currentPage={page.currentPage}
-            lastPage={page.lastPage}
+            currentPage={currentPage}
+            lastPage={lastPage}
             prevUrl={prevUrl}
             nextUrl={nextUrl}
             firstUrl={firstUrl}
