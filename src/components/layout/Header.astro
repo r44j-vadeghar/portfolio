@@ -2,10 +2,18 @@
 import HeaderNavItem from "./HeaderNavItem.astro";
 import Socials from "../Socials.astro";
 import { Image } from "astro:assets";
+
+const navItems = [
+  { href: "/", label: "Localhost" },
+  { href: "/about", label: "About" },
+  { href: "/uses", label: "Uses" },
+  { href: "/blog", label: "Blog" }
+];
 ---
 
 <header
   class={`w-full z-50 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-5 sm:justify-between place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3`}
+  data-header
 >
   <div
     id="profile"
@@ -18,7 +26,7 @@ import { Image } from "astro:assets";
         id="profile-img"
         src="/me.png"
         alt="raj"
-        class="z-10 h-12 w-12 whitespace-nowrap rounded-full"
+        class="z-10 h-12 w-12 rounded-full whitespace-nowrap"
       />
     </a>
     <div id="profile-divider" class="h-10 w-[0.5px] rounded-full bg-white/70">
@@ -32,20 +40,11 @@ import { Image } from "astro:assets";
   </div>
 
   <nav class={`flex items-center font-medium`}>
-    <HeaderNavItem href="/">Localhost</HeaderNavItem>
-    <HeaderNavItem href="/about"> About </HeaderNavItem>
-    <HeaderNavItem href="/uses"> Uses </HeaderNavItem>
-    <HeaderNavItem href="/blog"> Blog </HeaderNavItem>
-    <!-- {
-      pathname === "/xerox" && (
-        <HeaderNavItem href="/xerox">
-          Xerox
-        </HeaderNavItem>
-      )
-    } -->
-
-    <!-- <HeaderNavItem href="#testimonials">Testimonials</HeaderNavItem>
-    <HeaderNavItem href="">How much I charge</HeaderNavItem> -->
+    {
+      navItems.map((item) => (
+        <HeaderNavItem href={item.href}>{item.label}</HeaderNavItem>
+      ))
+    }
   </nav>
 
   <a
@@ -118,4 +117,13 @@ import { Image } from "astro:assets";
         .to(main, { display: "flex", opacity: 1, duration: 1 });
     }
   );
+
+  document.addEventListener("astro:page-load", () => {
+    const header = document.querySelector("[data-header]");
+    const navLinks = header?.querySelectorAll("a");
+
+    navLinks?.forEach((link) => {
+      link.setAttribute("data-astro-prefetch", "true");
+    });
+  });
 </script>

@@ -56,7 +56,8 @@ export default defineConfig({
           "youtube-logo-bold",
           "youtube-logo",
           "arrow-up-right-bold",
-          "caret-up-bold"
+          "caret-up-bold",
+          "play-circle"
         ]
       }
     }),
