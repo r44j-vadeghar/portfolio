@@ -106,12 +106,14 @@ const blogSchema: WithContext<BlogPosting> = {
       <div
         class="mx-auto w-full max-w-screen-xl p-6 px-4 py-12 sm:px-6 lg:px-8"
       >
-        <div class="pointer-events-auto -z-50 flex gap-8 py-22">
+        <div
+          class="pointer-events-auto -z-50 flex flex-col gap-8 pb-10 md:flex-row md:py-22"
+        >
           <Image
             transition:name={post.slug.current}
             src={urlForImage(post.mainImage.asset).format("webp").url()}
             alt={post.title}
-            class="pointer-events-none z-10 h-fit w-1/2 rounded-2xl object-cover"
+            class="pointer-events-none z-10 h-fit w-full rounded-2xl object-cover md:w-1/2"
             width="400"
             height="250"
           />
@@ -126,7 +128,7 @@ const blogSchema: WithContext<BlogPosting> = {
               <h2 transition:name={post.seoDescription}>
                 {post.seoDescription}
               </h2>
-              <div class="mt-2 flex flex-wrap gap-2">
+              <div class="mt-2 hidden flex-wrap gap-2 md:flex">
                 {
                   post.categories.map((category) => (
                     <span
@@ -151,7 +153,10 @@ const blogSchema: WithContext<BlogPosting> = {
             </p>
           </div>
         </div>
-        <div class="flex w-full flex-col gap-20 md:flex-row-reverse">
+
+        <hr class="pb-10 opacity-50 md:mx-36 md:pb-14" />
+
+        <div class="flex w-full flex-col md:flex-row-reverse md:gap-20">
           <div class="top-14 flex h-fit flex-col gap-28 md:sticky">
             <div class="flex flex-col gap-5">
               <h5 class="text-2xl text-white/80">Table of contents</h5>
@@ -180,7 +185,7 @@ const blogSchema: WithContext<BlogPosting> = {
 
           <div class="mx-auto w-full max-w-3xl">
             <div
-              class="prose lg:prose-lg prose-headings:text-white prose-p:text-white/70 prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-blockquote:text-white/50 prose-strong:text-white w-full"
+              class="prose lg:prose-lg prose-headings:text-white prose-p:text-white/70 prose-a:text-blue-600 hover:prose-a:text-blue-500 prose-li:text-white/70 prose-blockquote:text-white/50 prose-strong:text-white w-full"
             >
               <PortableText portableText={post.body} />
             </div>
