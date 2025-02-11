@@ -2,30 +2,75 @@
 import { Icon } from "astro-icon/components";
 
 const { url } = Astro.props.node;
+
 function getYouTubeDetails(videoUrl: string) {
   const urlObj = new URL(videoUrl);
-  const videoId = urlObj.searchParams.get("v");
+  let videoId = urlObj.searchParams.get("v");
+
+  if (!videoId && urlObj.pathname.startsWith("/shorts/")) {
+    videoId = urlObj.pathname.split("/")[2];
+  }
+
+  const thumbnailSizes = [
+    `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`,
+    `https://img.youtube.com/vi/${videoId}/sddefault.jpg`,
+    `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`,
+    `https://img.youtube.com/vi/${videoId}/default.jpg`
+  ];
+
   return {
     embedUrl: videoId
       ? `https://www.youtube.com/embed/${videoId}?autoplay=1`
       : "",
-    thumbnailUrl: videoId
-      ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
-      : ""
+    thumbnailUrl: videoId ? thumbnailSizes : []
   };
 }
+
 const { embedUrl, thumbnailUrl } = getYouTubeDetails(url);
+
+function generateVideoPlaceholder(videoId: string) {
+  const hashCode = (str: string) => {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = (hash << 5) - hash + char;
+      hash = hash & hash;
+    }
+    return hash;
+  };
+
+  const hue = Math.abs(hashCode(videoId)) % 360;
+  const gradient = `linear-gradient(135deg, hsl(${hue}, 70%, 60%), hsl(${hue}, 70%, 40%))`;
+
+  return gradient;
+}
 ---
 
 <div
   class="youtube-lazy-load group relative aspect-video h-fit w-full cursor-pointer overflow-hidden rounded-2xl"
   data-embed-url={embedUrl}
+  style={!thumbnailUrl.length
+    ? `background: ${generateVideoPlaceholder(url.split("v=")[1])}`
+    : ""}
 >
-  <img
-    src={thumbnailUrl}
-    alt="YouTube Video Thumbnail"
-    class="w-full transition-transform duration-300 group-hover:scale-105"
-  />
+  {
+    thumbnailUrl.length > 0 ? (
+      <img
+        src={thumbnailUrl[0]}
+        alt="YouTube Video Thumbnail"
+        onerror="this.onerror=null; this.src=this.dataset.fallbackSrc"
+        data-fallback-src={
+          thumbnailUrl[1] || (thumbnailUrl.length > 2 ? thumbnailUrl[2] : "")
+        }
+        class="w-full transition-transform duration-300 group-hover:scale-105"
+      />
+    ) : (
+      <div class="absolute inset-0 flex items-center justify-center">
+        <Icon name="ph:play-circle" class="h-16 w-16 text-white/70" />
+      </div>
+    )
+  }
+
   <div class="play-button absolute inset-0 z-10 flex items-end justify-end">
     <div class="absolute inset-0 grid place-items-center">
       <button
@@ -59,17 +104,17 @@ const { embedUrl, thumbnailUrl } = getYouTubeDetails(url);
       e.stopPropagation();
       const embedUrl = container.getAttribute("data-embed-url");
       container.innerHTML = `
-          <iframe
-            width="560"
-            height="315"
-            src="${embedUrl}"
-            title="YouTube video player"
-            class="aspect-video w-full h-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-          ></iframe>
-        `;
+      <iframe
+        width="560"
+        height="315"
+        src="${embedUrl}"
+        title="YouTube video player"
+        class="aspect-video w-full h-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    `;
     });
 
     subscribeLink.addEventListener("click", (e) => {
