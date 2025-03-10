@@ -38,52 +38,47 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="sitemap" href="/sitemap.xml" />
-      </head>
-      <body className="relative antialiased">
-        {/* Google Tag Manager */}
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <>
+      {/* Google Tag Manager */}
+      <Script id="google-tag-manager" strategy="afterInteractive">
+        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-T3FDZDQ2');`}
-        </Script>
+      </Script>
 
-        {/* Google AdSense */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8750631183642200"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
+      {/* Google AdSense */}
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8750631183642200"
+        crossOrigin="anonymous"
+        strategy="afterInteractive"
+      />
+
+      {/* AMP Ads */}
+      <Script
+        async
+        custom-element="amp-ad"
+        src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
+        strategy="afterInteractive"
+      />
+
+      {/* Google Tag Manager (noscript) */}
+      <noscript>
+        <iframe
+          title="google-tag-manager"
+          src="https://www.googletagmanager.com/ns.html?id=GTM-T3FDZDQ2"
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
         />
-
-        {/* AMP Ads */}
-        <Script
-          async
-          custom-element="amp-ad"
-          src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
-          strategy="afterInteractive"
-        />
-
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            title="google-tag-manager"
-            src="https://www.googletagmanager.com/ns.html?id=GTM-T3FDZDQ2"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-        <Header />
-        {children}
-        <Footer />
-        <Analytics />
-        <SpeedInsights />
-      </body>
-    </html>
+      </noscript>
+      <Header />
+      {children}
+      <Footer />
+      <Analytics />
+      <SpeedInsights />
+    </>
   );
 }
