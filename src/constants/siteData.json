@@ -1,0 +1,159 @@
+{
+  "default": {
+    "name": "r44j",
+    "title": "R44J | Full Stack Developer - Portfolio",
+    "keywords": "R44J, Full Stack Developer, Figma designs, Scalable Architectures, Backend Development, Frontend Development, SEO, Chrome Extensions, E-commerce, IOS Apps, Mobile Apps, PWA",
+    "description": "R44J, a Full Stack Developer skilled in Figma designs, scalable architectures, backend and frontend development, SEO, chrome extensions, and e-commerce. Explore my diverse expertise and collaborations in IOS apps, mobile apps, and PWAs.",
+    "openGraph": {
+      "title": "R44J | Full Stack Developer - Portfolio",
+      "description": "Explore R44J's skills in Figma designs, scalable architectures, frontend and backend development, SEO, and more. Specializing in Chrome extensions, e-commerce, and collaborating on IOS apps, mobile apps, and PWAs.",
+      "type": "website",
+      "url": "https://r44j.dev",
+      "image": "https://r44j.dev/raj.png"
+    },
+    "twitter": {
+      "title": "R44J | Full Stack Developer - Portfolio",
+      "description": "Discover R44J's expertise in Figma designs, scalable architectures, frontend and backend development, SEO, and more. Specializing in Chrome extensions, e-commerce, and collaborating on IOS apps, mobile apps, and PWAs.",
+      "creator": "@VadegharRaj"
+    }
+  },
+  "pages": {
+    "about": {
+      "title": "About R44J",
+      "description": "Full-stack web dev with 1.5 years at a US startup. Skilled in React, Next.js, Tailwind, Chrome extensions & SEO. I Build engaging & scalable web apps. Looking to bring your vision to life? Let's connect"
+    },
+    "contact": {
+      "title": "Contact R44J"
+    },
+    "uses": {
+      "title": "Tech Essentials: Unveiling My Productivity Arsenal for my Work and Relaxation",
+      "description": "Explore the tools that power my daily grind, from the reliable MacBook Air to efficient Alexa assistant and nifty gadgets like JBL earphones. Boost your productivity with this tech lineup.",
+      "keywords": "Macbook Air, Airpods, JBL Earphones, Amazon Alexa, Epson Printer, Mini Fan, Noise Smart Watch, Mini Sealer, productivity gadgets, tech arsenal, connectivity, convenience, gadgets for work, leisure gadgets",
+      "categories": [
+        {
+          "name": "hardware",
+          "title": "Hardware",
+          "items": [
+            {
+              "title": "Computer / Laptop",
+              "list": [
+                "MacBook Air M1\" (2022) - Apple M1, 8GB RAM, 256GB SSD, 1TB External Drive.",
+                "iPad Air 11 inch\" (2024) - Apple M2, with Apple Pencil Pro"
+              ]
+            },
+            {
+              "title": "Display & Audio",
+              "list": [
+                "Apple EarPods (USB-C)",
+                "Boult Klarity 3 6-Mic Hybrid ANC (Upto 50dB) in Ear Earbuds"
+              ]
+            },
+            {
+              "title": "Input Devices",
+              "list": [
+                "Keychron K8 Pro QMK/VIA Wireless Mechanical Keyboard",
+                "Logitech MX Master 3 Mouse"
+              ]
+            },
+            {
+              "title": "Mobile Devices",
+              "list": ["Samsung F22"]
+            }
+          ]
+        },
+        {
+          "name": "software",
+          "title": "Software",
+          "items": [
+            {
+              "title": "Design Tools",
+              "list": [
+                "Figma",
+                "Final cut pro",
+                "Apple motion",
+                "Pixelmator pro"
+              ]
+            },
+            {
+              "title": "Communication",
+              "list": ["Slack", "Discord", "Google meet"]
+            }
+          ]
+        },
+        {
+          "name": "development",
+          "title": "Development",
+          "items": [
+            {
+              "title": "Editor & Environment",
+              "list": ["VS Code with One Monokai theme", "Warp and Oh My Zsh"]
+            },
+            {
+              "title": "Tech Stack",
+              "list": [
+                "Next.js / React",
+                "TypeScript",
+                "Node.js",
+                "PostgreSQL / MongoDB",
+                "Chrome Extensions"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "productivity",
+          "title": "Productivity",
+          "items": [
+            {
+              "title": "Planning & Organization",
+              "list": ["Notion", "Todoist", "Google Calendar"]
+            },
+            {
+              "title": "Utilities",
+              "list": ["1Password", "Raycast", "CleanShot X"]
+            }
+          ]
+        }
+      ]
+    },
+    "blog": {
+      "title": "R44J Insights: Explore a Spectrum of Blogs",
+      "description": "Unlock a world of knowledge and inspiration through my diverse blog articles. From tech tips to lifestyle insights, find captivating reads that cater to your interests.",
+      "keywords": "blogs, articles, insights, tech, trends, tips, lifestyle, diverse topics, knowledge hub, informative content, reading collection"
+    }
+  },
+  "personal": {
+    "role": "Full Stack Developer",
+    "tagline": "Development Ally for Innovators",
+    "shortDescription": "Quickly crafts frontend designs, codes templates, and excels in both backend development and design.",
+    "calendlyUrl": "https://calendly.com/r44j/30min",
+    "avatar": "/me.png"
+  },
+  "services": {
+    "primary": [
+      "Figma designs",
+      "Scalable Architectures",
+      "Backend Development",
+      "Frontend Development",
+      "Search Engine Optimization",
+      "Mail Campaigns + Landing Pages",
+      "Chrome Extensions",
+      "E-commerce"
+    ],
+    "network": ["IOS Apps", "Mobile Apps", "PWA", "Everything mentioned above"]
+  },
+  "social": {
+    "github": {
+      "url": "https://github.com/yourusername",
+      "title": "GitHub Profile"
+    },
+    "linkedin": {
+      "url": "https://linkedin.com/in/yourusername",
+      "title": "LinkedIn Profile"
+    },
+    "mail": {
+      "url": "mailto:your-email@example.com",
+      "title": "Email Me"
+    }
+  }
+}
