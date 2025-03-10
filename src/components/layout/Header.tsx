@@ -24,6 +24,7 @@ const navItems = [
   { href: "/uses", label: "Uses" },
   { href: "/store", label: "Store" },
   { href: "/blog", label: "Blog" },
+  { href: "/studio", label: "Studio", isAdmin: true },
 ];
 
 export default function Header() {
@@ -135,6 +136,7 @@ export default function Header() {
             key={item.href}
             href={item.href}
             active={pathname === item.href}
+            showAdmin={item.isAdmin}
           >
             {item.label}
           </HeaderNavItem>

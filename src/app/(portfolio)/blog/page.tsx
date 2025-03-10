@@ -1,6 +1,7 @@
 // src/app/(portfolio)/blog/page.tsx
 import BlogCard from "@/components/blog/BlogCard";
 import Pagination from "@/components/blog/Pagination";
+import CinematicGrid from "@/components/CinematicGrid";
 import SiteData from "@/constants/siteData.json";
 import { getAllBlogs, getBlogs } from "@/helpers/server-actions";
 import { Metadata } from "next";
@@ -46,6 +47,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <main className="mx-auto max-w-4xl pt-20 sm:pt-48">
+      <CinematicGrid />
+
       {blogs.length > 0 ? (
         <div className="flex flex-col gap-10">
           <h1 className="bg-gradient-to-r from-[#ffff80] to-[#ff80bf] to-[60%] bg-clip-text pb-2 text-center text-2xl font-bold text-transparent sm:text-left sm:text-4xl md:text-5xl">

@@ -3,6 +3,7 @@ import ManifoldLogo from "@/assets/manifold_ventures_llc_logo.jpeg";
 import TcsLogo from "@/assets/tcs-48.png";
 import Organization from "@/components/about/Organization";
 import SocialLinks from "@/components/about/SocialLinks";
+import CinematicGrid from "@/components/CinematicGrid";
 import Socials from "@/constants/socials";
 import { Code, Database, Globe, Paintbrush, Rocket, Zap } from "lucide-react";
 import { Metadata } from "next";
@@ -69,6 +70,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="bg-background text-foreground">
+      <CinematicGrid />
+
       <div className="mx-auto max-w-6xl md:px-4 md:py-16">
         {/* Hero Section */}
         <div className="mb-16 grid items-center gap-10 md:grid-cols-2">

@@ -14,7 +14,7 @@ async function Store() {
     <div>
       <BlackFridayBanner />
 
-      <div className="flex flex-col items-center justify-top min-h-screen p-4">
+      <div className="flex flex-col items-center justify-top min-h-screen p-4 mx-auto max-w-screen-2xl">
         <ProductsView products={products} categories={categories} />
       </div>
     </div>

@@ -3,7 +3,7 @@
 import useBasketStore from "@/store/store";
 import { ClerkLoaded, SignInButton, UserButton, useUser } from "@clerk/nextjs";
 import { PackageIcon, TrolleyIcon } from "@sanity/icons";
-import { Moon, Sun, UserCog } from "lucide-react";
+import { LayoutDashboard, Moon, Sun, UserCog } from "lucide-react";
 import { useTheme } from "next-themes";
 import Form from "next/form";
 import Link from "next/link";
@@ -65,12 +65,20 @@ function Header() {
 
           <ClerkLoaded>
             {user && isAdmin(user.id) && (
-              <Button asChild>
-                <Link href="/admin">
-                  <UserCog className="w-6 h-6" />
-                  <span>Admin Panel</span>
-                </Link>
-              </Button>
+              <>
+                <Button asChild>
+                  <Link href="/admin">
+                    <UserCog className="w-6 h-6" />
+                    <span>Admin Panel</span>
+                  </Link>
+                </Button>
+                <Button asChild>
+                  <Link href="/studio">
+                    <LayoutDashboard className="w-6 h-6" />
+                    <span>Studio</span>
+                  </Link>
+                </Button>
+              </>
             )}
 
             {user && (

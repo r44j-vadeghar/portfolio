@@ -1,5 +1,6 @@
 // src/app/(portfolio)/blog/[slug]/page.tsx
 import TableOfContent from "@/components/blog/table-of-content";
+import CinematicGrid from "@/components/CinematicGrid";
 import PortableText from "@/components/sanity/portable-text";
 import ShareLinks from "@/components/share-links";
 import socials from "@/constants/socials";
@@ -112,6 +113,8 @@ export default async function BlogPost({ params }: Props) {
 
   return (
     <article>
+      <CinematicGrid />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

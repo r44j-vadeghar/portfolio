@@ -1,8 +1,11 @@
+import CinematicGrid from "@/components/CinematicGrid";
 import Link from "next/link";
 
 export default async function XeroxServices() {
   return (
     <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center gap-10 overflow-x-hidden px-5 py-32 md:max-w-screen-xl md:py-44">
+      <CinematicGrid />
+
       <div className="mx-auto flex max-w-2xl flex-col items-center gap-3 text-center">
         <h1 className="flex gap-5 pb-8 text-4xl font-extrabold">
           Pixels to Paper: Your Printing & Design Playground
