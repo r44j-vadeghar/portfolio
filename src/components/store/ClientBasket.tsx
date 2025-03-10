@@ -195,7 +195,7 @@ export default function ClientBasket() {
           };
 
           // @ts-ignore
-          const razorpay = new (window as any).Razorpay(razorpayOptions);
+          const razorpay = new (window as unknown).Razorpay(razorpayOptions);
           razorpay.open();
         }
       } catch (error) {
