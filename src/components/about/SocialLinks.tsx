@@ -16,7 +16,7 @@ export const SocialLinks = ({ socials }: SocialLinksProps) => {
   return (
     <div className="mt-6 space-y-4">
       <div className="flex flex-wrap gap-3">
-        {Object.entries(socials).map(([key, { url, icon: Icon, title }]) => (
+        {Object.entries(socials).map(([key, { url, icon: Icon }]) => (
           <Link
             key={key}
             href={url}

@@ -1,6 +1,7 @@
 import { backendClient } from "@/sanity/lib/backendClient";
 import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
+import { ALL_PRODUCTS_QUERYResult } from "../../../../sanity.types";
 
 const key_secret = process.env.RAZORPAY_KEY_SECRET as string;
 
@@ -44,15 +45,20 @@ export async function POST(request: NextRequest) {
       name: userData.name,
       email: userData.email,
       // @ts-ignore
-      products: products.map((item: any) => ({
-        _key: crypto.randomUUID(),
-        // _type: "object",
-        product: {
-          _type: "reference",
-          _ref: item.product._id,
-        },
-        quantity: item.quantity || 0,
-      })),
+      products: products.map(
+        (item: {
+          product: ALL_PRODUCTS_QUERYResult[0];
+          quantity: number | null;
+        }) => ({
+          _key: crypto.randomUUID(),
+          // _type: "object",
+          product: {
+            _type: "reference",
+            _ref: item.product._id,
+          },
+          quantity: item.quantity || 0,
+        })
+      ),
       totalAmount: orderAmount / 100, // Convert from paisa to rupees
       currency,
       discountAmount: (couponDetails?.discountAmount || 0) / 100,

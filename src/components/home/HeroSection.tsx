@@ -49,7 +49,7 @@ export default function HeroSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {skills.map(({ icon, label, color }) => (
+          {skills.map(({ icon, label }) => (
             <div
               key={label}
               className="relative rounded-2xl border border-border bg-accent/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent hover:bg-accent/10"

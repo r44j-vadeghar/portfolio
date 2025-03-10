@@ -88,7 +88,7 @@ export default function AboutPage() {
             </p>
             <div className="mb-6 rounded-xl border border-border bg-card/50 p-6">
               <p className="text-card-foreground">
-                I'm a systems thinker transforming complex challenges into
+                I&apos;m a systems thinker transforming complex challenges into
                 elegant digital solutions. With a blend of technical expertise
                 and creative problem-solving, I bridge the gap between
                 innovative ideas and functional technologies.

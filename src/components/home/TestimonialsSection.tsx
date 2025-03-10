@@ -20,9 +20,9 @@ export default function TestimonialsSection() {
             </h2>
 
             <p className="text-muted-foreground">
-              In my journey as a freelancer, it's the successful partnerships
+              In my journey as a freelancer, it&apos;s the successful partnerships
               and satisfied clients that truly measure my impact.
-              <br /> Hear directly from those who've transformed their
+              <br /> Hear directly from those who&apos;ve transformed their
               businesses with my services (including my friends)
             </p>
           </header>

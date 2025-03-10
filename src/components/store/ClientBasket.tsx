@@ -127,7 +127,11 @@ export default function ClientBasket() {
             description: "",
             order_id: orderId,
             // @ts-ignore
-            handler: async function (response: any) {
+            handler: async function (response: {
+              razorpay_order_id: string;
+              razorpay_payment_id: string;
+              razorpay_signature: string;
+            }) {
               const {
                 razorpay_order_id,
                 razorpay_payment_id,
