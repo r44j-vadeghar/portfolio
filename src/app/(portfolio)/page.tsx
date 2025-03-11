@@ -1,5 +1,6 @@
 import CinematicGrid from "@/components/CinematicGrid";
 import HeroSection from "@/components/home/hero-section";
+import { Badge } from "@/components/ui/badge";
 import SiteData from "@/constants/siteData.json";
 import { ArrowUpRight } from "lucide-react";
 import { Metadata } from "next";
@@ -23,14 +24,15 @@ export default function HomePage() {
       {/* Hero Section */}
       <HeroSection />
 
-      <div className="w-full bg-background py-1 sm:py-24 lg:py-24">
+      <div className="w-full bg-muted/30 py-1 sm:py-24 lg:py-24">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
+            <Badge className="mb-4">Services</Badge>
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              What I can do
+              What I offer
             </h2>
             <p className="text-lg text-muted-foreground">
-              You choose, I deliver.
+              Comprehensive solutions tailored to your specific needs and goals
             </p>
           </div>
 
@@ -88,6 +90,8 @@ export default function HomePage() {
         <div className="bg-background text-foreground">
           <div className="mx-auto flex w-full max-w-screen-2xl flex-col gap-10 overflow-x-hidden px-5">
             <header className="mx-auto flex flex-col gap-5 text-center">
+              <Badge className="mx-auto">Testimonials</Badge>
+
               <h2 className="text-3xl font-medium md:text-4xl text-foreground">
                 Client Success Stories: <br />
                 Your Success is My Mission.
