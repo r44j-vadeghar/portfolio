@@ -155,5 +155,109 @@
       "url": "mailto:your-email@example.com",
       "title": "Email Me"
     }
+  },
+  "about": {
+    "skills": [
+      {
+        "iconName": "Code",
+        "label": "Frontend Development",
+        "description": "Crafting responsive, performant web interfaces",
+        "color": "text-blue-400"
+      },
+      {
+        "iconName": "Database",
+        "label": "Backend Architecture",
+        "description": "Designing scalable, efficient server-side solutions",
+        "color": "text-green-400"
+      },
+      {
+        "iconName": "Paintbrush",
+        "label": "UI/UX Design",
+        "description": "Creating intuitive, engaging user experiences",
+        "color": "text-purple-400"
+      },
+      {
+        "iconName": "Globe",
+        "label": "Full Stack Development",
+        "description": "End-to-end web solutions across technologies",
+        "color": "text-teal-400"
+      },
+      {
+        "iconName": "Rocket",
+        "label": "Product Innovation",
+        "description": "Transforming ideas into functional digital products",
+        "color": "text-orange-400"
+      },
+      {
+        "iconName": "Zap",
+        "label": "Performance Optimization",
+        "description": "Enhancing speed and efficiency of web applications",
+        "color": "text-yellow-400"
+      }
+    ],
+    "keyAchievements": [
+      "Developed Chrome extensions used by 10,000+ users",
+      "Optimized web application performance, reducing load times by 40%",
+      "Implemented SEO strategies increasing organic traffic by 65%",
+      "Created scalable architectures for multiple startup projects"
+    ],
+    "experience": [
+      {
+        "title": "Tata Consultancy Services",
+        "span": "2024 - Present",
+        "jobType": "Full Time",
+        "designation": "Systems Engineer",
+        "link": "https://www.tcs.com/",
+        "logoPath": "/assets/tcs-48.png",
+        "description": "Driving technological innovation and system optimization"
+      },
+      {
+        "title": "Manifold Ventures",
+        "span": "2022 - 2024",
+        "jobType": "Full Time",
+        "designation": "Full Stack Developer",
+        "link": "https://www.meavana.com",
+        "logoPath": "/assets/manifold_ventures_llc_logo.jpeg",
+        "description": "Spearheaded development of multiple digital products, from conceptualization to deployment, focusing on Chrome extensions and web applications."
+      }
+    ]
+  },
+  "home": {
+    "hero": {
+      "title": "Development Ally for Innovators",
+      "description": "Quickly crafts frontend designs, codes templates, and excels in both backend development and design."
+    },
+    "skills": [
+      {
+        "iconName": "Code",
+        "label": "Frontend Development",
+        "color": "blue",
+        "delay": 0
+      },
+      {
+        "iconName": "Database",
+        "label": "Backend Architecture",
+        "color": "green",
+        "delay": 0.1
+      },
+      {
+        "iconName": "Paintbrush",
+        "label": "UI/UX Design",
+        "color": "purple",
+        "delay": 0.2
+      }
+    ],
+    "testimonials": [
+      {
+        "company": "Kairos Club",
+        "logoPath": "/assets/testimonials/kairos.png",
+        "website": "https://kairos-club.com",
+        "person": "Janhvi Rawat",
+        "position": "Marketing Head",
+        "testimonial": "Raj and Subhash transformed our vision into a stunning reality for Kairos Club. <br />Their expertise and dedication shone through, delivering a website that brilliantly captures our essence. The seamless blend of design and functionality showcases their talent. <br />We wholeheartedly recommend their team for their exceptional work and commitment to excellence. Thank you for elevating our online presence.",
+        "techImagePath": "/assets/testimonials/kairos-technologies-list.png",
+        "tailImagePath": "/assets/testimonials/tail.png"
+      }
+    ]
   }
 }

@@ -1,62 +1,30 @@
 // src/app/about/page.tsx
-import ManifoldLogo from "@/assets/manifold_ventures_llc_logo.jpeg";
-import TcsLogo from "@/assets/tcs-48.png";
+import CinematicGrid from "@/components/CinematicGrid";
 import Organization from "@/components/about/Organization";
 import SocialLinks from "@/components/about/SocialLinks";
-import CinematicGrid from "@/components/CinematicGrid";
+import siteData from "@/constants/siteData.json";
 import Socials from "@/constants/socials";
 import { Code, Database, Globe, Paintbrush, Rocket, Zap } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
+import { unstable_ViewTransition as ViewTransition } from "react";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
 
-const skills = [
-  {
-    icon: Code,
-    label: "Frontend Development",
-    description: "Crafting responsive, performant web interfaces",
-    color: "text-blue-400",
-  },
-  {
-    icon: Database,
-    label: "Backend Architecture",
-    description: "Designing scalable, efficient server-side solutions",
-    color: "text-green-400",
-  },
-  {
-    icon: Paintbrush,
-    label: "UI/UX Design",
-    description: "Creating intuitive, engaging user experiences",
-    color: "text-purple-400",
-  },
-  {
-    icon: Globe,
-    label: "Full Stack Development",
-    description: "End-to-end web solutions across technologies",
-    color: "text-teal-400",
-  },
-  {
-    icon: Rocket,
-    label: "Product Innovation",
-    description: "Transforming ideas into functional digital products",
-    color: "text-orange-400",
-  },
-  {
-    icon: Zap,
-    label: "Performance Optimization",
-    description: "Enhancing speed and efficiency of web applications",
-    color: "text-yellow-400",
-  },
-];
+// Icon mapping function to handle the icons
+const getIconComponent = (iconName: string) => {
+  const iconMap: Record<string, React.ComponentType<any>> = {
+    Code,
+    Database,
+    Globe,
+    Paintbrush,
+    Rocket,
+    Zap,
+  };
 
-const keyAchievements = [
-  "Developed Chrome extensions used by 10,000+ users",
-  "Optimized web application performance, reducing load times by 40%",
-  "Implemented SEO strategies increasing organic traffic by 65%",
-  "Created scalable architectures for multiple startup projects",
-];
+  return iconMap[iconName] || Zap; // Default to Zap if icon not found
+};
 
 export const metadata: Metadata = {
   title: "About - R44J Vadeghar | Full Stack Developer",
@@ -68,6 +36,8 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const { skills, keyAchievements, experience } = siteData.about;
+
   return (
     <main className="bg-background text-foreground">
       <CinematicGrid />
@@ -108,18 +78,23 @@ export default function AboutPage() {
           <h2 className="mb-10 text-center text-3xl font-bold">
             Technical Expertise
           </h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {skills.map(({ icon: Icon, label, description, color }) => (
-              <div
-                key={label}
-                className="group relative overflow-hidden rounded-xl border border-border bg-card/50 p-6 transition-all hover:border-border/80"
-              >
-                <Icon className={`mb-4 h-10 w-10 ${color}`} />
-                <h3 className="mb-2 text-xl font-semibold">{label}</h3>
-                <p className="text-muted-foreground">{description}</p>
-              </div>
-            ))}
-          </div>
+          <ViewTransition name="skills">
+            <div className="grid gap-6 md:grid-cols-3">
+              {skills.map(({ iconName, label, description, color }) => {
+                const Icon = getIconComponent(iconName);
+                return (
+                  <div
+                    key={label}
+                    className="group relative overflow-hidden rounded-xl border border-border bg-card/50 p-6 transition-all hover:border-border/80"
+                  >
+                    <Icon className={`mb-4 h-10 w-10 ${color}`} />
+                    <h3 className="mb-2 text-xl font-semibold">{label}</h3>
+                    <p className="text-muted-foreground">{description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </ViewTransition>
         </div>
 
         {/* Key Achievements */}
@@ -143,31 +118,19 @@ export default function AboutPage() {
             Professional Journey
           </h2>
           <div className="flex flex-col space-y-6">
-            <Organization
-              title="Tata Consultancy Services"
-              span="2024 - Present"
-              jobType="Full Time"
-              designation="Systems Engineer"
-              link="https://www.tcs.com/"
-              logo={TcsLogo}
-            >
-              <p>Driving technological innovation and system optimization</p>
-            </Organization>
-
-            <Organization
-              title="Manifold Ventures"
-              span="2022 - 2024"
-              jobType="Full Time"
-              designation="Full Stack Developer"
-              link="https://www.meavana.com"
-              logo={ManifoldLogo}
-            >
-              <p>
-                Spearheaded development of multiple digital products, from
-                conceptualization to deployment, focusing on Chrome extensions
-                and web applications.
-              </p>
-            </Organization>
+            {experience.map((org, index) => (
+              <Organization
+                key={index}
+                title={org.title}
+                span={org.span}
+                jobType={org.jobType}
+                designation={org.designation}
+                link={org.link}
+                logo={org.logoPath}
+              >
+                <p>{org.description}</p>
+              </Organization>
+            ))}
           </div>
         </div>
       </div>

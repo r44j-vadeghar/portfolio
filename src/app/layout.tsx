@@ -1,3 +1,4 @@
+import { CursorFollower } from "@/components/cursor-follower";
 import { DisableDraftMode } from "@/components/draft-mode/DisableDraftMode";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { SanityLive } from "@/sanity/lib/live";
@@ -46,6 +47,7 @@ export default async function RootLayout({
                 <VisualEditing />
               </>
             )}
+            <CursorFollower />
             {children}
             <SanityLive />
           </ThemeProvider>

@@ -12,6 +12,7 @@ import { toPlainText } from "@portabletext/toolkit";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { unstable_ViewTransition as ViewTransition } from "react";
 
 type Props = {
   params: Promise<{
@@ -124,34 +125,42 @@ export default async function BlogPost({ params }: Props) {
       <div className="relative w-full dark:bg-black bg-zinc-50">
         <div className="mx-auto w-full max-w-screen-xl p-6 px-4 py-12 sm:px-6 lg:px-8">
           <div className="pointer-events-auto -z-50 flex flex-col gap-8 pb-10 md:flex-row md:py-22">
-            {post.mainImage?.asset && (
-              <Image
-                src={imageUrl(post.mainImage.asset).format("webp").url()}
-                alt={post.title ?? ""}
-                className="pointer-events-none z-10 h-fit w-full max-w-6xl rounded-2xl object-cover md:w-1/2"
-                width={400}
-                height={250}
-                priority
-              />
-            )}
+            <ViewTransition name={`${post.slug?.current}-blog-image`}>
+              {post.mainImage?.asset && (
+                <Image
+                  src={imageUrl(post.mainImage.asset).format("webp").url()}
+                  alt={post.title ?? ""}
+                  className="pointer-events-none z-10 h-fit w-full max-w-6xl rounded-2xl object-cover md:w-1/2"
+                  width={400}
+                  height={250}
+                  priority
+                />
+              )}
+            </ViewTransition>
             <div className="flex flex-col justify-between gap-3">
               <div className="flex flex-col gap-3">
-                <h1 className="pb-4 text-xl font-bold text-balance dark:text-white text-black sm:text-5xl">
-                  {post.title}
-                </h1>
-                <h2 className="dark:text-white/70 text-black/70">
-                  {post.seoDescription}
-                </h2>
-                <div className="mt-2 hidden flex-wrap gap-2 md:flex">
-                  {post.categories?.map((category) => (
-                    <span
-                      key={category._id}
-                      className="rounded-full dark:bg-zinc-800/50 bg-zinc-200/50 px-3 py-1 text-xs dark:text-zinc-300 text-zinc-700"
-                    >
-                      {category.title}
-                    </span>
-                  ))}
-                </div>
+                <ViewTransition name={`${post.slug?.current}-blog-title`}>
+                  <h1 className="pb-4 text-xl font-bold text-balance dark:text-white text-black sm:text-5xl">
+                    {post.title}
+                  </h1>
+                </ViewTransition>
+                <ViewTransition name={`${post.slug?.current}-blog-desc`}>
+                  <h2 className="dark:text-white/70 text-black/70">
+                    {post.seoDescription}
+                  </h2>
+                </ViewTransition>
+                <ViewTransition name={`${post.slug?.current}-blog-categories`}>
+                  <div className="mt-2 hidden flex-wrap gap-2 md:flex">
+                    {post.categories?.map((category) => (
+                      <span
+                        key={category._id}
+                        className="rounded-full dark:bg-zinc-800/50 bg-zinc-200/50 px-3 py-1 text-xs dark:text-zinc-300 text-zinc-700"
+                      >
+                        {category.title}
+                      </span>
+                    ))}
+                  </div>
+                </ViewTransition>
               </div>
 
               <p className="dark:text-white/70 text-black/70">

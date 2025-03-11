@@ -10,7 +10,6 @@ export default function HeroUses() {
   const { categories } = siteData.pages.uses;
   const [activeCategory, setActiveCategory] = useState(categories[0].name);
 
-  // Find the current category object
   const currentCategory =
     categories.find((cat) => cat.name === activeCategory) || categories[0];
 
