@@ -29,7 +29,7 @@ export default defineConfig({
     codeInput(),
     presentationTool({
       previewUrl: {
-        preview: "/",
+        preview: "/blog",
         previewMode: {
           enable: "/draft-mode/enable",
         },
