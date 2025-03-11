@@ -72,7 +72,7 @@ export default function AboutPage() {
     <main className="bg-background text-foreground">
       <CinematicGrid />
 
-      <div className="mx-auto max-w-6xl md:px-4 md:py-16">
+      <div className="mx-auto max-w-6xl px-4 md:py-16 md:pt-44">
         {/* Hero Section */}
         <div className="mb-16 grid items-center gap-10 md:grid-cols-2">
           <div>
@@ -85,8 +85,10 @@ export default function AboutPage() {
             />
           </div>
           <div>
-            <h1 className="mb-4 text-4xl font-bold">Vadeghar Raja Narayana</h1>
-            <p className="mb-6 text-2xl text-muted-foreground">
+            <h1 className="text-center sm:text-left mb-4 text-3xl sm:text-4xl font-bold">
+              Vadeghar Raja Narayana
+            </h1>
+            <p className="text-center sm:text-left mb-6 text-2xl text-muted-foreground">
               Full Stack Developer | Innovation Architect
             </p>
             <div className="mb-6 rounded-xl border border-border bg-card/50 p-6">

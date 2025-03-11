@@ -19,9 +19,9 @@ export default function UsesPage() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <CinematicGrid />
-      <div className="mx-auto max-w-6xl md:px-4 md:py-16">
+      <div className="mx-auto max-w-6xl px-4 py-16 md:pt-44">
         <header className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold md:text-5xl">
+          <h1 className="mb-4 text-3xl sm:text-4xl font-bold md:text-5xl">
             My Digital Toolkit
           </h1>
           <p className="mx-auto max-w-2xl text-xl text-muted-foreground">

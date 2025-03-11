@@ -47,12 +47,12 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     currentPage < lastPage ? `/blog?page=${currentPage + 1}` : undefined;
 
   return (
-    <main className="mx-auto max-w-4xl pt-20 sm:pt-48">
+    <main className="mx-auto max-w-4xl px-4 py-16 md:pt-44">
       <CinematicGrid />
 
       {blogs.length > 0 ? (
         <div className="flex flex-col gap-10">
-          <h1 className="bg-gradient-to-r from-[#ffff80] to-[#ff80bf] to-[60%] bg-clip-text pb-2 text-center text-2xl font-bold text-transparent sm:text-left sm:text-4xl md:text-5xl">
+          <h1 className="bg-gradient-to-r from-[#ffff80] to-[#ff80bf] to-[60%] bg-clip-text sm:pb-2 text-center text-[1.4rem] font-bold text-transparent sm:text-left sm:text-4xl md:text-5xl">
             Discover: Blog Articles and More
           </h1>
           <div className="flex flex-col gap-10">

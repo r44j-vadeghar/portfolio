@@ -35,12 +35,7 @@ export default async function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Script
               type="text/javascript"
               src="https://checkout.razorpay.com/v1/checkout.js"

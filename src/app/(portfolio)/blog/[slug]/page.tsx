@@ -171,14 +171,14 @@ export default async function BlogPost({ params }: Props) {
           <hr className="pb-10 opacity-50 md:mx-36 md:pb-14 dark:border-zinc-700 border-zinc-300" />
 
           <div className="flex w-full flex-col md:flex-row-reverse md:gap-20">
-            <div className="top-14 flex h-fit flex-col gap-28 md:sticky">
+            <div className="top-14 flex h-fit flex-col gap-28 md:sticky pb-10">
               <div className="flex flex-col gap-5">
-                <h5 className="text-2xl dark:text-white/80 text-black/80">
+                <h5 className="hidden md:block text-2xl dark:text-white/80 text-black/80">
                   Table of contents
                 </h5>
                 <TableOfContent blocks={blocks} />
                 {hasRelatedPosts && (
-                  <li className="list-none transition-all dark:hover:text-white/90 hover:text-black/90 dark:text-white/50 text-black/50">
+                  <li className="hidden md:block list-none transition-all dark:hover:text-white/90 hover:text-black/90 dark:text-white/50 text-black/50">
                     <a href="#related-posts">Related posts</a>
                   </li>
                 )}

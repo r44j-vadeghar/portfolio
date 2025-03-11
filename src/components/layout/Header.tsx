@@ -3,20 +3,22 @@
 import Socials from "@/components/Socials";
 import HeaderNavItem from "@/components/layout/HeaderNavItem";
 import gsap from "gsap";
-import { Moon, Sun } from "lucide-react";
+import { Menu, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 import { Button } from "../ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../ui/sheet";
 
 const navItems = [
   { href: "/", label: "Localhost" },
@@ -29,8 +31,13 @@ const navItems = [
 
 export default function Header() {
   const pathname = usePathname();
-  const { setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const headerRef = useRef<HTMLDivElement>(null);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   useEffect(() => {
     if (!headerRef.current) return;
@@ -101,21 +108,21 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className="w-full z-50 mx-auto grid max-w-screen-2xl items-center justify-center gap-5 overflow-x-hidden p-5 sm:justify-between place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+      className="w-full z-50 mx-auto grid max-w-screen-2xl items-center justify-between gap-5 overflow-x-hidden p-5 grid-cols-2 md:grid-cols-3"
       data-header
     >
       <div
         id="profile"
-        className="flex items-center gap-3 justify-self-center sm:justify-self-start"
+        className="flex items-center gap-3 justify-self-start scale-75 origin-left sm:scale-100"
       >
-        <Link href="/">
+        <Link href="/" className="h-12 w-12">
           <Image
             width={100}
             height={100}
             id="profile-img"
             src="/me.png"
             alt="raj"
-            className="z-10 h-12 w-12 rounded-full whitespace-nowrap"
+            className="z-10 h-12 w-12 rounded-full whitespace-nowrap border object-contain"
           />
         </Link>
         <div
@@ -123,14 +130,19 @@ export default function Header() {
           className="h-10 w-[0.5px] rounded-full bg-foreground/70"
         ></div>
         <div id="profile-data" className="flex flex-col gap-2">
-          <Link href="/about" id="name" className="font-medium text-foreground">
+          <Link
+            href="/about"
+            id="name"
+            className="font-medium text-foreground whitespace-nowrap"
+          >
             Full Stack Developer
           </Link>
           <Socials className="flex items-center gap-2" />
         </div>
       </div>
 
-      <nav className="flex items-center font-medium">
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex items-center font-medium justify-center">
         {navItems.map((item) => (
           <HeaderNavItem
             key={item.href}
@@ -144,29 +156,60 @@ export default function Header() {
       </nav>
 
       <div className="flex gap-3 items-center justify-end ml-auto">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
+        {/* Simple Theme Toggle Button */}
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? (
+            <Sun className="h-[1.2rem] w-[1.2rem]" />
+          ) : (
+            <Moon className="h-[1.2rem] w-[1.2rem]" />
+          )}
+        </Button>
+
+        {/* Mobile Menu Sheet */}
+        <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+          <SheetTrigger asChild className="md:hidden">
             <Button variant="outline" size="icon">
-              <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
+              <Menu className="h-[1.2rem] w-[1.2rem]" />
+              <span className="sr-only">Open menu</span>
             </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => setTheme("light")}>
-              Light
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setTheme("dark")}>
-              Dark
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setTheme("system")}>
-              System
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[80vw] sm:w-[350px]">
+            <SheetHeader className="mb-6">
+              <SheetTitle className="text-left">Menu</SheetTitle>
+            </SheetHeader>
+            <nav className="flex flex-col space-y-4 px-4">
+              {navItems.map((item) => (
+                <SheetClose asChild key={item.href}>
+                  <HeaderNavItem
+                    href={item.href}
+                    active={pathname === item.href}
+                    showAdmin={item.isAdmin}
+                  >
+                    {item.label}
+                  </HeaderNavItem>
+                </SheetClose>
+              ))}
+              <SheetClose asChild>
+                <Link
+                  href="https://calendly.com/r44j/30min"
+                  className="w-full rounded-lg bg-primary/10 px-6 py-3 text-center text-sm font-bold text-primary ring-primary/30 ring-offset-2 ring-offset-background transition-all hover:bg-primary/20 hover:ring-2 focus:ring-2 mt-4"
+                >
+                  Book a free meeting
+                </Link>
+              </SheetClose>
+            </nav>
+          </SheetContent>
+        </Sheet>
+
+        {/* Desktop CTA Button */}
         <Link
           href="https://calendly.com/r44j/30min"
-          className="hidden w-fit justify-self-end rounded-lg bg-primary/10 px-6 py-2 text-sm font-bold text-primary ring-primary/30 ring-offset-2 ring-offset-background transition-all hover:bg-primary/20 hover:ring-2 focus:ring-2 sm:block"
+          className="hidden md:block w-fit justify-self-end rounded-lg bg-primary/10 px-6 py-2 text-sm font-bold text-primary ring-primary/30 ring-offset-2 ring-offset-background transition-all hover:bg-primary/20 hover:ring-2 focus:ring-2"
         >
           Book a free meeting
         </Link>

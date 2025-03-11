@@ -83,5 +83,7 @@ export default function TableOfContent({ blocks }: { blocks: BlockContent }) {
     };
   }, [blocks, theme]);
 
-  return <div className="flex flex-col">{renderHeadings(blocks)}</div>;
+  return (
+    <div className="hidden md:flex flex-col">{renderHeadings(blocks)}</div>
+  );
 }
