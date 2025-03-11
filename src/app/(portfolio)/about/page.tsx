@@ -12,18 +12,19 @@ import { unstable_ViewTransition as ViewTransition } from "react";
 export const dynamic = "force-static";
 export const revalidate = 3600;
 
-// Icon mapping function to handle the icons
-const getIconComponent = (iconName: string) => {
-  const iconMap: Record<string, React.ComponentType<any>> = {
-    Code,
-    Database,
-    Globe,
-    Paintbrush,
-    Rocket,
-    Zap,
-  };
+type IconName = keyof typeof iconMap;
 
-  return iconMap[iconName] || Zap; // Default to Zap if icon not found
+const iconMap = {
+  Code,
+  Database,
+  Globe,
+  Paintbrush,
+  Rocket,
+  Zap,
+};
+
+const getIconComponent = (iconName: string) => {
+  return iconMap[iconName as IconName] || Zap;
 };
 
 export const metadata: Metadata = {

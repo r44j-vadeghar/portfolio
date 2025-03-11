@@ -10,13 +10,15 @@ import {
   Paintbrush,
 } from "lucide-react";
 import { unstable_ViewTransition as ViewTransition } from "react";
-const getIconComponent = (iconName: string) => {
-  const iconMap: Record<string, React.ComponentType<any>> = {
-    Code,
-    Database,
-    Paintbrush,
-    PaintBucket,
-  };
+
+const iconMap = {
+  Code,
+  Database,
+  Paintbrush,
+  PaintBucket,
+};
+
+const getIconComponent = (iconName: keyof typeof iconMap) => {
   const Icon = iconMap[iconName] || Code; // Default to Code if icon not found
   const colorClasses: Record<string, string> = {
     blue: "text-blue-400",
@@ -35,7 +37,7 @@ const getIconComponent = (iconName: string) => {
 };
 
 function HeroSection() {
-  const { skills, testimonials } = SiteData.home;
+  const { skills } = SiteData.home;
 
   return (
     <div className="relative w-full bg-background">
@@ -78,13 +80,15 @@ function HeroSection() {
 
         <ViewTransition name="skills">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {skills.map(({ iconName, label, color, delay }) => (
+            {skills.map(({ iconName, label }) => (
               <div
                 key={label}
                 className="relative rounded-2xl border border-border bg-accent/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent hover:bg-accent/10"
               >
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-transparent to-accent/5 opacity-0 transition-opacity duration-300 hover:opacity-100"></div>
-                <div className="mb-4">{getIconComponent(iconName)}</div>
+                <div className="mb-4">
+                  {getIconComponent(iconName as keyof typeof iconMap)}
+                </div>
                 <h3 className="mb-2 text-xl font-semibold text-foreground">
                   {label}
                 </h3>
