@@ -3,7 +3,7 @@ import { sleep } from "@/lib/utils";
 import useBasketStore from "@/store/store";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, unstable_ViewTransition as ViewTransition } from "react";
 import { ProductType } from "../../../sanity.types";
 import { Button } from "../ui/button";
 
@@ -23,15 +23,17 @@ function ProductThumb({ product }: { product: ProductType }) {
       }`}
     >
       <div className="relative aspect-square w-full h-full overflow-hidden">
-        {product.image && (
-          <Image
-            className="object-contain transition-transform duration-300 group-hover:scale-105"
-            src={imageUrl(product.image).url()}
-            alt={product.name || "Product image"}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        )}
+        <ViewTransition name={`${product.slug?.current}-product-image`}>
+          {product.image && (
+            <Image
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
+              src={imageUrl(product.image).url()}
+              alt={product.name || "Product image"}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          )}
+        </ViewTransition>
 
         {isOutOfStock && (
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -41,37 +43,46 @@ function ProductThumb({ product }: { product: ProductType }) {
       </div>
 
       <div className="p-4">
-        <h2 className="text-lg font-semibold Otext-gray-800 truncate">
-          {product.name}
-        </h2>
+        <ViewTransition name={`${product.slug?.current}-product-name`}>
+          <h2 className="text-lg font-semibold Otext-gray-800 truncate">
+            {product.name}
+          </h2>
+        </ViewTransition>
 
-        <p className="mt-2 text-sm text-secondary-foreground line-clamp-2">
-          {product.description
-            ?.map((block) =>
-              block._type === "block"
-                ? block.children?.map((child) => child.text).join("")
-                : ""
-            )
-            .join(" ") || "No description available"}
-        </p>
+        <ViewTransition name={`${product.slug?.current}-product-desc`}>
+          <p className="mt-2 text-sm text-secondary-foreground line-clamp-2">
+            {product.description
+              ?.map((block) =>
+                block._type === "block"
+                  ? block.children?.map((child) => child.text).join("")
+                  : ""
+              )
+              .join(" ") || "No description available"}
+          </p>
+        </ViewTransition>
 
-        <p className="mt-2 text-lg font-bold @text-gray-900">
-          ₹{product.price}
-        </p>
-        <Button
-          onClick={(e) => {
-            e.stopPropagation();
-            setAddedToBasket(true);
-            addItem(product);
-            sleep(5000).then(() => {
-              setAddedToBasket(false);
-            });
-          }}
-          disabled={addedToBasket}
-          className="w-full mt-4"
-        >
-          {addedToBasket ? "Successfully added" : "Add to basket"}
-        </Button>
+        <ViewTransition name={`${product.slug?.current}-product-price`}>
+          <p className="mt-2 text-lg font-bold @text-gray-900">
+            ₹{product.price}
+          </p>
+        </ViewTransition>
+
+        <ViewTransition name={`${product.slug?.current}-product-add-to-basket`}>
+          <Button
+            onClick={(e) => {
+              e.stopPropagation();
+              setAddedToBasket(true);
+              addItem(product);
+              sleep(5000).then(() => {
+                setAddedToBasket(false);
+              });
+            }}
+            disabled={addedToBasket}
+            className="w-full mt-4"
+          >
+            {addedToBasket ? "Successfully added" : "Add to basket"}
+          </Button>
+        </ViewTransition>
       </div>
     </div>
   );
