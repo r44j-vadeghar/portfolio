@@ -2,7 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 function Loading() {
   return (
-    <div className="container py-8 mx-auto">
+    <div className="container py-8 mx-auto max-w-7xl">
       {/* Hero section skeleton */}
       <div className="mb-12">
         <Skeleton className="h-12 w-3/4 max-w-xl mb-4" />

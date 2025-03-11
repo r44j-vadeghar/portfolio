@@ -25,7 +25,7 @@ async function OrdersPage({
     statusParam && validStatuses.includes(statusParam) ? statusParam : "all";
 
   return (
-    <div className="container mx-auto py-8 space-y-8">
+    <div className="container mx-auto py-8 space-y-8 max-w-7xl">
       <OrdersHeader />
       {orders.length > 0 ? (
         <OrdersList orders={orders} currentStatus={status} />
