@@ -158,28 +158,44 @@ export default function PortableText({
           const colorPairs = [
             {
               light: "rgba(255, 255, 136, 0.5)",
-              dark: "rgba(255, 255, 0, 0.2)",
-            }, // yellow
+              dark: "rgba(255, 215, 0, 0.5)", // Gold yellow with 50% opacity
+            },
             {
               light: "rgba(175, 248, 216, 0.5)",
-              dark: "rgba(0, 200, 150, 0.2)",
-            }, // mint
+              dark: "rgba(0, 204, 153, 0.5)", // Mint with 50% opacity
+            },
             {
               light: "rgba(255, 210, 232, 0.5)",
-              dark: "rgba(255, 105, 180, 0.2)",
-            }, // pink
+              dark: "rgba(255, 105, 180, 0.5)", // Hot pink with 50% opacity
+            },
             {
               light: "rgba(212, 165, 255, 0.5)",
-              dark: "rgba(138, 43, 226, 0.2)",
-            }, // lavender
+              dark: "rgba(147, 112, 219, 0.5)", // Medium purple with 50% opacity
+            },
             {
               light: "rgba(165, 223, 255, 0.5)",
-              dark: "rgba(30, 144, 255, 0.2)",
-            }, // light blue
+              dark: "rgba(30, 144, 255, 0.5)", // Dodger blue with 50% opacity
+            },
             {
               light: "rgba(255, 190, 125, 0.5)",
-              dark: "rgba(255, 140, 0, 0.2)",
-            }, // orange
+              dark: "rgba(255, 140, 0, 0.5)", // Dark orange with 50% opacity
+            },
+            {
+              light: "rgba(255, 170, 170, 0.5)",
+              dark: "rgba(255, 99, 71, 0.5)", // Tomato red with 50% opacity
+            },
+            {
+              light: "rgba(170, 255, 170, 0.5)",
+              dark: "rgba(50, 205, 50, 0.5)", // Lime green with 50% opacity
+            },
+            {
+              light: "rgba(173, 216, 230, 0.5)",
+              dark: "rgba(135, 206, 250, 0.5)", // Light sky blue with 50% opacity
+            },
+            {
+              light: "rgba(221, 160, 221, 0.5)",
+              dark: "rgba(218, 112, 214, 0.5)", // Orchid with 50% opacity
+            },
           ];
 
           // Select a random color pair
