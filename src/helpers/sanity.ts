@@ -1,10 +1,13 @@
-import { Block } from "./server-actions";
+import { BlockContent } from "../../sanity.types";
 
-const filter = (blocks: Block[], match: (block: Block) => boolean) =>
+const filter = (
+  blocks: BlockContent,
+  match: (block: BlockContent[0]) => boolean
+) =>
   blocks.reduce((acc, block) => {
     if (match(block)) acc.push(block);
     return acc;
-  }, [] as Block[]);
+  }, [] as BlockContent);
 
 const get = (object: Record<string, unknown>, path: string[]) =>
   path.reduce((prev, curr) => prev[curr] as Record<string, unknown>, object);
@@ -14,18 +17,24 @@ const getObjectPath = (path: string[]) =>
     ? path
     : ["subheadings"].concat(path.join(".subheadings.").split("."));
 
-const findHeadings = (blocks: Block[]) =>
-  filter(blocks, (block: Block) => /h\d/.test(block.style));
+const findHeadings = (blocks: BlockContent) =>
+  filter(
+    blocks,
+    (block) =>
+      "style" in block && block.style !== undefined && /h\d/.test(block.style)
+  );
 
-export const parseOutline = (blocks: Block[]) => {
-  const outline = { subheadings: [] as Block[] };
+export const parseOutline = (blocks: BlockContent) => {
+  const outline = { subheadings: [] as BlockContent };
   const headings = findHeadings(blocks);
   const path: string[] = [];
   let lastLevel = 0;
 
   headings.forEach((heading) => {
+    if (!("style" in heading) || typeof heading.style !== "string") return;
     const level = Number(heading.style.slice(1));
-    heading.subheadings = [];
+    // @ts-ignore
+    heading.subheadings = [] as BlockContent;
 
     if (level < lastLevel) {
       for (let i = lastLevel; i >= level; i--) path.pop();
@@ -34,7 +43,7 @@ export const parseOutline = (blocks: Block[]) => {
     }
 
     const prop = get(outline, getObjectPath(path)) as {
-      subheadings: Block[];
+      subheadings: BlockContent;
     };
     prop.subheadings.push(heading);
     path.push((prop.subheadings.length - 1).toString());

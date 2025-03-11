@@ -1,19 +1,19 @@
 // src/components/sanity/portable-text.tsx
 "use client";
-import { Block } from "@/helpers/server-actions";
 import {
   PortableText as PortableTextReact,
   PortableTextReactComponents,
 } from "@portabletext/react";
+import { BlockContent } from "../../../sanity.types";
 import PortableCode from "./portable-code";
 import PortableTextImage from "./portable-text-image";
 import PortableYtEmbed from "./portable-yt-embed";
 
-type PortableTextProps = {
-  portableText: Block[];
-};
-
-export default function PortableText({ portableText }: PortableTextProps) {
+export default function PortableText({
+  portableText,
+}: {
+  portableText: BlockContent;
+}) {
   const components: Partial<PortableTextReactComponents> = {
     types: {
       image: PortableTextImage,

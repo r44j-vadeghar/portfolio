@@ -3,7 +3,8 @@ import BlogCard from "@/components/blog/BlogCard";
 import Pagination from "@/components/blog/Pagination";
 import CinematicGrid from "@/components/CinematicGrid";
 import SiteData from "@/constants/siteData.json";
-import { getAllBlogs, getBlogs } from "@/helpers/server-actions";
+import { getAllBlogs } from "@/sanity/lib/blog/getAllBlogs";
+import { getPagedBlogs } from "@/sanity/lib/blog/getPagedBlogs";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -29,7 +30,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   }
 
   const pageSize = 5;
-  const blogs = await getBlogs(currentPage, pageSize);
+  const blogs = await getPagedBlogs(currentPage, pageSize);
 
   const totalPosts = await getAllBlogs();
 

@@ -1,16 +1,12 @@
 "use client";
 
-import { Block } from "@/helpers/server-actions";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useEffect } from "react";
-
-type TableOfContentProps = {
-  blocks: Block[];
-};
+import { BlockContent } from "../../../sanity.types";
 
 // Function to render headings recursively
-const renderHeadings = (blocks: Block[], level = 0) => {
+const renderHeadings = (blocks: BlockContent, level = 0) => {
   return blocks.map((block) => (
     <div key={block._key} style={{ marginLeft: `${level * 12}px` }}>
       <div className="flex items-center py-1">
@@ -19,25 +15,30 @@ const renderHeadings = (blocks: Block[], level = 0) => {
           id={`toc-${block._key}`}
           className="transition-all text-black/50 hover:text-black dark:text-white/50 dark:hover:text-white"
         >
-          {block.children[0].text}
+          {(block._type === "block" && block.children?.[0]?.text) || ""}
         </Link>
       </div>
+      {/* @ts-ignore */}
       {block.subheadings &&
+        // @ts-ignore
         block.subheadings.length > 0 &&
+        // @ts-ignore
         renderHeadings(block.subheadings, level + 1)}
     </div>
   ));
 };
 
-export default function TableOfContent({ blocks }: TableOfContentProps) {
+export default function TableOfContent({ blocks }: { blocks: BlockContent }) {
   const { theme } = useTheme();
   useEffect(() => {
-    function getAllKeys(headings: Block[]) {
+    function getAllKeys(headings: BlockContent) {
       const result: string[] = [];
 
       headings.forEach((heading) => {
         result.push(heading._key);
+        // @ts-ignore
         if (heading.subheadings && heading.subheadings.length > 0) {
+          // @ts-ignore
           result.push(...getAllKeys(heading.subheadings));
         }
       });

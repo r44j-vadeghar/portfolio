@@ -27,17 +27,6 @@ export async function POST(request: Request) {
     const assetName = formData.get("assetName") as string;
     const version = formData.get("version") as string;
 
-    // Validate request body
-    // const { file, productId, assetName, version } = body;
-
-    console.log(
-      "file, productId, assetName, version >>>> ",
-      file,
-      productId,
-      assetName,
-      version
-    );
-
     if (!file.name || !file.type || !productId || !assetName) {
       return NextResponse.json(
         { error: "Missing required fields" },
@@ -71,14 +60,7 @@ export async function POST(request: Request) {
       version,
     });
 
-    console.log("createdAsset >>> ", createdAsset);
-
     return NextResponse.json({ asset: createdAsset }, { status: 200 });
-
-    // return NextResponse.json({
-    //   signedUrl,
-    //   fileKey: uniqueKey,
-    // });
   } catch (error) {
     console.error("Error generating upload URL:", error);
     return NextResponse.json(
