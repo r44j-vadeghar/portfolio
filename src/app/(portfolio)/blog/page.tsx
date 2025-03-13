@@ -1,7 +1,6 @@
 // src/app/(portfolio)/blog/page.tsx
 import BlogCard from "@/components/blog/BlogCard";
 import Pagination from "@/components/blog/Pagination";
-import CinematicGrid from "@/components/CinematicGrid";
 import SiteData from "@/constants/siteData.json";
 import { getAllBlogs } from "@/sanity/lib/blog/getAllBlogs";
 import { getPagedBlogs } from "@/sanity/lib/blog/getPagedBlogs";
@@ -48,7 +47,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-16 md:pt-44">
-      <CinematicGrid />
+      {/* <CinematicGrid /> */}
 
       {blogs.length > 0 ? (
         <div className="flex flex-col gap-10">

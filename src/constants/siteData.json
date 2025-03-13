@@ -1,34 +1,34 @@
 {
   "default": {
-    "name": "r44j",
-    "title": "R44J | Full Stack Developer - Portfolio",
-    "keywords": "R44J, Full Stack Developer, Figma designs, Scalable Architectures, Backend Development, Frontend Development, SEO, Chrome Extensions, E-commerce, IOS Apps, Mobile Apps, PWA",
-    "description": "R44J, a Full Stack Developer skilled in Figma designs, scalable architectures, backend and frontend development, SEO, chrome extensions, and e-commerce. Explore my diverse expertise and collaborations in IOS apps, mobile apps, and PWAs.",
+    "name": "R44j",
+    "title": "Full Stack Developer",
+    "keywords": "R44J, Full Stack Developer, DevOps Engineer, React, Next.js, TypeScript, Tailwind CSS, .NET, C#, Video Editing, Content Creation, SEO, Chrome Extensions, E-commerce",
+    "description": "R44J is a Full Stack Developer with 3 years of experience specializing in React, Next.js, and DevOps. Expert in creating scalable architectures, stunning UIs, and optimized solutions for modern web applications.",
     "openGraph": {
-      "title": "R44J | Full Stack Developer - Portfolio",
-      "description": "Explore R44J's skills in Figma designs, scalable architectures, frontend and backend development, SEO, and more. Specializing in Chrome extensions, e-commerce, and collaborating on IOS apps, mobile apps, and PWAs.",
+      "title": "R44J | Full Stack Developer & DevOps Engineer",
+      "description": "Full Stack Developer with 3 years of experience specializing in React, Next.js, and DevOps. Explore my expertise in creating scalable architectures, stunning UIs, and optimized solutions.",
       "type": "website",
       "url": "https://r44j.dev",
       "image": "https://r44j.dev/raj.png"
     },
     "twitter": {
-      "title": "R44J | Full Stack Developer - Portfolio",
-      "description": "Discover R44J's expertise in Figma designs, scalable architectures, frontend and backend development, SEO, and more. Specializing in Chrome extensions, e-commerce, and collaborating on IOS apps, mobile apps, and PWAs.",
+      "title": "R44J | Full Stack Developer & DevOps Engineer",
+      "description": "Full Stack Developer with 3 years of experience specializing in React, Next.js, and DevOps. Explore my expertise in creating scalable architectures, stunning UIs, and optimized solutions.",
       "creator": "@VadegharRaj"
     }
   },
   "pages": {
     "about": {
-      "title": "About R44J",
-      "description": "Full-stack web dev with 1.5 years at a US startup. Skilled in React, Next.js, Tailwind, Chrome extensions & SEO. I Build engaging & scalable web apps. Looking to bring your vision to life? Let's connect"
+      "title": "About Me",
+      "description": "Full Stack Developer with 3 years of experience across startups and enterprise environments. Skilled in React, Next.js, TypeScript, DevOps, .NET, and C#. I build engaging & scalable web applications that deliver exceptional user experiences. Looking to bring your vision to life? Let's connect!"
     },
     "contact": {
       "title": "Contact R44J"
     },
     "uses": {
-      "title": "Tech Essentials: Unveiling My Productivity Arsenal for my Work and Relaxation",
-      "description": "Explore the tools that power my daily grind, from the reliable MacBook Air to efficient Alexa assistant and nifty gadgets like JBL earphones. Boost your productivity with this tech lineup.",
-      "keywords": "Macbook Air, Airpods, JBL Earphones, Amazon Alexa, Epson Printer, Mini Fan, Noise Smart Watch, Mini Sealer, productivity gadgets, tech arsenal, connectivity, convenience, gadgets for work, leisure gadgets",
+      "title": "My Tech Stack: Tools I Use for Work and Life",
+      "description": "Explore the tools and technologies that power my daily workflow, from hardware to software. This curated collection helps me create exceptional digital experiences and stay productive.",
+      "keywords": "Macbook Air, iPad Air, Keychron Keyboard, Logitech Mouse, VS Code, Next.js, React, TypeScript, DevOps tools, productivity gadgets, tech stack, development environment",
       "categories": [
         {
           "name": "hardware",
@@ -37,15 +37,15 @@
             {
               "title": "Computer / Laptop",
               "list": [
-                "MacBook Air M1\" (2022) - Apple M1, 8GB RAM, 256GB SSD, 1TB External Drive.",
-                "iPad Air 11 inch\" (2024) - Apple M2, with Apple Pencil Pro"
+                "MacBook Air M1 (2022) - Apple M1, 8GB RAM, 256GB SSD, 1TB External Drive",
+                "iPad Air 11 inch (2024) - Apple M2, with Apple Pencil Pro"
               ]
             },
             {
               "title": "Display & Audio",
               "list": [
                 "Apple EarPods (USB-C)",
-                "Boult Klarity 3 6-Mic Hybrid ANC (Upto 50dB) in Ear Earbuds"
+                "Boult Klarity 3 6-Mic Hybrid ANC (Up to 50dB) in Ear Earbuds"
               ]
             },
             {
@@ -69,14 +69,15 @@
               "title": "Design Tools",
               "list": [
                 "Figma",
-                "Final cut pro",
-                "Apple motion",
-                "Pixelmator pro"
+                "Final Cut Pro",
+                "Apple Motion",
+                "Pixelmator Pro",
+                "Adobe Premiere Pro"
               ]
             },
             {
               "title": "Communication",
-              "list": ["Slack", "Discord", "Google meet"]
+              "list": ["Slack", "Discord", "Google Meet", "Microsoft Teams"]
             }
           ]
         },
@@ -86,15 +87,26 @@
           "items": [
             {
               "title": "Editor & Environment",
-              "list": ["VS Code with One Monokai theme", "Warp and Oh My Zsh"]
+              "list": [
+                "VS Code with One Monokai theme",
+                "Warp and Oh My Zsh",
+                "Docker",
+                "GitHub Copilot"
+              ]
             },
             {
               "title": "Tech Stack",
               "list": [
                 "Next.js / React",
                 "TypeScript",
+                "Tailwind CSS",
+                "shadcn/ui",
+                "Framer Motion / GSAP",
                 "Node.js",
+                ".NET / C#",
                 "PostgreSQL / MongoDB",
+                "AWS / Azure DevOps",
+                "GitHub Actions / CI/CD",
                 "Chrome Extensions"
               ]
             }
@@ -106,41 +118,68 @@
           "items": [
             {
               "title": "Planning & Organization",
-              "list": ["Notion", "Todoist", "Google Calendar"]
+              "list": ["Notion", "Todoist", "Google Calendar", "Jira"]
             },
             {
               "title": "Utilities",
-              "list": ["1Password", "Raycast", "CleanShot X"]
+              "list": ["1Password", "Raycast", "CleanShot X", "OBS Studio"]
+            }
+          ]
+        },
+        {
+          "name": "content-creation",
+          "title": "Content Creation",
+          "items": [
+            {
+              "title": "Video Production",
+              "list": ["Final Cut Pro", "OBS Studio", "Canva Pro", "TubeBuddy"]
+            },
+            {
+              "title": "SEO & Analytics",
+              "list": [
+                "Google Analytics",
+                "Google Search Console",
+                "Ahrefs",
+                "Keywords Everywhere"
+              ]
             }
           ]
         }
       ]
     },
     "blog": {
-      "title": "R44J Insights: Explore a Spectrum of Blogs",
-      "description": "Unlock a world of knowledge and inspiration through my diverse blog articles. From tech tips to lifestyle insights, find captivating reads that cater to your interests.",
-      "keywords": "blogs, articles, insights, tech, trends, tips, lifestyle, diverse topics, knowledge hub, informative content, reading collection"
+      "title": "R44J Insights: Tech, Development & Content Creation",
+      "description": "Practical insights on web development, DevOps, content creation, and more. Learn from my journey as a developer and creator with articles designed to help you grow in the digital world.",
+      "keywords": "web development, DevOps, React tutorials, Next.js guides, content creation tips, SEO strategies, developer journey, tech career"
     }
   },
   "personal": {
     "role": "Full Stack Developer",
-    "tagline": "Development Ally for Innovators",
-    "shortDescription": "Quickly crafts frontend designs, codes templates, and excels in both backend development and design.",
+    "tagline": "Crafting Digital Experiences That Matter",
+    "shortDescription": "Building high-performance web applications with clean code, beautiful interfaces, and scalable architecture.",
     "calendlyUrl": "https://calendly.com/r44j/30min",
     "avatar": "/me.png"
   },
   "services": {
     "primary": [
-      "Figma designs",
+      "React & Next.js Applications",
+      "Full Stack Development",
+      "DevOps & CI/CD Pipelines",
       "Scalable Architectures",
-      "Backend Development",
-      "Frontend Development",
-      "Search Engine Optimization",
-      "Mail Campaigns + Landing Pages",
+      "UI/UX Implementation",
+      "Performance Optimization",
+      "SEO & Content Strategy",
       "Chrome Extensions",
-      "E-commerce"
+      "E-commerce Solutions"
     ],
-    "network": ["IOS Apps", "Mobile Apps", "PWA", "Everything mentioned above"]
+    "network": [
+      "Mobile-First Websites",
+      "PWAs",
+      "API Development",
+      ".NET/C# Development",
+      "Video Production & Editing",
+      "Content Creation"
+    ]
   },
   "social": {
     "github": {
@@ -150,6 +189,10 @@
     "linkedin": {
       "url": "https://linkedin.com/in/yourusername",
       "title": "LinkedIn Profile"
+    },
+    "youtube": {
+      "url": "https://youtube.com/@yourusername",
+      "title": "YouTube Channel"
     },
     "mail": {
       "url": "mailto:your-email@example.com",
@@ -161,31 +204,31 @@
       {
         "iconName": "Code",
         "label": "Frontend Development",
-        "description": "Crafting responsive, performant web interfaces",
+        "description": "Creating responsive, performant web applications with React, Next.js, and TypeScript",
         "color": "text-blue-400"
       },
       {
         "iconName": "Database",
-        "label": "Backend Architecture",
-        "description": "Designing scalable, efficient server-side solutions",
+        "label": "Backend Development",
+        "description": "Building robust APIs and server-side solutions with Node.js and .NET/C#",
         "color": "text-green-400"
       },
       {
-        "iconName": "Paintbrush",
-        "label": "UI/UX Design",
-        "description": "Creating intuitive, engaging user experiences",
+        "iconName": "Server",
+        "label": "DevOps Engineering",
+        "description": "Setting up CI/CD pipelines, containerization, and cloud infrastructure",
         "color": "text-purple-400"
       },
       {
-        "iconName": "Globe",
-        "label": "Full Stack Development",
-        "description": "End-to-end web solutions across technologies",
+        "iconName": "Paintbrush",
+        "label": "UI/UX Implementation",
+        "description": "Bringing designs to life with Tailwind CSS, shadcn/ui, and animations (GSAP, Framer Motion)",
         "color": "text-teal-400"
       },
       {
-        "iconName": "Rocket",
-        "label": "Product Innovation",
-        "description": "Transforming ideas into functional digital products",
+        "iconName": "Video",
+        "label": "Content Creation",
+        "description": "Producing engaging technical content, tutorials, and videos with SEO optimization",
         "color": "text-orange-400"
       },
       {
@@ -196,20 +239,30 @@
       }
     ],
     "keyAchievements": [
-      "Developed Chrome extensions used by 10,000+ users",
-      "Optimized web application performance, reducing load times by 40%",
-      "Implemented SEO strategies increasing organic traffic by 65%",
-      "Created scalable architectures for multiple startup projects"
+      "Led front-end development for multiple successful product launches at a US startup",
+      "Implemented DevOps practices at TCS that reduced deployment time by 40%",
+      "Created a YouTube channel sharing developer knowledge and best practices",
+      "Optimized web application performance, reducing load times by 50%",
+      "Implemented SEO strategies increasing organic traffic by 65%"
     ],
     "experience": [
       {
+        "title": "Manifold Ventures",
+        "span": "2025 - Present",
+        "jobType": "Full Time",
+        "designation": "Senior Full Stack Developer",
+        "link": "https://www.meavana.com",
+        "logoPath": "/assets/manifold_ventures_llc_logo.jpeg",
+        "description": "Returned to lead development initiatives, focusing on modernizing the tech stack and implementing DevOps practices for improved deployment efficiency."
+      },
+      {
         "title": "Tata Consultancy Services",
-        "span": "2024 - Present",
+        "span": "2024 - 2025",
         "jobType": "Full Time",
         "designation": "Systems Engineer",
         "link": "https://www.tcs.com/",
         "logoPath": "/assets/tcs-48.png",
-        "description": "Driving technological innovation and system optimization"
+        "description": "Focused on enterprise-level development with .NET/C# and implemented DevOps practices that improved deployment workflows and system reliability."
       },
       {
         "title": "Manifold Ventures",
@@ -218,14 +271,14 @@
         "designation": "Full Stack Developer",
         "link": "https://www.meavana.com",
         "logoPath": "/assets/manifold_ventures_llc_logo.jpeg",
-        "description": "Spearheaded development of multiple digital products, from conceptualization to deployment, focusing on Chrome extensions and web applications."
+        "description": "Spearheaded development of multiple digital products, from conceptualization to deployment, focusing on React/Next.js applications and Chrome extensions."
       }
     ]
   },
   "home": {
     "hero": {
-      "title": "Development Ally for Innovators",
-      "description": "Quickly crafts frontend designs, codes templates, and excels in both backend development and design."
+      "title": "Crafting Digital Experiences That Matter",
+      "description": "Full Stack Developer with 3 years of experience specializing in React, Next.js, and DevOps. Building high-performance web applications with clean code, beautiful interfaces, and scalable architecture."
     },
     "skills": [
       {
@@ -236,15 +289,49 @@
       },
       {
         "iconName": "Database",
-        "label": "Backend Architecture",
+        "label": "Backend Development",
         "color": "green",
         "delay": 0.1
       },
       {
-        "iconName": "Paintbrush",
-        "label": "UI/UX Design",
+        "iconName": "Server",
+        "label": "DevOps Engineering",
         "color": "purple",
         "delay": 0.2
+      },
+      {
+        "iconName": "Paintbrush",
+        "label": "UI/UX Implementation",
+        "color": "teal",
+        "delay": 0.3
+      },
+      {
+        "iconName": "Video",
+        "label": "Content Creation",
+        "color": "orange",
+        "delay": 0.4
+      }
+    ],
+    "stats": [
+      {
+        "value": "3+",
+        "label": "Years Experience",
+        "delay": 0.1
+      },
+      {
+        "value": "2",
+        "label": "Companies",
+        "delay": 0.2
+      },
+      {
+        "value": "10+",
+        "label": "Projects Completed",
+        "delay": 0.3
+      },
+      {
+        "value": "15+",
+        "label": "Tech Skills",
+        "delay": 0.4
       }
     ],
     "testimonials": [
@@ -254,10 +341,37 @@
         "website": "https://kairos-club.com",
         "person": "Janhvi Rawat",
         "position": "Marketing Head",
-        "testimonial": "Raj and Subhash transformed our vision into a stunning reality for Kairos Club. <br />Their expertise and dedication shone through, delivering a website that brilliantly captures our essence. The seamless blend of design and functionality showcases their talent. <br />We wholeheartedly recommend their team for their exceptional work and commitment to excellence. Thank you for elevating our online presence.",
+        "testimonial": "Raj transformed our vision into a stunning reality for Kairos Club. <br />His expertise and dedication shone through, delivering a website that brilliantly captures our essence. The seamless blend of design and functionality showcases his talent. <br />We wholeheartedly recommend him for his exceptional work and commitment to excellence. Thank you for elevating our online presence.",
         "techImagePath": "/assets/testimonials/kairos-technologies-list.png",
         "tailImagePath": "/assets/testimonials/tail.png"
       }
-    ]
+    ],
+    "featuredWork": {
+      "title": "My Journey",
+      "description": "Highlights from my professional experience and content creation",
+      "items": [
+        {
+          "title": "Startup Experience",
+          "description": "Led development of multiple digital products at Manifold Ventures, focusing on React/Next.js applications",
+          "card": "ManifoldVentured",
+          "image": "/assets/featured/startup-work.png",
+          "tags": ["React", "Next.js", "TypeScript", "Chrome Extensions"]
+        },
+        {
+          "title": "Enterprise Solutions at TCS",
+          "description": "Implemented DevOps practices and .NET/C# solutions that improved system reliability and deployment efficiency",
+          "card": "TCS",
+          "image": "/assets/featured/tcs-work.jpeg",
+          "tags": ["DevOps", ".NET", "C#", "Enterprise"]
+        },
+        {
+          "title": "YouTube Content Creation",
+          "description": "Created educational content for developers, sharing knowledge and best practices",
+          "card": "RjYoutube",
+          "image": "/assets/featured/youtube-content.png",
+          "tags": ["Video Editing", "SEO", "Content Creation"]
+        }
+      ]
+    }
   }
 }

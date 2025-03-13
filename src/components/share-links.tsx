@@ -36,7 +36,7 @@ export default function ShareLinks({ url }: ShareLinksProps) {
       {Object.entries(platforms).map(([key, platform]) => (
         <a
           key={key}
-          className="z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-neutral-800 p-2 transition-all duration-300 ease-out hover:bg-neutral-700"
+          className="z-10 flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-accent p-2 transition-all duration-300 ease-out"
           href={`${platform.url}${encodeURIComponent(url)}`}
           target="_blank"
           rel="noopener noreferrer"

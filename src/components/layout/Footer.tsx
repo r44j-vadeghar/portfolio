@@ -13,7 +13,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative mx-auto flex items-center justify-center bg-background p-5 text-foreground shadow-md">
+    <footer className="relative mx-auto flex items-center justify-center p-5 text-foreground shadow-md">
       <nav className="flex items-center">
         <Link
           className="pr-4 text-muted-foreground transition-all hover:underline hover:text-foreground"

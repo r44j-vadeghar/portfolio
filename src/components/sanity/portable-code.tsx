@@ -52,7 +52,7 @@ export default function PortableCode({ value }: PortableCodeProps) {
           <Clipboard className="h-4 w-4" />
         )}
       </button>
-      <Card className="overflow-hidden dark:bg-slate-900 bg-slate-100 p-0 rounded-lg border-none">
+      <Card className="overflow-hidden p-0 rounded-lg border-none">
         <SyntaxHighlighter
           language={language || "text"}
           style={isDarkTheme ? vs2015 : a11yLight}
@@ -61,7 +61,10 @@ export default function PortableCode({ value }: PortableCodeProps) {
             margin: 0,
             padding: "1.5rem",
             fontSize: "0.9rem",
-            backgroundColor: isDarkTheme ? "#0f172b" : "#e7e7e7",
+            // backdropFilter: "blur(12px)",
+            backgroundColor: isDarkTheme
+              ? "#0f172b"
+              : "rgb(231, 231, 231, 0.3)",
           }}
         >
           {code}

@@ -1,6 +1,5 @@
 // src/app/(portfolio)/blog/[slug]/page.tsx
 import TableOfContent from "@/components/blog/table-of-content";
-import CinematicGrid from "@/components/CinematicGrid";
 import PortableText from "@/components/sanity/portable-text";
 import ShareLinks from "@/components/share-links";
 import socials from "@/constants/socials";
@@ -116,13 +115,13 @@ export default async function BlogPost({ params }: Props) {
 
   return (
     <article>
-      <CinematicGrid />
+      {/* <CinematicGrid /> */}
 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="relative w-full dark:bg-black bg-zinc-50">
+      <div className="relative w-full">
         <div className="mx-auto w-full max-w-screen-xl p-6 px-4 py-12 sm:px-6 lg:px-8">
           <div className="pointer-events-auto -z-50 flex flex-col gap-8 pb-10 md:flex-row md:py-22">
             <ViewTransition name={`${post.slug?.current}-blog-image`}>
