@@ -35,7 +35,7 @@ const featuredWork = [
 
 function FeaturedWork() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 hidden sm:block">
       <div className="container mx-auto max-w-5xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">

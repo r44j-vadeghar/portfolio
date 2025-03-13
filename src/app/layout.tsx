@@ -1,7 +1,6 @@
 import CinematicBackground from "@/components/CinematicGrid";
 import { ContextAwareCursor } from "@/components/cursors/context-aware-cursor";
 import { DisableDraftMode } from "@/components/draft-mode/DisableDraftMode";
-import Transition from "@/components/transition";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { SanityLive } from "@/sanity/lib/live";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -39,23 +38,23 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased selection:text-purple-100 selection:bg-purple-600`}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Transition>
-              <Script
-                type="text/javascript"
-                src="https://checkout.razorpay.com/v1/checkout.js"
-              />
-              <CinematicBackground />
+            {/* <Transition> */}
+            <Script
+              type="text/javascript"
+              src="https://checkout.razorpay.com/v1/checkout.js"
+            />
+            <CinematicBackground />
 
-              {(await draftMode()).isEnabled && (
-                <>
-                  <DisableDraftMode />
-                  <VisualEditing />
-                </>
-              )}
-              <ContextAwareCursor />
-              {children}
-              <SanityLive />
-            </Transition>
+            {(await draftMode()).isEnabled && (
+              <>
+                <DisableDraftMode />
+                <VisualEditing />
+              </>
+            )}
+            <ContextAwareCursor />
+            {children}
+            <SanityLive />
+            {/* </Transition> */}
           </ThemeProvider>
         </body>
       </html>
