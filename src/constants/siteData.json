@@ -37,27 +37,73 @@
             {
               "title": "Computer / Laptop",
               "list": [
-                "MacBook Air M1 (2022) - Apple M1, 8GB RAM, 256GB SSD, 1TB External Drive",
-                "iPad Air 11 inch (2024) - Apple M2, with Apple Pencil Pro"
+                {
+                  "name": "MacBook Air M1 (2022) - Apple M1, 8GB RAM, 256GB SSD, 1TB External Drive",
+                  "affiliateLink": "https://amzn.to/4iRGLoI",
+                  "rating": "4.0",
+                  "recommended": true,
+                  "ratedOn": "April 1, 2025",
+                  "image": "/assets/affiliates/macbook.jpg"
+                },
+                {
+                  "name": "iPad Air 11 inch (2024) - Apple M2, with Apple Pencil Pro",
+                  "affiliateLink": "https://amzn.to/4lh8TmM",
+                  "rating": "4.0",
+                  "recommended": true,
+                  "ratedOn": "April 1, 2025",
+                  "image": "/assets/affiliates/ipad.jpg"
+                }
               ]
             },
             {
               "title": "Display & Audio",
               "list": [
-                "Apple EarPods (USB-C)",
-                "Boult Klarity 3 6-Mic Hybrid ANC (Up to 50dB) in Ear Earbuds"
+                {
+                  "name": "Apple EarPods (USB-C)",
+                  "affiliateLink": "https://amzn.to/4chZqHG",
+                  "rating": "4.5",
+                  "recommended": true,
+                  "ratedOn": "April 1, 2025",
+                  "image": "/assets/affiliates/earpods.webp"
+                },
+                {
+                  "name": "Boult Klarity 3 6-Mic Hybrid ANC (Up to 50dB) in Ear Earbuds",
+                  "affiliateLink": "https://amzn.to/3XF7nkf",
+                  "rating": "4",
+                  "recommended": true,
+                  "ratedOn": "April 1, 2025",
+                  "image": "/assets/affiliates/boult.jpg"
+                }
               ]
             },
             {
               "title": "Input Devices",
               "list": [
-                "Keychron K8 Pro QMK/VIA Wireless Mechanical Keyboard",
-                "Logitech MX Master 3 Mouse"
+                {
+                  "name": "Keychron K8 Pro QMK/VIA Wireless Mechanical Keyboard",
+                  "affiliateLink": "https://amzn.to/4hTWJNP",
+                  "rating": "5",
+                  "recommended": true,
+                  "ratedOn": "April 1, 2025",
+                  "image": "/assets/affiliates/keychron.jpg"
+                },
+                {
+                  "name": "Logitech MX Master 3 Mouse",
+                  "affiliateLink": "https://amzn.to/4le6bhF",
+                  "rating": "5",
+                  "recommended": true,
+                  "ratedOn": "April 1, 2025",
+                  "image": "/assets/affiliates/logitech.webp"
+                }
               ]
             },
             {
               "title": "Mobile Devices",
-              "list": ["Samsung F22"]
+              "list": [
+                {
+                  "name": "Samsung F22"
+                }
+              ]
             }
           ]
         },
