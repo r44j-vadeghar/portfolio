@@ -9,6 +9,7 @@ import { VisualEditing } from "next-sanity";
 import { Geist, Geist_Mono } from "next/font/google";
 import { draftMode } from "next/headers";
 import Script from "next/script";
+import { PostHogProvider } from "@/components/PostHogProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider dynamic>
       <html lang="en" suppressHydrationWarning>
@@ -38,7 +37,6 @@ export default async function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased selection:text-purple-100 selection:bg-purple-600`}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            {/* <Transition> */}
             <Script
               type="text/javascript"
               src="https://checkout.razorpay.com/v1/checkout.js"
@@ -52,9 +50,10 @@ export default async function RootLayout({
               </>
             )}
             <ContextAwareCursor />
-            {children}
+            <PostHogProvider>
+              {children}
+            </PostHogProvider>
             <SanityLive />
-            {/* </Transition> */}
           </ThemeProvider>
         </body>
       </html>
