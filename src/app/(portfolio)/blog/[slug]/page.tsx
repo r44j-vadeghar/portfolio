@@ -115,8 +115,6 @@ export default async function BlogPost({ params }: Props) {
 
   return (
     <article>
-      {/* <CinematicGrid /> */}
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

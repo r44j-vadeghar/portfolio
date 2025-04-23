@@ -33,12 +33,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import siteData from "@/constants/siteData.json";
 
-// Register GSAP plugins
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Icon mapping
 const iconMap = {
   Code: Code,
   Database: Database,
@@ -60,10 +58,7 @@ export default function HomePage() {
 
   useEffect(() => {
     setIsLoaded(true);
-
-    // GSAP animations
     const ctx = gsap.context(() => {
-      // Skills section animation
       gsap.from(".skill-card", {
         scrollTrigger: {
           trigger: skillsRef.current,
@@ -74,8 +69,6 @@ export default function HomePage() {
         duration: 0.8,
         stagger: 0.1,
       });
-
-      // Stats animation
       gsap.from(".stat-item", {
         scrollTrigger: {
           trigger: statsRef.current,
@@ -86,8 +79,6 @@ export default function HomePage() {
         duration: 0.6,
         stagger: 0.1,
       });
-
-      // Testimonial animation
       gsap.from(".testimonial", {
         scrollTrigger: {
           trigger: testimonialRef.current,
@@ -97,8 +88,6 @@ export default function HomePage() {
         opacity: 0,
         duration: 1,
       });
-
-      // CTA animation
       gsap.from(".cta-content", {
         scrollTrigger: {
           trigger: ctaRef.current,
@@ -120,7 +109,6 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen flex flex-col">
-      {/* Hero Section */}
       <section
         ref={heroRef}
         className="relative min-h-[90vh] flex flex-col justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
@@ -288,7 +276,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Skills Section */}
       <section ref={skillsRef} className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
@@ -325,7 +312,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section
         ref={statsRef}
         className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30"
@@ -346,7 +332,6 @@ export default function HomePage() {
 
       <FeaturedWork />
 
-      {/* Testimonial Section */}
       <section
         ref={testimonialRef}
         className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30"
@@ -415,7 +400,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section ref={ctaRef} className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-5xl">
           <Card className="cta-content border border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 backdrop-blur-sm">
@@ -438,7 +422,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
@@ -482,7 +465,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CSS for background pattern */}
       <style jsx global>{`
         .bg-grid-pattern {
           background-image: linear-gradient(

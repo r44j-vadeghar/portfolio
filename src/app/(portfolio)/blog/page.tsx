@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   keywords: SiteData.pages.blog.keywords,
 };
 
-export const dynamic = "force-static";
 export const revalidate = 3600;
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
@@ -47,11 +46,9 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-16 md:pt-44">
-      {/* <CinematicGrid /> */}
-
       {blogs.length > 0 ? (
         <div className="flex flex-col gap-10">
-          <h1 className="bg-gradient-to-r from-[#ffff80] to-[#ff80bf] to-[60%] bg-clip-text sm:pb-2 text-center text-[1.4rem] font-bold text-transparent sm:text-left sm:text-4xl md:text-5xl">
+          <h1 className="bg-gradient-to-r from-purple-700 to-pink-600 dark:from-[#ffff80] dark:to-[#ff80bf] to-[60%] bg-clip-text sm:pb-2 text-center text-[1.4rem] font-bold text-transparent sm:text-left sm:text-4xl md:text-5xl">
             Discover: Blog Articles and More
           </h1>
           <div className="flex flex-col gap-10">
