@@ -1,11 +1,13 @@
 // src/app/(portfolio)/blog/[slug]/page.tsx
 import TableOfContent from "@/components/blog/table-of-content";
+import JsonLd from "@/components/JsonLd";
 import PortableText from "@/components/sanity/portable-text";
 import ShareLinks from "@/components/share-links";
 import socials from "@/constants/socials";
 import { estimateReadingTime } from "@/helpers";
 import { parseOutline } from "@/helpers/sanity";
 import { imageUrl } from "@/lib/imageUrl";
+import { SeoManager } from "@/lib/seo/SeoManager";
 import { getBlogBySlug } from "@/sanity/lib/blog/getBlogBySlug";
 import { toPlainText } from "@portabletext/toolkit";
 import { Metadata } from "next";
@@ -27,10 +29,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlogBySlug(slug);
 
   if (!post) {
-    return {
-      title: "Not Found",
-      description: "The page you are looking for does not exist.",
-    };
+    return SeoManager.generateMetadata({
+      title: "Post Not Found",
+      noIndex: true,
+    });
   }
 
   return {
@@ -80,7 +82,6 @@ export default async function BlogPost({ params }: Props) {
   const content = toPlainText(post.body ?? []);
   const readingTime = estimateReadingTime(content);
 
-  // Structure data for SEO (equivalent to blogSchema in Astro)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -100,7 +101,7 @@ export default async function BlogPost({ params }: Props) {
       sameAs: [socials.twitter.url, socials.github.url, socials.linkedin.url],
     },
     publisher: {
-      "@type": "Organization",
+      "@type": "Person",
       name: "R44j Vadeghar",
       logo: {
         "@type": "ImageObject",
@@ -113,12 +114,19 @@ export default async function BlogPost({ params }: Props) {
     timeRequired: `PT${Math.ceil(readingTime)}M`,
   };
 
+  const breadcrumbSchema = SeoManager.getBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Blog", url: "/blog" },
+    { name: post.title ?? "", url: `/blog/${slug}` },
+  ]);
+
   return (
     <article>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <JsonLd data={[breadcrumbSchema]} />
       <div className="relative w-full">
         <div className="mx-auto w-full max-w-screen-xl p-6 px-4 py-12 sm:px-6 lg:px-8">
           <div className="pointer-events-auto -z-50 flex flex-col gap-8 pb-10 md:flex-row md:py-22">

@@ -6,26 +6,22 @@ import {
 } from "@/sanity/lib/slugs";
 import type { MetadataRoute } from "next";
 
-// Helper function to get base URL
 const getBaseUrl = () => {
   return process.env.VERCEL_URL
     ? `${process.env.VERCEL_URL}`
     : "https://r44j.dev";
 };
 
-// Generate sitemap segments
 export async function generateSitemaps() {
-  // Define segments for different content types
   return [
-    { id: "static" }, // For static pages
-    { id: "blog" }, // For blog posts
-    { id: "products" }, // For products
-    { id: "blog-categories" }, // For blog categories
-    { id: "product-categories" }, // For product categories
+    { id: "static" },
+    { id: "blog" },
+    { id: "products" },
+    { id: "blog-categories" },
+    { id: "product-categories" },
   ];
 }
 
-// Generate the sitemap content based on the segment
 export default async function sitemap({
   id,
 }: {
@@ -33,7 +29,6 @@ export default async function sitemap({
 }): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getBaseUrl();
 
-  // Static routes
   if (id === "static") {
     return [
       {
@@ -87,7 +82,6 @@ export default async function sitemap({
     ];
   }
 
-  // Blog posts
   if (id === "blog") {
     const blogSlugs = await getAllBlogSlugs();
     return blogSlugs.map((slug) => ({
@@ -98,7 +92,6 @@ export default async function sitemap({
     }));
   }
 
-  // Products
   if (id === "products") {
     const productSlugs = await getAllProductSlugs();
     return productSlugs.map((slug) => ({
@@ -109,11 +102,8 @@ export default async function sitemap({
     }));
   }
 
-  // Blog categories
   if (id === "blog-categories") {
     const blogCategorySlugs = await getAllBlogCategorySlugs();
-    // Blog categories likely don't have their own pages in your structure,
-    // but if they do, adjust the URL pattern accordingly
     return blogCategorySlugs.map((slug) => ({
       url: `${baseUrl}/blog/category/${slug}`,
       lastModified: new Date(),
@@ -122,7 +112,6 @@ export default async function sitemap({
     }));
   }
 
-  // Product categories
   if (id === "product-categories") {
     const productCategorySlugs = await getAllProductCategorySlugs();
     return productCategorySlugs.map((slug) => ({

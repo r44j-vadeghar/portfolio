@@ -5,7 +5,7 @@ import "@fontsource/outfit";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import Script from "next/script"; // Import Script component
+import Script from "next/script";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: siteData.default.openGraph.type as "website",
     url: siteData.default.openGraph.url,
     images: [{ url: siteData.default.openGraph.image }],
-    siteName: siteData.default.openGraph.title,
+    siteName: siteData.default.fullName,
   },
   twitter: {
     title: siteData.default.twitter.title,
@@ -39,7 +39,6 @@ export default function RootLayout({
 }) {
   return (
     <>
-      {/* Google Tag Manager */}
       <Script id="google-tag-manager" strategy="afterInteractive">
         {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -47,24 +46,18 @@ export default function RootLayout({
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-T3FDZDQ2');`}
       </Script>
-
-      {/* Google AdSense */}
       <Script
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8750631183642200"
         crossOrigin="anonymous"
         strategy="afterInteractive"
       />
-
-      {/* AMP Ads */}
       <Script
         async
         custom-element="amp-ad"
         src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
         strategy="afterInteractive"
       />
-
-      {/* Google Tag Manager (noscript) */}
       <noscript>
         <iframe
           title="google-tag-manager"
