@@ -230,19 +230,19 @@
   },
   "social": {
     "github": {
-      "url": "https://github.com/yourusername",
+      "url": "https://github.com/r44j-vadeghar",
       "title": "GitHub Profile"
     },
     "linkedin": {
-      "url": "https://linkedin.com/in/yourusername",
+      "url": "https://linkedin.com/in/r44j",
       "title": "LinkedIn Profile"
     },
     "youtube": {
-      "url": "https://youtube.com/@yourusername",
+      "url": "https://youtube.com/@rajvadeghar",
       "title": "YouTube Channel"
     },
     "mail": {
-      "url": "mailto:your-email@example.com",
+      "url": "mailto:r44j.dev@gmail.com",
       "title": "Email Me"
     }
   },

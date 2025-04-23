@@ -112,7 +112,7 @@ export class SeoManager {
       },
       potentialAction: {
         "@type": "SearchAction",
-        target: `${seoConfig.baseUrl}/blog?q={search_term_string}`,
+        target: `${seoConfig.baseUrl}/blog?page={search_term_string}`,
         query: "required name=search_term_string",
       },
     };
@@ -129,9 +129,9 @@ export class SeoManager {
       jobTitle: seoConfig.title,
       description: seoConfig.description,
       sameAs: [
-        "https://github.com/yourusername",
-        "https://linkedin.com/in/yourusername",
-        "https://youtube.com/@yourusername",
+        "https://github.com/r44j-vadeghar",
+        "https://linkedin.com/in/r44j",
+        "https://youtube.com/@rajvadeghar",
       ],
       knowsAbout: [
         "React",
