@@ -68,7 +68,6 @@ export default async function RootLayout({
               src="https://checkout.razorpay.com/v1/checkout.js"
             />
             <CinematicBackground />
-
             {(await draftMode()).isEnabled && (
               <>
                 <DisableDraftMode />

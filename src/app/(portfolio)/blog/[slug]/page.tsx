@@ -1,6 +1,7 @@
 // src/app/(portfolio)/blog/[slug]/page.tsx
 import TableOfContent from "@/components/blog/table-of-content";
 import JsonLd from "@/components/JsonLd";
+import Newsletter from "@/components/news-letter";
 import PortableText from "@/components/sanity/portable-text";
 import ShareLinks from "@/components/share-links";
 import socials from "@/constants/socials";
@@ -207,6 +208,8 @@ export default async function BlogPost({ params }: Props) {
               <div className="prose lg:prose-lg dark:prose-invert dark:prose-headings:text-white prose-headings:text-black dark:prose-p:text-white/70 prose-p:text-black/70 prose-a:text-blue-600 hover:prose-a:text-blue-500 dark:prose-li:text-white/70 prose-li:text-black/70 dark:prose-blockquote:text-white/50 prose-blockquote:text-black/50 dark:prose-strong:text-white prose-strong:text-black w-full">
                 <PortableText portableText={post.body ?? []} />
               </div>
+
+              <Newsletter />
 
               {hasRelatedPosts && (
                 <div

@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 
 import FeaturedWork from "@/components/home/features/featured-work";
+import Newsletter from "../news-letter";
 import CtaSection from "./sections/cta-section";
 import HeroSection from "./sections/hero-section";
 import ServicesSection from "./sections/services-section";
@@ -82,6 +83,7 @@ export default function HomePageClient() {
       <TestimonialSection ref={testimonialRef} />
       <CtaSection ref={ctaRef} />
       <ServicesSection />
+      <Newsletter />
 
       <style jsx global>{`
         .bg-grid-pattern {

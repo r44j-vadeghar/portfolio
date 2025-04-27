@@ -1,4 +1,3 @@
-// src/app/(portfolio)/blog/page.tsx
 import BlogCard from "@/components/blog/BlogCard";
 import Pagination from "@/components/blog/Pagination";
 import JsonLd from "@/components/JsonLd";
