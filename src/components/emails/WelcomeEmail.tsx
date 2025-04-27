@@ -39,8 +39,8 @@ export const WelcomeEmail = ({
           />
           <Heading style={heading}>Welcome to my Newsletter!</Heading>
           <Text style={paragraph}>
-            Thanks for subscribing to my newsletter. I'm excited to share my
-            journey, insights, and projects with you.
+            Thanks for subscribing to my newsletter. I&apos;m excited to share
+            my journey, insights, and projects with you.
           </Text>
 
           <Section style={statsContainer}>
@@ -63,7 +63,7 @@ export const WelcomeEmail = ({
           </Section>
 
           <Text style={paragraph}>
-            As a subscriber, you'll receive updates about:
+            As a subscriber, you&apos;ll receive updates about:
           </Text>
 
           <ul style={list}>
@@ -93,9 +93,9 @@ export const WelcomeEmail = ({
           <Hr style={hr} />
 
           <Text style={footer}>
-            You're receiving this email because you subscribed to my newsletter
-            with {userEmail}. If you'd prefer not to receive these emails, you
-            can{" "}
+            You&apos;re receiving this email because you subscribed to my
+            newsletter with {userEmail}. If you&apos;d prefer not to receive
+            these emails, you can{" "}
             <Link
               style={link}
               href="`${baseUrl}/unsubscribe?email=${userEmail}`"

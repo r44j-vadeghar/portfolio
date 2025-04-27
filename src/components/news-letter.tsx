@@ -51,7 +51,8 @@ export default function Newsletter() {
         ) as HTMLFormElement;
         form?.reset();
       }
-    } catch (error) {
+    } catch (e) {
+      console.error("e >>> ", e);
       setStatus({
         type: "error",
         message: "Something went wrong. Please try again.",

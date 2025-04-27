@@ -250,7 +250,7 @@ export class SeoManager {
       })),
     };
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   static getProductSchema(product: any): JsonLdType {
     return {
       "@context": "https://schema.org",

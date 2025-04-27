@@ -19,7 +19,8 @@ import siteData from "@/constants/siteData.json";
 
 interface HeroSectionProps {
   isLoaded: boolean;
-  opacity: any; // framer-motion's MotionValue
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  opacity: any;
 }
 
 export default function HeroSection({ isLoaded, opacity }: HeroSectionProps) {

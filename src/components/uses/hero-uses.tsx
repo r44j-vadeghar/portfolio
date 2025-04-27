@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import siteData from "@/constants/siteData.json";
 import { AnimatePresence, motion } from "framer-motion";
 import { Star } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function HeroUses() {
@@ -102,7 +103,9 @@ export default function HeroUses() {
                           >
                             {listItem.image && (
                               <div className="aspect-video w-full overflow-hidden rounded-md mb-4">
-                                <img
+                                <Image
+                                  width={1024}
+                                  height={1024}
                                   src={listItem.image}
                                   alt={listItem.name}
                                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
