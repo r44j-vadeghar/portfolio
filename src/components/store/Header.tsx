@@ -17,6 +17,7 @@ import Form from "next/form";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+import CommandMenu from "../CommandMenu";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import {
@@ -137,7 +138,7 @@ function Header() {
           {/* Search, theme, user actions */}
           <div className="flex items-center gap-2">
             {/* Desktop Search */}
-            <Form
+            {/* <Form
               action="/search"
               className="hidden md:flex items-center relative w-64 lg:w-80"
               onSubmit={handleSearch}
@@ -157,7 +158,9 @@ function Header() {
               >
                 <Search size={16} />
               </button>
-            </Form>
+            </Form> */}
+
+            <CommandMenu />
 
             {/* User Section */}
             <ClerkLoaded>
@@ -230,13 +233,9 @@ function Header() {
                   </div>
                 </Form>
 
-                {/* Mobile Navigation */}
                 <nav className="flex flex-col space-y-1">
                   {navLinks.map((link) => {
-                    // Skip items that require authentication if user is not logged in
                     if (link.authRequired && !user) return null;
-
-                    // Skip admin items if user is not admin
                     if (link.adminRequired && (!user || !isAdmin(user.id)))
                       return null;
 
@@ -268,7 +267,6 @@ function Header() {
                   })}
                 </nav>
 
-                {/* User info in mobile menu */}
                 <div className="mt-6 pt-6 border-t">
                   <ClerkLoaded>
                     {user ? (

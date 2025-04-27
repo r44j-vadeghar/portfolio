@@ -1,10 +1,18 @@
 "use client";
 
 import SocialLinks from "@/constants/socials";
-import { ChevronUp } from "lucide-react";
+import { ChevronUp, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
 export default function Footer() {
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -36,6 +44,20 @@ export default function Footer() {
         >
           Github
         </Link>
+
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={toggleTheme}
+          aria-label="Toggle theme"
+        >
+          {theme === "dark" ? (
+            <Sun className="h-[1.2rem] w-[1.2rem]" />
+          ) : (
+            <Moon className="h-[1.2rem] w-[1.2rem]" />
+          )}
+        </Button>
+
         <button
           onClick={scrollToTop}
           className="mx-4 flex items-center gap-1 rounded-full p-2 text-muted-foreground transition-all hover:bg-accent hover:underline hover:text-foreground"

@@ -1,10 +1,10 @@
 "use client";
 
+import CommandMenu from "@/components/CommandMenu"; // Import the new component
 import Socials from "@/components/Socials";
 import HeaderNavItem from "@/components/layout/HeaderNavItem";
 import gsap from "gsap";
-import { Menu, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -31,14 +31,8 @@ const navItems = [
 
 export default function Header() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
   const headerRef = useRef<HTMLDivElement>(null);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
   useEffect(() => {
     if (!headerRef.current) return;
 
@@ -141,7 +135,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center font-medium justify-center">
         {navItems.map((item) => (
           <HeaderNavItem
@@ -156,21 +149,8 @@ export default function Header() {
       </nav>
 
       <div className="flex gap-3 items-center justify-end ml-auto">
-        {/* Simple Theme Toggle Button */}
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={toggleTheme}
-          aria-label="Toggle theme"
-        >
-          {theme === "dark" ? (
-            <Sun className="h-[1.2rem] w-[1.2rem]" />
-          ) : (
-            <Moon className="h-[1.2rem] w-[1.2rem]" />
-          )}
-        </Button>
+        <CommandMenu />
 
-        {/* Mobile Menu Sheet */}
         <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
           <SheetTrigger asChild className="md:hidden">
             <Button variant="outline" size="icon">
@@ -197,22 +177,24 @@ export default function Header() {
               <SheetClose asChild>
                 <Link
                   href="https://calendly.com/r44j/30min"
-                  className="w-full rounded-lg bg-primary/10 px-6 py-3 text-center text-sm font-bold text-primary ring-primary/30 ring-offset-2 ring-offset-background transition-all hover:bg-primary/20 hover:ring-2 focus:ring-2 mt-4"
+                  className="w-full whitespace-nowrap rounded-lg bg-primary/10 px-6 py-3 text-center text-sm font-bold text-primary ring-primary/30 ring-offset-2 ring-offset-background transition-all hover:bg-primary/20 hover:ring-2 focus:ring-2 mt-4"
                 >
                   Book a free meeting
                 </Link>
+              </SheetClose>
+              <SheetClose asChild>
+                <CommandMenu />
               </SheetClose>
             </nav>
           </SheetContent>
         </Sheet>
 
-        {/* Desktop CTA Button */}
-        <Link
+        {/* <Link
           href="https://calendly.com/r44j/30min"
-          className="hidden md:block w-fit justify-self-end rounded-lg bg-primary/10 px-6 py-2 text-sm font-bold text-primary ring-primary/30 ring-offset-2 ring-offset-background transition-all hover:bg-primary/20 hover:ring-2 focus:ring-2"
+          className="hidden whitespace-nowrap md:block w-fit justify-self-end rounded-lg bg-primary/10 px-6 py-2 text-sm font-bold text-primary ring-primary/30 ring-offset-2 ring-offset-background transition-all hover:bg-primary/20 hover:ring-2 focus:ring-2"
         >
           Book a free meeting
-        </Link>
+        </Link> */}
       </div>
     </header>
   );
