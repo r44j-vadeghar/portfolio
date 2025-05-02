@@ -1,14 +1,25 @@
 import WelcomeEmail from "@/components/emails/WelcomeEmail";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const apiKey = process.env.RESEND_API_KEY;
+console.log("Resend API Key available:", apiKey ? "Yes (redacted)" : "No");
+
+const resend = new Resend(apiKey);
 
 export async function sendWelcomeEmail(email: string) {
+  console.log("Attempting to send welcome email to:", email);
+
   try {
+    if (!apiKey) {
+      console.error("Missing Resend API key!");
+      return { success: false, error: "API key not configured" };
+    }
+
+    console.log("Sending email via Resend...");
     const { data, error } = await resend.emails.send({
-      from: "Your Portfolio <newsletter@yourdomain.com>",
+      from: "Raj Vadeghar <newsletter@r44j.dev>",
       to: email,
-      subject: "Welcome to My Portfolio Newsletter",
+      subject: "Welcome to R44j Newsletter",
       react: WelcomeEmail({ userEmail: email }),
     });
 
@@ -17,6 +28,7 @@ export async function sendWelcomeEmail(email: string) {
       return { success: false, error };
     }
 
+    console.log("Email sent successfully:", data);
     return { success: true, data };
   } catch (error) {
     console.error("Error sending welcome email:", error);

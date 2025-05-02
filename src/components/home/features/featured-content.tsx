@@ -1,6 +1,13 @@
 "use client";
 import { useInView } from "framer-motion";
-import { PropsWithChildren, useEffect, useRef } from "react";
+import {
+  PropsWithChildren,
+  RefObject,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import { useFeatureStore } from "./feature-store";
 
 function FeaturedContent({
@@ -10,11 +17,15 @@ function FeaturedContent({
   id: string;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const documentRef = useRef(document);
+  const [documentRef, setDocumentRef] = useState<Document | null>(null);
+
+  useLayoutEffect(() => {
+    setDocumentRef(document);
+  }, []);
+
   const isInView = useInView(ref, {
     margin: "-50% 0px -50% 0px",
-    // @ts-ignore
-    root: documentRef,
+    root: documentRef as unknown as RefObject<Element>,
   });
   const setInViewFeature = useFeatureStore((state) => state.setInViewFeature);
   const inViewFeature = useFeatureStore((state) => state.inViewFeature);
