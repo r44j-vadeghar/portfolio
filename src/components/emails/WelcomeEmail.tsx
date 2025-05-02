@@ -50,9 +50,9 @@ export const PremiumWelcomeEmail = ({
           {/* Hero section */}
           <Section style={heroSection}>
             <Text style={paragraphHero}>
-              Thanks for subscribing to my premium newsletter. I'm thrilled to
-              have you join my community of tech enthusiasts and professionals.
-              Get ready for exclusive content and insights!
+              Thanks for subscribing to my premium newsletter. I&apos;m thrilled
+              to have you join my community of tech enthusiasts and
+              professionals. Get ready for exclusive content and insights!
             </Text>
           </Section>
 
@@ -90,9 +90,9 @@ export const PremiumWelcomeEmail = ({
 
           {/* What to expect section */}
           <Section style={contentSection}>
-            <Heading style={headingSecondary}>What You'll Receive</Heading>
+            <Heading style={headingSecondary}>What You&apos;ll Receive</Heading>
             <Text style={paragraph}>
-              As a premium subscriber, you'll have access to:
+              As a premium subscriber, you&apos;ll have access to:
             </Text>
 
             <Section style={featureRow}>
@@ -191,7 +191,7 @@ export const PremiumWelcomeEmail = ({
           {/* Footer */}
           <Section style={footerSection}>
             <Text style={footerText}>
-              You're receiving this email because you subscribed with{" "}
+              You&apos;re receiving this email because you subscribed with{" "}
               <strong>{userEmail}</strong>.
             </Text>
             <Text style={footerLinks}>
