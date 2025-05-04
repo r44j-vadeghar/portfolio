@@ -1,10 +1,12 @@
 import CinematicBackground from "@/components/CinematicGrid";
-import { ContextAwareCursor } from "@/components/cursors/context-aware-cursor";
+import CursorAwareWrapper from "@/components/cursor-aware-wrapper";
 import { DisableDraftMode } from "@/components/draft-mode/DisableDraftMode";
 import JsonLd from "@/components/JsonLd";
 import { PostHogProvider } from "@/components/PostHogProvider";
+import { Toaster } from "@/components/ui/sonner";
 import siteData from "@/constants/siteData.json";
 import { SeoManager } from "@/lib/seo/SeoManager";
+import { CursorProvider } from "@/providers/cursor-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { SanityLive } from "@/sanity/lib/live";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -74,8 +76,11 @@ export default async function RootLayout({
                 <VisualEditing />
               </>
             )}
-            <ContextAwareCursor />
-            <PostHogProvider>{children}</PostHogProvider>
+            <CursorProvider>
+              <CursorAwareWrapper />
+              <Toaster />
+              <PostHogProvider>{children}</PostHogProvider>
+            </CursorProvider>
             <SanityLive />
           </ThemeProvider>
         </body>

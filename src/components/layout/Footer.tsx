@@ -1,23 +1,24 @@
 "use client";
 
 import SocialLinks from "@/constants/socials";
-import { ChevronUp, Moon, Sun } from "lucide-react";
+import { useCursor } from "@/providers/cursor-provider";
+import {
+  ChevronUp,
+  Moon,
+  MousePointer,
+  MousePointerClick,
+  Sun,
+} from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
 export default function Footer() {
   const { theme, setTheme } = useTheme();
+  const { showNormalCursor, toggleCursor } = useCursor();
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
   };
 
   return (
@@ -50,6 +51,7 @@ export default function Footer() {
           size="icon"
           onClick={toggleTheme}
           aria-label="Toggle theme"
+          className="mx-2"
         >
           {theme === "dark" ? (
             <Sun className="h-[1.2rem] w-[1.2rem]" />
@@ -58,12 +60,33 @@ export default function Footer() {
           )}
         </Button>
 
-        <button
-          onClick={scrollToTop}
-          className="mx-4 flex items-center gap-1 rounded-full p-2 text-muted-foreground transition-all hover:bg-accent hover:underline hover:text-foreground"
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={toggleCursor}
+          aria-label="Toggle cursor style"
+          className="mx-2"
+          title={
+            showNormalCursor ? "Enable custom cursor" : "Use normal cursor"
+          }
         >
-          <ChevronUp className="h-7 w-7 hover:stroke-2" />
-        </button>
+          {showNormalCursor ? (
+            <MousePointerClick className="h-[1.2rem] w-[1.2rem]" />
+          ) : (
+            <MousePointer className="h-[1.2rem] w-[1.2rem]" />
+          )}
+        </Button>
+
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Scroll to top"
+          className="mx-2"
+          title="Scroll to top"
+        >
+          <ChevronUp className="h-4 w-4" />
+        </Button>
       </nav>
     </footer>
   );

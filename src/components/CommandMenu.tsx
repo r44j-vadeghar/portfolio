@@ -11,6 +11,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
+import { useCursor } from "@/providers/cursor-provider";
 import { client } from "@/sanity/lib/client";
 import {
   Calendar,
@@ -19,6 +20,8 @@ import {
   Laptop,
   Mail,
   Moon,
+  MousePointer,
+  MousePointerClick,
   Search,
   ShoppingBag,
   Sun,
@@ -28,6 +31,7 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { PAGED_BLOGS_QUERYResult } from "../../sanity.types";
+import { toast } from "sonner";
 
 type NavItem = {
   href: string;
@@ -43,6 +47,7 @@ type ActionItem = {
   shortcut: string;
   icon: React.ElementType;
   lightIcon?: React.ElementType;
+  defaultIcon?: React.ElementType;
 };
 
 const navItems: NavItem[] = [
@@ -83,6 +88,14 @@ const actionItems: ActionItem[] = [
     lightIcon: Sun,
   },
   {
+    id: "cursor",
+    label: "Toggle Default Cursor",
+    keywords: "cursor, pointer, mouse, default",
+    shortcut: "X",
+    icon: MousePointer,
+    defaultIcon: MousePointerClick,
+  },
+  {
     id: "meeting",
     label: "Book a Meeting",
     keywords: "schedule, call, consultation, calendly, appointment",
@@ -102,6 +115,8 @@ export default function CommandMenu() {
   const [blogs, setBlogs] = useState<PAGED_BLOGS_QUERYResult>([]);
   const [open, setOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { showNormalCursor, toggleCursor } = useCursor();
+
   const router = useRouter();
 
   useEffect(() => {
@@ -174,6 +189,9 @@ export default function CommandMenu() {
       case "theme":
         handleToggleTheme();
         break;
+      case "cursor":
+        toggleCursor();
+        break;
       case "meeting":
         handleBookMeeting();
         break;
@@ -201,7 +219,7 @@ export default function CommandMenu() {
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <Command className="rounded-lg border shadow-lg overflow-hidden">
+        <Command loop className="rounded-lg border shadow-lg overflow-hidden">
           <CommandInput
             placeholder="Type a command or search..."
             className="h-11 placeholder:text-muted-foreground/70 text-base focus:outline-none"
@@ -288,6 +306,10 @@ export default function CommandMenu() {
                     theme === "dark" &&
                     action.lightIcon ? (
                       <action.lightIcon className="h-4 w-4" />
+                    ) : action.id === "cursor" &&
+                      showNormalCursor &&
+                      action.defaultIcon ? (
+                      <action.defaultIcon className="h-4 w-4" />
                     ) : (
                       <action.icon className="h-4 w-4" />
                     )}

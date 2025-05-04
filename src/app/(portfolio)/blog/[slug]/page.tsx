@@ -1,5 +1,6 @@
 // src/app/(portfolio)/blog/[slug]/page.tsx
 import TableOfContent from "@/components/blog/table-of-content";
+import UtilityActionItems from "@/components/blog/utility-action-items";
 import JsonLd from "@/components/JsonLd";
 import Newsletter from "@/components/news-letter";
 import PortableText from "@/components/sanity/portable-text";
@@ -200,8 +201,8 @@ export default async function BlogPost({ params }: Props) {
                 <ShareLinks
                   url={`https://r44j.dev/blog/${post.slug?.current}`}
                 />
+                <UtilityActionItems />
               </div>
-              {/* Ad component will be added later if needed */}
             </div>
 
             <div className="mx-auto w-full max-w-3xl">
