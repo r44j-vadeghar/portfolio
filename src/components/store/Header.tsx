@@ -61,6 +61,7 @@ function Header() {
 
   // Navigation links for desktop and mobile
   const navLinks = [
+    { href: "/", label: "Localhost", icon: null },
     { href: "/store", label: "Shop", icon: null },
     {
       href: "/basket",
