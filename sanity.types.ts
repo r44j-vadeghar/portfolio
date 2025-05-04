@@ -46,6 +46,35 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Testimonial = {
+  _id: string;
+  _type: "testimonial";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  designation?: string;
+  company?: string;
+  feedback?: string;
+  rating?: 1 | 2 | 3 | 4 | 5;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  isVideo?: boolean;
+  videoUrl?: string;
+  videoLowResUrl?: string;
+  submittedAt?: string;
+  approved?: boolean;
+};
+
 export type Embed = {
   _type: "embed";
   url?: string;
@@ -54,11 +83,8 @@ export type Embed = {
 
 export type Table = {
   _type: "table";
-  rows?: Array<{
-    cells?: Array<string>;
-    _type: "row";
-    _key: string;
-  }>;
+  csvData?: string;
+  hasHeader?: boolean;
 };
 
 export type Youtube = {
@@ -434,7 +460,7 @@ export type Code = {
   highlightedLines?: Array<number>;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Geopoint | Embed | Table | Youtube | ProductAsset | SalesType | OrderType | ProductCategory | Category | BlockContent | Post | ProductType | SanityFileAsset | Author | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | Code;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | Geopoint | Testimonial | Embed | Table | Youtube | ProductAsset | SalesType | OrderType | ProductCategory | Category | BlockContent | Post | ProductType | SanityFileAsset | Author | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | Code;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/blog/getAllBlogs.ts
 // Variable: ALL_BLOGS_QUERY
@@ -992,6 +1018,70 @@ export type BLOG_POSTS_QUERYResult = Array<{
   imageUrl: string | null;
 }>;
 
+// Source: ./src/sanity/lib/testimonials/getAllTestimonials.ts
+// Variable: ALL_TESTIMONIALS_QUERY
+// Query: *[_type == "testimonial"]
+export type ALL_TESTIMONIALS_QUERYResult = Array<{
+  _id: string;
+  _type: "testimonial";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  designation?: string;
+  company?: string;
+  feedback?: string;
+  rating?: 1 | 2 | 3 | 4 | 5;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  isVideo?: boolean;
+  videoUrl?: string;
+  videoLowResUrl?: string;
+  submittedAt?: string;
+  approved?: boolean;
+}>;
+
+// Source: ./src/sanity/lib/testimonials/getTestimonialById.ts
+// Variable: TESTIMONIALS_ID_QUERY
+// Query: *[      _type == "testimonial"      && _id == $id    ][0]
+export type TESTIMONIALS_ID_QUERYResult = {
+  _id: string;
+  _type: "testimonial";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  designation?: string;
+  company?: string;
+  feedback?: string;
+  rating?: 1 | 2 | 3 | 4 | 5;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  isVideo?: boolean;
+  videoUrl?: string;
+  videoLowResUrl?: string;
+  submittedAt?: string;
+  approved?: boolean;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
@@ -1015,5 +1105,7 @@ declare module "@sanity/client" {
     "\n    *[_type == \"category\"] {\n      \"slug\": slug.current\n    }\n  ": BLOG_CATEGORY_SLUGS_QUERYResult;
     "\n    *[_type == \"productCategory\"] {\n      \"slug\": slug.current\n    }\n  ": PRODUCT_CATEGORY_SLUGS_QUERYResult;
     "\n    *[_type == \"post\"] {\n      title,\n      \"slug\": slug.current,\n      publishedAt,\n      excerpt,\n      \"authorName\": author->name,\n      \"categories\": categories[]->title,\n      \"imageUrl\": mainImage.asset->url\n    }\n  ": BLOG_POSTS_QUERYResult;
+    "\n    *[_type == \"testimonial\"]\n  ": ALL_TESTIMONIALS_QUERYResult;
+    "\n    *[\n      _type == \"testimonial\"\n      && _id == $id\n    ][0]\n  ": TESTIMONIALS_ID_QUERYResult;
   }
 }

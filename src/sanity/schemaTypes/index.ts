@@ -9,8 +9,9 @@ import { productAssetType } from "./productAssetType";
 import { productCategoryType } from "./productCategoryType";
 import { productType } from "./productType";
 import { salesType } from "./salesType";
-import { youTubeType } from "./youTubeType";
+import { testimonialType } from "./testimonials";
 import { embedType, tableType } from "./utilityTypes";
+import { youTubeType } from "./youTubeType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -26,5 +27,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     youTubeType,
     tableType,
     embedType,
+    testimonialType,
   ],
 };

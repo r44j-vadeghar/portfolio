@@ -3,6 +3,7 @@ import { ContextAwareCursor } from "@/components/cursors/context-aware-cursor";
 import { DisableDraftMode } from "@/components/draft-mode/DisableDraftMode";
 import JsonLd from "@/components/JsonLd";
 import { PostHogProvider } from "@/components/PostHogProvider";
+import { Toaster } from "@/components/ui/sonner";
 import siteData from "@/constants/siteData.json";
 import { SeoManager } from "@/lib/seo/SeoManager";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -76,6 +77,7 @@ export default async function RootLayout({
             )}
             <ContextAwareCursor />
             <PostHogProvider>{children}</PostHogProvider>
+            <Toaster />
             <SanityLive />
           </ThemeProvider>
         </body>

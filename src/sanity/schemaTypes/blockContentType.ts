@@ -207,33 +207,5 @@ export const blockContentType = defineType({
         },
       },
     }),
-    defineArrayMember({
-      title: "Collapsible Section",
-      name: "collapsible",
-      type: "object",
-      fields: [
-        {
-          title: "Title",
-          name: "title",
-          type: "string",
-        },
-        {
-          title: "Content",
-          name: "content",
-          type: "blockContent",
-        },
-        {
-          title: "Open by default",
-          name: "defaultOpen",
-          type: "boolean",
-          initialValue: false,
-        },
-      ],
-      preview: {
-        select: {
-          title: "title",
-        },
-      },
-    }),
   ],
 });
