@@ -31,7 +31,6 @@ import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { PAGED_BLOGS_QUERYResult } from "../../sanity.types";
-import { toast } from "sonner";
 
 type NavItem = {
   href: string;
