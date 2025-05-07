@@ -23,6 +23,7 @@ function FeaturedCard({
           ? "active-card opacity-100"
           : "pointer-events-none opacity-0"
       }`}
+      data-featured-card={id}
     >
       <div
         className={`gradient absolute inset-0 origin-bottom-left rounded-2xl bg-gradient-to-br ${gradient}`}

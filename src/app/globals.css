@@ -125,4 +125,8 @@
   body {
     @apply bg-background text-foreground;
   }
+  svg {
+    stroke: currentColor;
+    fill: none;
+  }
 }

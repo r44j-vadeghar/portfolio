@@ -1,6 +1,5 @@
 "use client";
 
-import { useScroll, useTransform } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
@@ -24,9 +23,6 @@ export default function HomePageClient() {
   const statsRef = useRef(null);
   const testimonialRef = useRef(null);
   const ctaRef = useRef(null);
-
-  const { scrollYProgress } = useScroll();
-  const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0.3]);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -76,7 +72,7 @@ export default function HomePageClient() {
 
   return (
     <main className="min-h-screen flex flex-col">
-      <HeroSection isLoaded={isLoaded} opacity={opacity} />
+      <HeroSection isLoaded={isLoaded} />
       <SkillsSection ref={skillsRef} />
       <StatsSection ref={statsRef} />
       <FeaturedWork />

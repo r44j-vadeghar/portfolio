@@ -79,7 +79,11 @@ export default async function RootLayout({
             <CursorProvider>
               <CursorAwareWrapper />
               <Toaster />
-              <PostHogProvider>{children}</PostHogProvider>
+              <PostHogProvider>
+                {/* <ScrollSmootherProvider smoothness={1.5}> */}
+                {children}
+                {/* </ScrollSmootherProvider> */}
+              </PostHogProvider>
             </CursorProvider>
             <SanityLive />
           </ThemeProvider>
