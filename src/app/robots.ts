@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/xerox", "/privacy-policy", "/uniconnect"],
+      disallow: ["/xerox", "/privacy-policy", "/uniconnect", "/test"],
     },
     sitemap: `${
       process.env.VERCEL_URL ? process.env.VERCEL_URL : "https://r44j.dev"
