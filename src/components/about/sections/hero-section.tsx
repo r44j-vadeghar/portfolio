@@ -49,35 +49,74 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="flex-1 space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
-            <p className="text-muted-foreground">
-              I&apos;m a Full Stack Developer and DevOps Engineer with 3 years
-              of experience across startup and enterprise environments. My
-              journey began at Manifold Ventures where I honed my React and
-              Next.js skills, followed by a year at TCS where I expanded into
-              .NET/C# and DevOps practices. Now back at Manifold Ventures,
-              I&apos;m leveraging my diverse skill set to create exceptional
-              digital experiences.
-            </p>
-            <p className="text-muted-foreground">
-              Beyond coding, I&apos;m passionate about sharing knowledge through
-              my YouTube channel, where I create content on development best
-              practices, tutorials, and industry insights. This blend of
-              technical expertise and communication skills allows me to not only
-              build great products but also effectively collaborate with teams
-              and clients.
-            </p>
-            <div className="flex flex-wrap gap-4 pt-2">
+          <div className="flex-1 space-y-8">
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                I build systems that 
+                <span className="text-primary block">actually work.</span>
+              </h1>
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                Senior Full Stack Developer specializing in complex applications that scale. 
+                I deliver 40% faster using AI-enhanced workflows while maintaining enterprise-grade quality.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 py-8 border-y border-border/20">
+              <div>
+                <h3 className="font-semibold mb-3 text-lg">What I Build</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
+                    WhatsApp Business platforms with AI
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
+                    Chrome extensions with complex UIs
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
+                    Real-time applications & APIs
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
+                    Cloud infrastructure & deployment
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="font-semibold mb-3 text-lg">How I Work</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0 mt-2" />
+                    AI-enhanced development workflows
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0 mt-2" />
+                    Optimized environments & automation
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0 mt-2" />
+                    Weekly demos & transparent communication
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0 mt-2" />
+                    Enterprise-grade testing & deployment
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-4">
               <Button asChild size="lg" className="gap-2">
                 <Link href={siteData.personal.calendlyUrl}>
                   <Calendar className="h-4 w-4" />
-                  Schedule a Call
+                  Let&apos;s Talk
                 </Link>
               </Button>
               <Button variant="outline" asChild size="lg" className="gap-2">
-                <Link href="/uses">
-                  My Tech Stack
+                <Link href="#experience">
+                  View Experience
                   <ChevronRight className="h-4 w-4" />
                 </Link>
               </Button>

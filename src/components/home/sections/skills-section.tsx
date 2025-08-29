@@ -1,4 +1,4 @@
-import { Code, Database, Paintbrush, Server, Video } from "lucide-react";
+import { Code, Database, Paintbrush, Server, Video, Zap } from "lucide-react";
 import { forwardRef } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,6 +10,7 @@ const iconMap = {
   Server: Server,
   Paintbrush: Paintbrush,
   Video: Video,
+  Zap: Zap,
 };
 
 const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
@@ -24,8 +25,8 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">My Expertise</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Specialized skills honed over 3 years of professional experience
-            across startup and enterprise environments.
+            Core competencies developed through building complex systems, 
+            AI-powered platforms, and enterprise-grade applications.
           </p>
         </div>
 
@@ -43,10 +44,7 @@ const SkillsSection = forwardRef<HTMLElement>((props, ref) => {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{skill.label}</h3>
                 <p className="text-muted-foreground">
-                  {
-                    siteData.about.skills.find((s) => s.label === skill.label)
-                      ?.description
-                  }
+                  {skill.description}
                 </p>
               </CardContent>
             </Card>

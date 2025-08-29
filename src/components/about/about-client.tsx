@@ -3,9 +3,9 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
-import AchievementsSection from "./sections/achievements-section";
 import CtaSection from "./sections/cta-section";
 import ExperienceSection from "./sections/experience-section";
+import FaqSection from "./sections/faq-section";
 import HeroSection from "./sections/hero-section";
 import SkillsSection from "./sections/skills-section";
 
@@ -15,8 +15,8 @@ if (typeof window !== "undefined") {
 
 export default function AboutPageClient() {
   const skillsRef = useRef(null);
-  const achievementsRef = useRef(null);
   const experienceRef = useRef(null);
+  const faqRef = useRef(null);
   const ctaRef = useRef(null);
 
   useEffect(() => {
@@ -32,17 +32,6 @@ export default function AboutPageClient() {
         stagger: 0.1,
       });
 
-      gsap.from(".achievement-item", {
-        scrollTrigger: {
-          trigger: achievementsRef.current,
-          start: "top 80%",
-        },
-        x: -30,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-      });
-
       gsap.from(".experience-card", {
         scrollTrigger: {
           trigger: experienceRef.current,
@@ -52,6 +41,17 @@ export default function AboutPageClient() {
         opacity: 0,
         duration: 0.8,
         stagger: 0.2,
+      });
+
+      gsap.from(".faq-item", {
+        scrollTrigger: {
+          trigger: faqRef.current,
+          start: "top 80%",
+        },
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
       });
 
       gsap.from(".cta-content", {
@@ -69,11 +69,11 @@ export default function AboutPageClient() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-background to-background/95 flex flex-col">
+    <main className="min-h-screen bg-background flex flex-col">
       <HeroSection />
       <SkillsSection ref={skillsRef} />
-      <AchievementsSection ref={achievementsRef} />
       <ExperienceSection ref={experienceRef} />
+      <FaqSection ref={faqRef} />
       <CtaSection ref={ctaRef} />
 
       {/* CSS for background pattern */}

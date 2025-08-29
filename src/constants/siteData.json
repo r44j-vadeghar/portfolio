@@ -3,25 +3,25 @@
     "fullName": "Vadeghar Raja Narayana",
     "name": "R44j",
     "title": "R44J - Full Stack Developer",
-    "keywords": "R44J, Full Stack Developer, DevOps Engineer, React, Next.js, TypeScript, Tailwind CSS, .NET, C#, Video Editing, Content Creation, SEO, Chrome Extensions, E-commerce",
-    "description": "R44J is a Full Stack Developer with 3 years of experience specializing in React, Next.js, and DevOps. Expert in creating scalable architectures, stunning UIs, and optimized solutions for modern web applications.",
+    "keywords": "R44J, Senior Full Stack Developer, React, Next.js, TypeScript, Chrome Extensions, AI Integration, Real-time Applications, Cloud Infrastructure, WhatsApp Business API, Social Media Integrations, Stripe Payments, Vector Search, WebSockets",
+    "description": "R44J is a Senior Full Stack Developer with 3+ years of experience building complex web applications, Chrome extensions, and cloud infrastructure. Expert in React/Next.js, real-time systems, AI integration, and scalable enterprise solutions.",
     "openGraph": {
-      "title": "R44J | Full Stack Developer & DevOps Engineer",
-      "description": "Full Stack Developer with 3 years of experience specializing in React, Next.js, and DevOps. Explore my expertise in creating scalable architectures, stunning UIs, and optimized solutions.",
+      "title": "R44J | Senior Full Stack Developer & Solutions Architect",
+      "description": "Senior Full Stack Developer specializing in complex web applications, Chrome extensions, AI integration, and cloud infrastructure. Building scalable solutions for modern businesses.",
       "type": "website",
       "url": "https://r44j.dev",
       "image": "https://r44j.dev/raj.png"
     },
     "twitter": {
-      "title": "R44J | Full Stack Developer & DevOps Engineer",
-      "description": "Full Stack Developer with 3 years of experience specializing in React, Next.js, and DevOps. Explore my expertise in creating scalable architectures, stunning UIs, and optimized solutions.",
+      "title": "R44J | Senior Full Stack Developer & Solutions Architect",
+      "description": "Senior Full Stack Developer specializing in complex web applications, Chrome extensions, AI integration, and cloud infrastructure. Building scalable solutions for modern businesses.",
       "creator": "@VadegharRaj"
     }
   },
   "pages": {
     "about": {
       "title": "About Me",
-      "description": "Full Stack Developer with 3 years of experience across startups and enterprise environments. Skilled in React, Next.js, TypeScript, DevOps, .NET, and C#. I build engaging & scalable web applications that deliver exceptional user experiences. Looking to bring your vision to life? Let's connect!"
+      "description": "Senior Full Stack Developer with 3+ years of experience building complex applications across startups and enterprises. Expert in React/Next.js ecosystems, AI integration, real-time systems, and cloud infrastructure. Currently developing WhatsApp Business platforms, Chrome extensions, and scalable web applications. Specialized in solving technical challenges and building products that scale."
     },
     "contact": {
       "title": "Contact R44J"
@@ -38,85 +38,34 @@
             {
               "title": "Computer / Laptop",
               "list": [
-                {
-                  "name": "MacBook Air M1 (2022) - Apple M1, 8GB RAM, 256GB SSD, 1TB External Drive",
-                  "affiliateLink": "https://amzn.to/4iRGLoI",
-                  "rating": "4.0",
-                  "recommended": true,
-                  "ratedOn": "April 1, 2025",
-                  "image": "/assets/affiliates/macbook.jpg"
-                },
-                {
-                  "name": "iPad Air 11 inch (2024) - Apple M2, with Apple Pencil Pro",
-                  "affiliateLink": "https://amzn.to/4lh8TmM",
-                  "rating": "4.0",
-                  "recommended": true,
-                  "ratedOn": "April 1, 2025",
-                  "image": "/assets/affiliates/ipad.jpg"
-                }
+                "MacBook Air M1 (2022) - Apple M1, 8GB RAM, 256GB SSD, 1TB External Drive",
+                "iPad Air 11 inch (2024) - Apple M2, with Apple Pencil Pro"
               ]
             },
             {
               "title": "Display & Audio",
               "list": [
-                {
-                  "name": "Apple EarPods (USB-C)",
-                  "affiliateLink": "https://amzn.to/4chZqHG",
-                  "rating": "4.5",
-                  "recommended": true,
-                  "ratedOn": "April 1, 2025",
-                  "image": "/assets/affiliates/earpods.webp"
-                },
-                {
-                  "name": "Boult Klarity 3 6-Mic Hybrid ANC (Up to 50dB) in Ear Earbuds",
-                  "affiliateLink": "https://amzn.to/3XF7nkf",
-                  "rating": "4",
-                  "recommended": true,
-                  "ratedOn": "April 1, 2025",
-                  "image": "/assets/affiliates/boult.jpg"
-                }
+                "Apple EarPods (USB-C)",
+                "Boult Klarity 3 6-Mic Hybrid ANC (Up to 50dB) in Ear Earbuds"
               ]
             },
             {
               "title": "Input Devices",
               "list": [
-                {
-                  "name": "Keychron K8 Pro QMK/VIA Wireless Mechanical Keyboard",
-                  "affiliateLink": "https://amzn.to/4hTWJNP",
-                  "rating": "5",
-                  "recommended": true,
-                  "ratedOn": "April 1, 2025",
-                  "image": "/assets/affiliates/keychron.jpg"
-                },
-                {
-                  "name": "Logitech MX Master 3 Mouse",
-                  "affiliateLink": "https://amzn.to/4le6bhF",
-                  "rating": "5",
-                  "recommended": true,
-                  "ratedOn": "April 1, 2025",
-                  "image": "/assets/affiliates/logitech.webp"
-                }
+                "Keychron K8 Pro QMK/VIA Wireless Mechanical Keyboard",
+                "Logitech MX Master 3 Mouse"
               ]
             },
             {
               "title": "Mobile Devices",
               "list": [
-                {
-                  "name": "Samsung F22"
-                }
+                "Samsung F22"
               ]
             },
             {
               "title": "FitNess",
               "list": [
-                {
-                  "name": "Lifelong LLF45 Fit Pro Spin Fitness Bike with 6Kg Flywheel, Adjustable Resistance, LCD Monitor and Heart Rate Sensor for Fitness at Home; Home Workouts (1 Year Warranty, Max Weight: 120 kg)",
-                  "affiliateLink": "https://amzn.to/4jdZhHf",
-                  "rating": "5",
-                  "recommended": true,
-                  "ratedOn": "May 23, 2025",
-                  "image": "/assets/affiliates/fitness-bike.jpg"
-                }
+                "Lifelong Fit Pro Spin Fitness Bike"
               ]
             }
           ]
@@ -157,17 +106,18 @@
             {
               "title": "Tech Stack",
               "list": [
-                "Next.js / React",
-                "TypeScript",
-                "Tailwind CSS",
-                "shadcn/ui",
-                "Framer Motion / GSAP",
-                "Node.js",
-                ".NET / C#",
-                "PostgreSQL / MongoDB",
-                "AWS / Azure DevOps",
-                "GitHub Actions / CI/CD",
-                "Chrome Extensions"
+                "React / Next.js / TypeScript",
+                "Chrome Extension APIs",
+                "OpenAI / AI Integration",
+                "WhatsApp Business API",
+                "Socket.io / WebSockets",
+                "PostgreSQL / Vector Search",
+                "AWS / Terraform",
+                "Docker / Containerization",
+                "Stripe / PayPal Integration",
+                "shadcn/ui / Tailwind CSS",
+                "Node.js / Express",
+                "Drizzle ORM"
               ]
             }
           ]
@@ -214,31 +164,31 @@
     }
   },
   "personal": {
-    "role": "Full Stack Developer",
-    "tagline": "Crafting Digital Experiences That Matter",
-    "shortDescription": "Building high-performance web applications with clean code, beautiful interfaces, and scalable architecture.",
+    "role": "Senior Full Stack Developer",
+    "tagline": "Engineering Scalable Solutions for Modern Challenges",
+    "shortDescription": "Building enterprise-grade applications with AI integration, real-time features, and cloud-native architecture. Transforming complex requirements into elegant, scalable solutions.",
     "calendlyUrl": "https://calendly.com/r44j/30min",
     "avatar": "/me.png"
   },
   "services": {
     "primary": [
-      "React & Next.js Applications",
-      "Full Stack Development",
-      "DevOps & CI/CD Pipelines",
-      "Scalable Architectures",
-      "UI/UX Implementation",
-      "Performance Optimization",
-      "SEO & Content Strategy",
-      "Chrome Extensions",
-      "E-commerce Solutions"
+      "Complex Web Applications",
+      "Chrome Extension Development",
+      "AI & Machine Learning Integration",
+      "Real-time & WebSocket Systems",
+      "WhatsApp Business API Solutions",
+      "Social Media Platform Integrations",
+      "Payment Processing (Stripe/PayPal)",
+      "Cloud Infrastructure & DevOps",
+      "Enterprise Authentication (SSO)"
     ],
     "network": [
-      "Mobile-First Websites",
-      "PWAs",
-      "API Development",
-      ".NET/C# Development",
-      "Video Production & Editing",
-      "Content Creation"
+      "Vector Search & Semantic AI",
+      "Content Management Systems",
+      "Email Marketing Platforms",
+      "Multi-tenant SaaS Applications",
+      "Media Processing & Storage",
+      "Performance Optimization"
     ]
   },
   "social": {
@@ -263,47 +213,48 @@
     "skills": [
       {
         "iconName": "Code",
-        "label": "Frontend Development",
-        "description": "Creating responsive, performant web applications with React, Next.js, and TypeScript",
+        "label": "Complex Web Applications",
+        "description": "Building enterprise-grade React/Next.js applications with advanced state management, real-time features, and scalable architectures",
         "color": "text-blue-400"
       },
       {
         "iconName": "Database",
-        "label": "Backend Development",
-        "description": "Building robust APIs and server-side solutions with Node.js and .NET/C#",
+        "label": "AI & Integration Systems",
+        "description": "Implementing OpenAI APIs, vector search, WhatsApp Business APIs, and multi-platform social media integrations",
         "color": "text-green-400"
       },
       {
         "iconName": "Server",
-        "label": "DevOps Engineering",
-        "description": "Setting up CI/CD pipelines, containerization, and cloud infrastructure",
+        "label": "Cloud Infrastructure",
+        "description": "Deploying with AWS, Terraform, Docker containerization, and managing production systems with PostgreSQL and Redis",
         "color": "text-purple-400"
       },
       {
         "iconName": "Paintbrush",
-        "label": "UI/UX Implementation",
-        "description": "Bringing designs to life with Tailwind CSS, shadcn/ui, and animations (GSAP, Framer Motion)",
+        "label": "Chrome Extensions",
+        "description": "Developing feature-rich browser extensions with complex UI components and seamless browser API integrations",
         "color": "text-teal-400"
       },
       {
         "iconName": "Video",
-        "label": "Content Creation",
-        "description": "Producing engaging technical content, tutorials, and videos with SEO optimization",
+        "label": "Real-time Systems",
+        "description": "Building WebSocket-based applications, live messaging platforms, and notification systems with Socket.io",
         "color": "text-orange-400"
       },
       {
         "iconName": "Zap",
-        "label": "Performance Optimization",
-        "description": "Enhancing speed and efficiency of web applications",
+        "label": "Payment & Enterprise Solutions",
+        "description": "Integrating Stripe/PayPal payments, SSO authentication, and building multi-tenant SaaS platforms",
         "color": "text-yellow-400"
       }
     ],
     "keyAchievements": [
-      "Led front-end development for multiple successful product launches at a US startup",
-      "Implemented DevOps practices at TCS that reduced deployment time by 40%",
-      "Created a YouTube channel sharing developer knowledge and best practices",
-      "Optimized web application performance, reducing load times by 50%",
-      "Implemented SEO strategies increasing organic traffic by 65%"
+      "Built complex multi-tenant WhatsApp Business platform with AI integration and real-time messaging capabilities",
+      "Developed enterprise Chrome extension with advanced UI components and browser API integrations",
+      "Implemented cloud infrastructure using AWS, Terraform, and containerized deployments",
+      "Created scalable social media management platform with payment processing and SSO authentication",
+      "Built vector search systems with OpenAI integration for intelligent content processing",
+      "Deployed production systems handling real-time notifications and multi-platform integrations"
     ],
     "experience": [
       {
@@ -313,7 +264,7 @@
         "designation": "Senior Full Stack Developer",
         "link": "https://www.meavana.com",
         "logoPath": "/assets/manifold_ventures_llc_logo.jpeg",
-        "description": "Returned to lead development initiatives, focusing on modernizing the tech stack and implementing DevOps practices for improved deployment efficiency."
+        "description": "Leading full-stack development of advanced Chrome extensions and web applications. Architecting scalable solutions with modern React ecosystems, performance optimizations, and enterprise-grade features."
       },
       {
         "title": "Tata Consultancy Services",
@@ -337,39 +288,51 @@
   },
   "home": {
     "hero": {
-      "title": "Crafting Digital Experiences That Matter",
-      "description": "Full Stack Developer with 3 years of experience specializing in React, Next.js, and DevOps. Building high-performance web applications with clean code, beautiful interfaces, and scalable architecture."
+      "title": "Building Tomorrow's Digital Infrastructure",
+      "description": "I architect enterprise-grade systems that scale. From AI-powered platforms to real-time applications, I transform complex technical challenges into elegant solutions that drive business growth."
     },
     "skills": [
       {
         "iconName": "Code",
-        "label": "Frontend Development",
+        "label": "Complex Web Applications",
+        "description": "Building enterprise-grade React/Next.js applications with advanced state management, real-time features, and scalable architectures",
         "color": "blue",
         "delay": 0
       },
       {
         "iconName": "Database",
-        "label": "Backend Development",
+        "label": "AI & Integration Systems",
+        "description": "Implementing OpenAI APIs, vector search, WhatsApp Business APIs, and multi-platform social media integrations",
         "color": "green",
         "delay": 0.1
       },
       {
         "iconName": "Server",
-        "label": "DevOps Engineering",
+        "label": "Cloud Infrastructure",
+        "description": "Deploying with AWS, Terraform, Docker containerization, and managing production systems with PostgreSQL and Redis",
         "color": "purple",
         "delay": 0.2
       },
       {
         "iconName": "Paintbrush",
-        "label": "UI/UX Implementation",
+        "label": "Chrome Extensions",
+        "description": "Developing feature-rich browser extensions with complex UI components and seamless browser API integrations",
         "color": "teal",
         "delay": 0.3
       },
       {
         "iconName": "Video",
-        "label": "Content Creation",
+        "label": "Real-time Systems",
+        "description": "Building WebSocket-based applications, live messaging platforms, and notification systems with Socket.io",
         "color": "orange",
         "delay": 0.4
+      },
+      {
+        "iconName": "Zap",
+        "label": "Payment & Enterprise Solutions",
+        "description": "Integrating Stripe/PayPal payments, SSO authentication, and building multi-tenant SaaS platforms",
+        "color": "yellow",
+        "delay": 0.5
       }
     ],
     "stats": [
@@ -379,18 +342,18 @@
         "delay": 0.1
       },
       {
-        "value": "2",
-        "label": "Companies",
+        "value": "5+",
+        "label": "Major Projects",
         "delay": 0.2
       },
       {
         "value": "10+",
-        "label": "Projects Completed",
+        "label": "Complex Integrations",
         "delay": 0.3
       },
       {
-        "value": "15+",
-        "label": "Tech Skills",
+        "value": "20+",
+        "label": "Technologies Mastered",
         "delay": 0.4
       }
     ],
@@ -407,29 +370,29 @@
       }
     ],
     "featuredWork": {
-      "title": "My Journey",
-      "description": "Highlights from my professional experience and content creation",
+      "title": "Recent Engineering Projects",
+      "description": "Complex systems and platforms built with modern technologies",
       "items": [
         {
-          "title": "Startup Experience",
-          "description": "Led development of multiple digital products at Manifold Ventures, focusing on React/Next.js applications",
+          "title": "AI-Powered WhatsApp Business Platform",
+          "description": "Built comprehensive WhatsApp Business API platform with AI integration, real-time messaging, vector search, and team collaboration features",
           "card": "ManifoldVentured",
           "image": "/assets/featured/startup-work.png",
-          "tags": ["React", "Next.js", "TypeScript", "Chrome Extensions"]
+          "tags": ["React", "WhatsApp API", "OpenAI", "WebSockets", "Vector Search"]
         },
         {
-          "title": "Enterprise Solutions at TCS",
-          "description": "Implemented DevOps practices and .NET/C# solutions that improved system reliability and deployment efficiency",
+          "title": "Advanced Chrome Extension Ecosystem",
+          "description": "Developed feature-rich browser extension with complex UI components, browser API integrations, and seamless user experiences",
           "card": "TCS",
           "image": "/assets/featured/tcs-work.jpeg",
-          "tags": ["DevOps", ".NET", "C#", "Enterprise"]
+          "tags": ["Chrome Extensions", "TypeScript", "Browser APIs", "React"]
         },
         {
-          "title": "YouTube Content Creation",
-          "description": "Created educational content for developers, sharing knowledge and best practices",
+          "title": "Cloud-Native Infrastructure",
+          "description": "Architected scalable AWS infrastructure with Terraform, containerized deployments, and production-ready systems",
           "card": "RjYoutube",
           "image": "/assets/featured/youtube-content.png",
-          "tags": ["Video Editing", "SEO", "Content Creation"]
+          "tags": ["AWS", "Terraform", "Docker", "PostgreSQL", "CI/CD"]
         }
       ]
     }
