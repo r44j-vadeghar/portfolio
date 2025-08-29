@@ -43,16 +43,27 @@ export default function AboutPageClient() {
         stagger: 0.2,
       });
 
-      gsap.from(".faq-item", {
-        scrollTrigger: {
-          trigger: faqRef.current,
-          start: "top 80%",
+      // Animate FAQ items with fromTo for better control
+      gsap.fromTo(".faq-item", 
+        {
+          y: 20,
+          opacity: 0,
+          visibility: "hidden",
         },
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-      });
+        {
+          scrollTrigger: {
+            trigger: faqRef.current,
+            start: "top 80%",
+            once: true,
+          },
+          y: 0,
+          opacity: 1,
+          visibility: "visible",
+          duration: 0.6,
+          stagger: 0.1,
+          immediateRender: true,
+        }
+      );
 
       gsap.from(".cta-content", {
         scrollTrigger: {
