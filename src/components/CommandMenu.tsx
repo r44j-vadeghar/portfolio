@@ -11,7 +11,6 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-import { useCursor } from "@/providers/cursor-provider";
 import { client } from "@/sanity/lib/client";
 import {
   Calendar,
@@ -114,7 +113,6 @@ export default function CommandMenu() {
   const [blogs, setBlogs] = useState<PAGED_BLOGS_QUERYResult>([]);
   const [open, setOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { showNormalCursor, toggleCursor } = useCursor();
 
   const router = useRouter();
 
@@ -187,9 +185,6 @@ export default function CommandMenu() {
     switch (actionId) {
       case "theme":
         handleToggleTheme();
-        break;
-      case "cursor":
-        toggleCursor();
         break;
       case "meeting":
         handleBookMeeting();
@@ -305,10 +300,6 @@ export default function CommandMenu() {
                     theme === "dark" &&
                     action.lightIcon ? (
                       <action.lightIcon className="h-4 w-4" />
-                    ) : action.id === "cursor" &&
-                      showNormalCursor &&
-                      action.defaultIcon ? (
-                      <action.defaultIcon className="h-4 w-4" />
                     ) : (
                       <action.icon className="h-4 w-4" />
                     )}

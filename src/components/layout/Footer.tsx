@@ -1,21 +1,13 @@
 "use client";
 
 import SocialLinks from "@/constants/socials";
-import { useCursor } from "@/providers/cursor-provider";
-import {
-  ChevronUp,
-  Moon,
-  MousePointer,
-  MousePointerClick,
-  Sun,
-} from "lucide-react";
+import { ChevronUp, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
 export default function Footer() {
   const { theme, setTheme } = useTheme();
-  const { showNormalCursor, toggleCursor } = useCursor();
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -57,23 +49,6 @@ export default function Footer() {
             <Sun className="h-[1.2rem] w-[1.2rem]" />
           ) : (
             <Moon className="h-[1.2rem] w-[1.2rem]" />
-          )}
-        </Button>
-
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={toggleCursor}
-          aria-label="Toggle cursor style"
-          className="mx-2"
-          title={
-            showNormalCursor ? "Enable custom cursor" : "Use normal cursor"
-          }
-        >
-          {showNormalCursor ? (
-            <MousePointerClick className="h-[1.2rem] w-[1.2rem]" />
-          ) : (
-            <MousePointer className="h-[1.2rem] w-[1.2rem]" />
           )}
         </Button>
 

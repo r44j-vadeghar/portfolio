@@ -1,12 +1,10 @@
 import CinematicBackground from "@/components/CinematicGrid";
-import CursorAwareWrapper from "@/components/cursor-aware-wrapper";
 import { DisableDraftMode } from "@/components/draft-mode/DisableDraftMode";
 import JsonLd from "@/components/JsonLd";
 import { PostHogProvider } from "@/components/PostHogProvider";
 import { Toaster } from "@/components/ui/sonner";
 import siteData from "@/constants/siteData.json";
 import { SeoManager } from "@/lib/seo/SeoManager";
-import { CursorProvider } from "@/providers/cursor-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { SanityLive } from "@/sanity/lib/live";
 import { ClerkProvider } from "@clerk/nextjs";
@@ -76,15 +74,12 @@ export default async function RootLayout({
                 <VisualEditing />
               </>
             )}
-            <CursorProvider>
-              <CursorAwareWrapper />
-              <Toaster />
-              <PostHogProvider>
-                {/* <ScrollSmootherProvider smoothness={1.5}> */}
-                {children}
-                {/* </ScrollSmootherProvider> */}
-              </PostHogProvider>
-            </CursorProvider>
+            <Toaster />
+            <PostHogProvider>
+              {/* <ScrollSmootherProvider smoothness={1.5}> */}
+              {children}
+              {/* </ScrollSmootherProvider> */}
+            </PostHogProvider>
             <SanityLive />
           </ThemeProvider>
         </body>

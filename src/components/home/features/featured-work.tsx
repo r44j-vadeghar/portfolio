@@ -87,7 +87,7 @@ function FeaturedWork() {
           </p>
         </div>
 
-        <div className="flex w-full gap-20 items-start">
+        <div className="flex w-full gap-20 items-start [&>div]:!w-full">
           <div className="w-full">
             <ul>
               {featuredWork.map((item) => (
