@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -213,130 +212,70 @@ export default function CommandMenu() {
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <Command loop className="rounded-lg border shadow-lg overflow-hidden">
-          <CommandInput
-            placeholder="Type a command or search..."
-            className="h-11 placeholder:text-muted-foreground/70 text-base focus:outline-none"
-          />
+        <CommandInput placeholder="Type a command or search..." />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
 
-          <CommandList className="max-h-[300px] overflow-auto py-2">
-            <CommandEmpty className="py-6 text-center">
-              <div className="flex flex-col items-center justify-center text-muted-foreground">
-                <Search className="h-10 w-10 mb-2 opacity-20" />
-                <p className="mb-1">No results found</p>
-                <p className="text-sm">Try a different search term</p>
-              </div>
-            </CommandEmpty>
+          <CommandGroup heading="Navigation">
+            {navItems.map((item) => (
+              <CommandItem
+                key={item.href}
+                value={`${item.label} ${item.keywords}`}
+                onSelect={() => {
+                  router.push(item.href);
+                  setOpen(false);
+                }}
+              >
+                <item.icon className="mr-2 h-4 w-4" />
+                <span>{item.label}</span>
+              </CommandItem>
+            ))}
+          </CommandGroup>
 
-            <CommandGroup heading="Navigation" className="px-2">
-              {navItems.map((item) => (
-                <CommandItem
-                  key={item.href}
-                  value={`${item.label} ${item.keywords}`}
-                  onSelect={() => {
-                    router.push(item.href);
-                    setOpen(false);
-                  }}
-                  className="flex items-center gap-2 px-2 py-1.5 cursor-pointer hover:bg-accent rounded-md"
-                >
-                  <div className="flex items-center justify-center w-7 h-7 rounded-md bg-muted/80 shrink-0">
-                    <item.icon className="h-4 w-4" />
-                  </div>
-                  <div className="flex flex-col flex-1">
-                    <span className="font-medium text-sm">{item.label}</span>
-                    {/* <span className="text-xs text-muted-foreground truncate">
-                      {item.keywords}
-                    </span> */}
-                  </div>
-                </CommandItem>
-              ))}
-            </CommandGroup>
+          {blogs && blogs.length > 0 && (
+            <>
+              <CommandSeparator />
+              <CommandGroup heading="Recent Posts">
+                {blogs.map((blog) => (
+                  <CommandItem
+                    key={blog._id}
+                    value={`${blog.title} ${blog.seoDescription || ""}`}
+                    onSelect={() => {
+                      router.push(`/blog/${blog.slug?.current}`);
+                      setOpen(false);
+                    }}
+                  >
+                    <FileText className="mr-2 h-4 w-4" />
+                    <div className="flex flex-col">
+                      <span>{blog.title}</span>
+                      <span className="text-xs text-muted-foreground">
+                        {formatDate(blog.publishedAt || blog._createdAt)}
+                      </span>
+                    </div>
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </>
+          )}
 
-            {/* Blog Posts Section */}
-            {blogs && blogs.length > 0 && (
-              <>
-                <CommandSeparator className="my-2" />
-                <CommandGroup heading="Recent Posts" className="px-2">
-                  {blogs.map((blog) => (
-                    <CommandItem
-                      key={blog._id}
-                      value={`${blog.title} ${blog.seoDescription || ""}`}
-                      onSelect={() => {
-                        router.push(`/blog/${blog.slug?.current}`);
-                        setOpen(false);
-                      }}
-                      className="flex items-center gap-2 px-2 py-1.5 cursor-pointer hover:bg-accent rounded-md"
-                    >
-                      <div className="flex items-center justify-center w-7 h-7 rounded-md bg-muted/80 shrink-0">
-                        <FileText className="h-4 w-4" />
-                      </div>
-                      <div className="flex flex-col flex-1 overflow-hidden">
-                        <span className="font-medium text-sm truncate">
-                          {blog.title}
-                        </span>
-                        <span className="text-xs text-muted-foreground">
-                          {formatDate(blog.publishedAt || blog._createdAt)}
-                          {/* {getEsp &&
-                            ` • ${blog.estimatedReadingTime} min read`} */}
-                        </span>
-                      </div>
-                    </CommandItem>
-                  ))}
-                </CommandGroup>
-              </>
-            )}
-
-            <CommandSeparator className="my-2" />
-            <CommandGroup heading="Actions" className="px-2">
-              {actionItems.map((action) => (
-                <CommandItem
-                  key={action.id}
-                  value={`${action.label} ${action.keywords}`}
-                  onSelect={() => handleActionSelect(action.id)}
-                  className="flex items-center gap-2 px-2 py-1.5 cursor-pointer hover:bg-accent rounded-md"
-                >
-                  <div className="flex items-center justify-center w-7 h-7 rounded-md bg-muted/80 shrink-0">
-                    {action.id === "theme" &&
-                    theme === "dark" &&
-                    action.lightIcon ? (
-                      <action.lightIcon className="h-4 w-4" />
-                    ) : (
-                      <action.icon className="h-4 w-4" />
-                    )}
-                  </div>
-                  <span className="font-medium text-sm flex-1">
-                    {action.label}
-                  </span>
-                  {/* <CommandShortcut>⌘{action.shortcut}</CommandShortcut> */}
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-
-          <div className="border-t px-3 py-2 text-xs text-muted-foreground flex items-center justify-between">
-            <div>
-              <kbd className="bg-muted rounded px-1 py-0.5 font-mono text-xs">
-                ↑
-              </kbd>{" "}
-              <kbd className="bg-muted rounded px-1 py-0.5 font-mono text-xs">
-                ↓
-              </kbd>{" "}
-              to navigate
-            </div>
-            <div>
-              <kbd className="bg-muted rounded px-1 py-0.5 font-mono text-xs">
-                Enter
-              </kbd>{" "}
-              to select
-            </div>
-            <div>
-              <kbd className="bg-muted rounded px-1 py-0.5 font-mono text-xs">
-                Esc
-              </kbd>{" "}
-              to close
-            </div>
-          </div>
-        </Command>
+          <CommandSeparator />
+          <CommandGroup heading="Actions">
+            {actionItems.map((action) => (
+              <CommandItem
+                key={action.id}
+                value={`${action.label} ${action.keywords}`}
+                onSelect={() => handleActionSelect(action.id)}
+              >
+                {action.id === "theme" && theme === "dark" && action.lightIcon ? (
+                  <action.lightIcon className="mr-2 h-4 w-4" />
+                ) : (
+                  <action.icon className="mr-2 h-4 w-4" />
+                )}
+                <span>{action.label}</span>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        </CommandList>
       </CommandDialog>
     </>
   );

@@ -16,6 +16,8 @@ import { useEffect, useRef, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Highlighter } from "@/components/ui/highlighter";
+import { LineShadowText } from "@/components/ui/line-shadow-text";
 import siteData from "@/constants/siteData.json";
 
 interface HeroSectionProps {
@@ -180,10 +182,24 @@ export default function HeroSection({
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                <span className="text-primary block">
+                <LineShadowText
+                  shadowColor="hsl(var(--primary))"
+                  className="text-primary block"
+                >
                   {siteData.default.name}
+                </LineShadowText>
+                <span>
+                  Building Tomorrow&apos;s{" "}
+                  <Highlighter
+                    action="highlight"
+                    color="rgba(139, 92, 246, 0.4)"
+                    isView
+                    animationDuration={800}
+                    strokeWidth={2}
+                  >
+                    Digital Infrastructure
+                  </Highlighter>
                 </span>
-                {siteData.home.hero.title}
               </h1>
 
               <p className="text-lg text-muted-foreground max-w-xl">

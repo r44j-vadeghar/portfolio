@@ -58,15 +58,11 @@
             },
             {
               "title": "Mobile Devices",
-              "list": [
-                "Samsung F22"
-              ]
+              "list": ["Samsung F22"]
             },
             {
               "title": "FitNess",
-              "list": [
-                "Lifelong Fit Pro Spin Fitness Bike"
-              ]
+              "list": ["Lifelong Fit Pro Spin Fitness Bike"]
             }
           ]
         },
@@ -168,7 +164,7 @@
     "tagline": "Engineering Scalable Solutions for Modern Challenges",
     "shortDescription": "Building enterprise-grade applications with AI integration, real-time features, and cloud-native architecture. Transforming complex requirements into elegant, scalable solutions.",
     "calendlyUrl": "https://calendly.com/r44j/30min",
-    "avatar": "/me.png"
+    "avatar": "/me.jpeg"
   },
   "services": {
     "primary": [
@@ -378,7 +374,13 @@
           "description": "Built comprehensive WhatsApp Business API platform with AI integration, real-time messaging, vector search, and team collaboration features",
           "card": "ManifoldVentured",
           "image": "/assets/featured/startup-work.png",
-          "tags": ["React", "WhatsApp API", "OpenAI", "WebSockets", "Vector Search"]
+          "tags": [
+            "React",
+            "WhatsApp API",
+            "OpenAI",
+            "WebSockets",
+            "Vector Search"
+          ]
         },
         {
           "title": "Advanced Chrome Extension Ecosystem",

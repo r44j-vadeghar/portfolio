@@ -1,38 +1,15 @@
 "use client";
 
-import CommandMenu from "@/components/CommandMenu"; // Import the new component
+import CommandMenu from "@/components/CommandMenu";
 import Socials from "@/components/Socials";
-import HeaderNavItem from "@/components/layout/HeaderNavItem";
 import gsap from "gsap";
-import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import SplitType from "split-type";
-import { Button } from "../ui/button";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "../ui/sheet";
-
-const navItems = [
-  { href: "/", label: "Localhost" },
-  { href: "/about", label: "About" },
-  { href: "/uses", label: "Uses" },
-  { href: "/store", label: "Store" },
-  { href: "/blog", label: "Blog" },
-  { href: "/studio", label: "Studio", isAdmin: true },
-];
 
 export default function Header() {
-  const pathname = usePathname();
   const headerRef = useRef<HTMLDivElement>(null);
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
   useEffect(() => {
     if (!headerRef.current) return;
 
@@ -102,7 +79,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className="w-full z-50 mx-auto grid max-w-screen-2xl items-center justify-between gap-5 overflow-x-hidden p-5 grid-cols-2 md:grid-cols-3"
+      className="w-full z-50 mx-auto flex max-w-screen-2xl items-center justify-between gap-5 overflow-x-hidden p-5"
       data-header
     >
       <div
@@ -135,66 +112,8 @@ export default function Header() {
         </div>
       </div>
 
-      <nav className="hidden md:flex items-center font-medium justify-center">
-        {navItems.map((item) => (
-          <HeaderNavItem
-            key={item.href}
-            href={item.href}
-            active={pathname === item.href}
-            showAdmin={item.isAdmin}
-          >
-            {item.label}
-          </HeaderNavItem>
-        ))}
-      </nav>
-
-      <div className="flex gap-3 items-center justify-end ml-auto">
+      <div className="flex gap-3 items-center">
         <CommandMenu />
-
-        <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="outline" size="icon">
-              <Menu className="h-[1.2rem] w-[1.2rem]" />
-              <span className="sr-only">Open menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-[80vw] sm:w-[350px]">
-            <SheetHeader className="mb-6">
-              <SheetTitle className="text-left">Menu</SheetTitle>
-            </SheetHeader>
-            <nav className="flex flex-col space-y-4 px-4">
-              {navItems.map((item) => (
-                <SheetClose asChild key={item.href}>
-                  <HeaderNavItem
-                    href={item.href}
-                    active={pathname === item.href}
-                    showAdmin={item.isAdmin}
-                  >
-                    {item.label}
-                  </HeaderNavItem>
-                </SheetClose>
-              ))}
-              <SheetClose asChild>
-                <Link
-                  href="https://calendly.com/r44j/30min"
-                  className="w-full whitespace-nowrap rounded-lg bg-primary/10 px-6 py-3 text-center text-sm font-bold text-primary ring-primary/30 ring-offset-2 ring-offset-background transition-all hover:bg-primary/20 hover:ring-2 focus:ring-2 mt-4"
-                >
-                  Book a free meeting
-                </Link>
-              </SheetClose>
-              <SheetClose asChild>
-                <CommandMenu />
-              </SheetClose>
-            </nav>
-          </SheetContent>
-        </Sheet>
-
-        {/* <Link
-          href="https://calendly.com/r44j/30min"
-          className="hidden whitespace-nowrap md:block w-fit justify-self-end rounded-lg bg-primary/10 px-6 py-2 text-sm font-bold text-primary ring-primary/30 ring-offset-2 ring-offset-background transition-all hover:bg-primary/20 hover:ring-2 focus:ring-2"
-        >
-          Book a free meeting
-        </Link> */}
       </div>
     </header>
   );

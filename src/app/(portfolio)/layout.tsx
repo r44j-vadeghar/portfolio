@@ -1,5 +1,7 @@
+import DockNavigation from "@/components/layout/DockNavigation";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 import siteData from "@/constants/siteData.json";
 import "@fontsource/outfit";
 import { Analytics } from "@vercel/analytics/react";
@@ -67,9 +69,11 @@ export default function RootLayout({
           style={{ display: "none", visibility: "hidden" }}
         />
       </noscript>
+      <ScrollProgress className="fixed top-0 z-[100]" />
       <Header />
       {children}
       <Footer />
+      <DockNavigation />
       <Analytics />
       <SpeedInsights />
     </>
