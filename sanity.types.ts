@@ -264,6 +264,7 @@ export type Post = {
     [internalGroqTypeReferenceTo]?: "category";
   }>;
   publishedAt?: string;
+  updatedAt?: string;
   body?: BlockContent;
   seoTitle?: string;
   seoDescription?: string;
@@ -476,6 +477,7 @@ export type ALL_BLOGS_QUERYResult = Array<{
     description?: string;
   }> | null;
   publishedAt?: string;
+  updatedAt?: string;
   body?: BlockContent;
   seoTitle?: string;
   seoDescription?: string;
@@ -553,6 +555,7 @@ export type BLOG_POST_QUERYResult = {
     description?: string;
   }> | null;
   publishedAt?: string;
+  updatedAt?: string;
   body?: BlockContent;
   seoTitle?: string;
   seoDescription?: string;
@@ -616,6 +619,7 @@ export type PAGED_BLOGS_QUERYResult = Array<{
     description?: string;
   }> | null;
   publishedAt?: string;
+  updatedAt?: string;
   body?: BlockContent;
   seoTitle?: string;
   seoDescription?: string;
@@ -676,6 +680,7 @@ export type POSTS_FROM_CATEGORY_QUERYResult = Array<{
     [internalGroqTypeReferenceTo]?: "category";
   }>;
   publishedAt?: string;
+  updatedAt?: string;
   body?: BlockContent;
   seoTitle?: string;
   seoDescription?: string;

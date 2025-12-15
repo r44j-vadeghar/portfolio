@@ -60,6 +60,12 @@ export const postType = defineType({
       type: "datetime",
     }),
     defineField({
+      name: "updatedAt",
+      title: "Updated at",
+      type: "datetime",
+      description: "Set this when you make significant updates to the post",
+    }),
+    defineField({
       name: "body",
       title: "Body",
       type: "blockContent",

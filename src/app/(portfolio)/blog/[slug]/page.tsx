@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "en_US",
       authors: ["Raj Vadeghar"],
       publishedTime: post.publishedAt,
-      modifiedTime: post._updatedAt,
+      modifiedTime: post.updatedAt ?? post._updatedAt,
       section: post.categories?.[0]?.title ?? "Technology",
       tags: post.categories?.map((c) => c.title ?? ""),
     },
@@ -111,7 +111,7 @@ export default async function BlogPost({ params }: Props) {
       },
     },
     datePublished: new Date(post.publishedAt ?? new Date()).toISOString(),
-    dateModified: new Date(post._updatedAt).toISOString(),
+    dateModified: new Date(post.updatedAt ?? post._updatedAt).toISOString(),
     wordCount: content.split(/\s+/).length,
     timeRequired: `PT${Math.ceil(readingTime)}M`,
   };
@@ -171,15 +171,15 @@ export default async function BlogPost({ params }: Props) {
               </div>
 
               <p className="dark:text-white/70 text-black/70">
-                Last updated on:{" "}
-                {new Date(post.publishedAt ?? new Date()).toLocaleDateString(
-                  "en-us",
-                  {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "short",
-                  }
-                )}
+                {post.updatedAt ? "Updated on" : "Published on"}:{" "}
+                {new Date(
+                  post.updatedAt ?? post.publishedAt ?? new Date()
+                ).toLocaleDateString("en-us", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })}
               </p>
             </div>
           </div>
