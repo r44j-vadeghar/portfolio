@@ -29,4 +29,16 @@ export const pageSeoConfig: Record<string, PageSeoConfig> = {
     description: siteData.default.description,
     type: "website",
   },
+  services: {
+    title: siteData.pages.services.title,
+    description: siteData.pages.services.description,
+    keywords: siteData.pages.services.keywords,
+    type: "website",
+  },
+  sponsor: {
+    title: siteData.pages.sponsor.title,
+    description: siteData.pages.sponsor.description,
+    keywords: siteData.pages.sponsor.keywords,
+    type: "website",
+  },
 };

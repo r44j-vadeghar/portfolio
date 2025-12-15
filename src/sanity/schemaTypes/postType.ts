@@ -92,6 +92,38 @@ export const postType = defineType({
       title: "SEO Keywords",
       type: "string",
     }),
+    defineField({
+      name: "sponsor",
+      title: "Sponsor",
+      type: "object",
+      description: "Add sponsor information for this post",
+      fields: [
+        defineField({
+          name: "name",
+          title: "Sponsor Name",
+          type: "string",
+        }),
+        defineField({
+          name: "logo",
+          title: "Sponsor Logo",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+        }),
+        defineField({
+          name: "url",
+          title: "Sponsor URL",
+          type: "url",
+        }),
+        defineField({
+          name: "description",
+          title: "Sponsor Description",
+          type: "text",
+          rows: 2,
+        }),
+      ],
+    }),
     orderRankField({ type: "post" }),
   ],
 

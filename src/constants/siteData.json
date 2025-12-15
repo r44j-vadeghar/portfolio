@@ -157,6 +157,16 @@
       "title": "R44J Insights: Tech, Development & Content Creation",
       "description": "Practical insights on web development, DevOps, content creation, and more. Learn from my journey as a developer and creator with articles designed to help you grow in the digital world.",
       "keywords": "web development, DevOps, React tutorials, Next.js guides, content creation tips, SEO strategies, developer journey, tech career"
+    },
+    "services": {
+      "title": "Services | R44J",
+      "description": "Professional development services including 1:1 consultations, code reviews, dev environment setup, and custom web application development. Book a session to level up your development workflow.",
+      "keywords": "freelance developer, consulting, code review, dev setup, web development services, React consulting, Next.js expert"
+    },
+    "sponsor": {
+      "title": "Sponsor | R44J",
+      "description": "Partner with R44J to reach developers interested in productivity tools, dev environments, and modern web development. Sponsorship opportunities for blog posts, newsletter, and more.",
+      "keywords": "sponsor developer blog, tech sponsorship, developer audience, blog sponsorship"
     }
   },
   "personal": {
@@ -185,6 +195,121 @@
       "Multi-tenant SaaS Applications",
       "Media Processing & Storage",
       "Performance Optimization"
+    ],
+    "offerings": [
+      {
+        "title": "1:1 Dev Setup Session",
+        "description": "Get your macOS development environment perfectly configured. Terminal, IDE, tools, and workflow optimization.",
+        "duration": "60 min",
+        "price": "₹3,000",
+        "priceUsd": "$36",
+        "features": [
+          "Warp/iTerm + Oh My Zsh setup",
+          "VS Code configuration",
+          "Git & GitHub workflow",
+          "Custom aliases & scripts"
+        ],
+        "popular": true
+      },
+      {
+        "title": "Code Review",
+        "description": "In-depth review of your React/Next.js codebase with actionable feedback on architecture, performance, and best practices.",
+        "duration": "2-3 days",
+        "price": "₹5,000",
+        "priceUsd": "$60",
+        "features": [
+          "Architecture review",
+          "Performance analysis",
+          "Security audit",
+          "Written report with recommendations"
+        ],
+        "popular": false
+      },
+      {
+        "title": "Portfolio/Blog Setup",
+        "description": "Complete portfolio or blog setup with Next.js, Sanity CMS, and deployment. Same stack as this site.",
+        "duration": "1-2 weeks",
+        "price": "₹15,000",
+        "priceUsd": "$180",
+        "features": [
+          "Next.js + Tailwind + shadcn/ui",
+          "Sanity CMS integration",
+          "SEO optimization",
+          "Vercel deployment",
+          "1 month support"
+        ],
+        "popular": false
+      },
+      {
+        "title": "Custom Project",
+        "description": "Full-stack web application development tailored to your requirements. From MVP to production.",
+        "duration": "Varies",
+        "price": "Custom",
+        "priceUsd": "Custom",
+        "features": [
+          "Requirements analysis",
+          "Architecture design",
+          "Full-stack development",
+          "Deployment & CI/CD",
+          "Documentation"
+        ],
+        "popular": false
+      }
+    ]
+  },
+  "sponsor": {
+    "stats": {
+      "monthlyVisitors": "500+",
+      "monthlyPageviews": "700+",
+      "newsletterSubscribers": "Growing",
+      "topContent": "Developer productivity & macOS setup guides"
+    },
+    "audience": {
+      "description": "Developers interested in productivity tools, terminal customization, and modern web development.",
+      "demographics": [
+        "Full-stack developers",
+        "macOS users",
+        "React/Next.js developers",
+        "Dev tool enthusiasts"
+      ]
+    },
+    "tiers": [
+      {
+        "name": "Blog Post Sponsor",
+        "price": "₹5,000",
+        "priceUsd": "$60",
+        "description": "Sponsor a single blog post with your product featured prominently.",
+        "features": [
+          "Logo in post header",
+          "Product mention in content",
+          "Link to your site",
+          "Social media promotion"
+        ]
+      },
+      {
+        "name": "Newsletter Sponsor",
+        "price": "₹3,000",
+        "priceUsd": "$36",
+        "description": "Featured spot in newsletter sent to developer subscribers.",
+        "features": [
+          "Dedicated section",
+          "Product description",
+          "CTA button",
+          "Click tracking"
+        ]
+      },
+      {
+        "name": "Site Sponsor",
+        "price": "₹10,000/month",
+        "priceUsd": "$120/month",
+        "description": "Your logo on every page of the site for a month.",
+        "features": [
+          "Logo in footer",
+          "Sponsor page feature",
+          "Monthly analytics report",
+          "Priority placement"
+        ]
+      }
     ]
   },
   "social": {

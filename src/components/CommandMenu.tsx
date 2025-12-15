@@ -12,8 +12,10 @@ import {
 } from "@/components/ui/command";
 import { client } from "@/sanity/lib/client";
 import {
+  Briefcase,
   Calendar,
   FileText,
+  Heart,
   Home,
   Laptop,
   Mail,
@@ -56,6 +58,12 @@ const navItems: NavItem[] = [
     icon: User,
   },
   {
+    href: "/services",
+    label: "Services",
+    keywords: "consulting, freelance, hire, development, code review",
+    icon: Briefcase,
+  },
+  {
     href: "/uses",
     label: "Uses",
     keywords: "tools, stack, software, hardware, equipment",
@@ -72,6 +80,12 @@ const navItems: NavItem[] = [
     label: "Blog",
     keywords: "articles, posts, writing, content",
     icon: FileText,
+  },
+  {
+    href: "/sponsor",
+    label: "Sponsor",
+    keywords: "partnership, sponsorship, advertise, collaborate",
+    icon: Heart,
   },
 ];
 

@@ -1,4 +1,5 @@
 // src/app/(portfolio)/blog/[slug]/page.tsx
+import SponsorBanner from "@/components/blog/sponsor-banner";
 import TableOfContent from "@/components/blog/table-of-content";
 import UtilityActionItems from "@/components/blog/utility-action-items";
 import JsonLd from "@/components/JsonLd";
@@ -206,6 +207,10 @@ export default async function BlogPost({ params }: Props) {
             </div>
 
             <div className="mx-auto w-full max-w-3xl">
+              {/* Sponsor Banner - sponsor field is optional in Sanity */}
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              {(post as any).sponsor && <SponsorBanner sponsor={(post as any).sponsor} />}
+
               <div className="prose lg:prose-lg dark:prose-invert dark:prose-headings:text-white prose-headings:text-black dark:prose-p:text-white/70 prose-p:text-black/70 prose-a:text-blue-600 hover:prose-a:text-blue-500 dark:prose-li:text-white/70 prose-li:text-black/70 dark:prose-blockquote:text-white/50 prose-blockquote:text-black/50 dark:prose-strong:text-white prose-strong:text-black w-full">
                 <PortableText portableText={post.body ?? []} />
               </div>
