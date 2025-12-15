@@ -12,16 +12,13 @@ import {
   FileText,
   Home,
   Laptop,
-  Moon,
   Search,
   ShoppingBag,
-  Sun,
   User,
 } from "lucide-react";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { AnimatedThemeToggler } from "../ui/animated-theme-toggler";
 
 const navItems = [
   { href: "/", label: "Home", icon: Home },
@@ -39,16 +36,6 @@ export default function DockNavigation({
   onOpenCommandMenu,
 }: DockNavigationProps) {
   const pathname = usePathname();
-  const { setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const handleToggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
-  };
 
   const handleOpenCommandMenu = () => {
     // Trigger the command menu by dispatching the keyboard shortcut
@@ -63,12 +50,12 @@ export default function DockNavigation({
 
   return (
     <TooltipProvider delayDuration={0}>
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
         <Dock
           iconSize={40}
           iconMagnification={60}
           iconDistance={100}
-          className="bg-background/80 border-border/50 shadow-xl"
+          className="bg-background/5 border-border/50 shadow-xl mt-0 backdrop-blur-md"
         >
           {navItems.map((item) => {
             const isActive = pathname === item.href;
@@ -124,29 +111,12 @@ export default function DockNavigation({
           {/* Theme Toggle */}
           <Tooltip>
             <TooltipTrigger asChild>
-              <DockIcon
-                className="hover:bg-muted text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                onClick={handleToggleTheme}
-              >
-                {mounted ? (
-                  resolvedTheme === "dark" ? (
-                    <Sun className="size-5" />
-                  ) : (
-                    <Moon className="size-5" />
-                  )
-                ) : (
-                  <Moon className="size-5" />
-                )}
+              <DockIcon className="hover:bg-muted text-muted-foreground hover:text-foreground transition-colors cursor-pointer [&>div]:m-auto">
+                <AnimatedThemeToggler />
               </DockIcon>
             </TooltipTrigger>
             <TooltipContent side="top" sideOffset={8}>
-              <p>
-                {mounted
-                  ? resolvedTheme === "dark"
-                    ? "Light Mode"
-                    : "Dark Mode"
-                  : "Toggle Theme"}
-              </p>
+              Toggle Theme
             </TooltipContent>
           </Tooltip>
         </Dock>

@@ -1,12 +1,9 @@
 "use client";
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { MagicCard } from "@/components/ui/magic-card";
 import siteData from "@/constants/siteData.json";
 import {
   Calendar,
@@ -19,110 +16,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function ServicesPageClient() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(
-    () => {
-      // Hero animation - immediate on load
-      gsap.fromTo(
-        ".hero-content",
-        { y: 30, autoAlpha: 0 },
-        {
-          y: 0,
-          autoAlpha: 1,
-          duration: 0.8,
-          ease: "power3.out",
-        }
-      );
-
-      // Service cards - batch animation on scroll
-      ScrollTrigger.batch(".service-card", {
-        onEnter: (elements) => {
-          gsap.fromTo(
-            elements,
-            { y: 50, autoAlpha: 0 },
-            {
-              y: 0,
-              autoAlpha: 1,
-              duration: 0.8,
-              stagger: 0.15,
-              ease: "power3.out",
-              overwrite: true,
-            }
-          );
-        },
-        start: "top 85%",
-        once: true,
-      });
-
-      // Process steps - batch animation
-      ScrollTrigger.batch(".process-step", {
-        onEnter: (elements) => {
-          gsap.fromTo(
-            elements,
-            { y: 30, autoAlpha: 0 },
-            {
-              y: 0,
-              autoAlpha: 1,
-              duration: 0.6,
-              stagger: 0.1,
-              ease: "power3.out",
-              overwrite: true,
-            }
-          );
-        },
-        start: "top 85%",
-        once: true,
-      });
-
-      // Skills cards
-      ScrollTrigger.batch(".skills-card", {
-        onEnter: (elements) => {
-          gsap.fromTo(
-            elements,
-            { y: 30, autoAlpha: 0 },
-            {
-              y: 0,
-              autoAlpha: 1,
-              duration: 0.7,
-              stagger: 0.15,
-              ease: "power3.out",
-              overwrite: true,
-            }
-          );
-        },
-        start: "top 85%",
-        once: true,
-      });
-
-      // CTA section
-      ScrollTrigger.batch(".cta-content", {
-        onEnter: (elements) => {
-          gsap.fromTo(
-            elements,
-            { y: 20, autoAlpha: 0 },
-            {
-              y: 0,
-              autoAlpha: 1,
-              duration: 0.8,
-              ease: "power3.out",
-              overwrite: true,
-            }
-          );
-        },
-        start: "top 85%",
-        once: true,
-      });
-
-      // Refresh ScrollTrigger after setup
-      ScrollTrigger.refresh();
-    },
-    { scope: containerRef }
-  );
-
   const processSteps = [
     {
       step: "01",
@@ -147,7 +41,7 @@ export default function ServicesPageClient() {
   ];
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-background flex flex-col">
+    <main className="min-h-screen bg-background flex flex-col">
       {/* Hero Section */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -157,7 +51,7 @@ export default function ServicesPageClient() {
         </div>
 
         <div className="container mx-auto max-w-5xl">
-          <div className="hero-content text-center">
+          <div className="text-center">
             <Badge variant="outline" className="mb-4">
               <Sparkles className="h-3 w-3 mr-1" />
               Available for Projects
@@ -206,69 +100,67 @@ export default function ServicesPageClient() {
 
           <div className="grid md:grid-cols-2 gap-6">
             {siteData.services.offerings.map((service, index) => (
-              <Card
+              <MagicCard
                 key={index}
-                className={`service-card relative border border-border/50 bg-card/50 backdrop-blur-sm transition-all hover:border-primary/50 hover:shadow-lg hover:-translate-y-1 ${
-                  service.popular ? "ring-2 ring-primary/20" : ""
-                }`}
+                className={`rounded-xl ${service.popular ? "ring-2 ring-primary/20" : ""}`}
+                gradientColor="hsl(var(--muted))"
+                gradientOpacity={0.5}
               >
-                {service.popular && (
-                  <div className="absolute -top-3 left-4">
-                    <Badge className="bg-primary text-primary-foreground">
-                      Most Popular
-                    </Badge>
-                  </div>
-                )}
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <CardTitle className="text-xl mb-2">
-                        {service.title}
-                      </CardTitle>
-                      <p className="text-muted-foreground text-sm">
-                        {service.description}
-                      </p>
+                <div className="relative p-6">
+                  {service.popular && (
+                    <div className="absolute -top-3 left-4">
+                      <Badge className="bg-primary text-primary-foreground">
+                        Most Popular
+                      </Badge>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-baseline gap-2 mb-4">
-                    <span className="text-3xl font-bold">{service.price}</span>
-                    <span className="text-muted-foreground text-sm">
-                      ({service.priceUsd})
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-                    <Clock className="h-4 w-4" />
-                    <span>{service.duration}</span>
-                  </div>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, featureIndex) => (
-                      <li
-                        key={featureIndex}
-                        className="flex items-center gap-2 text-sm"
-                      >
-                        <Check className="h-4 w-4 text-primary flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button
-                    asChild
-                    className="w-full"
-                    variant={service.popular ? "default" : "outline"}
-                  >
-                    <Link
-                      href={siteData.personal.calendlyUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  )}
+                  <CardHeader className="p-0 pb-4">
+                    <CardTitle className="text-xl mb-2">
+                      {service.title}
+                    </CardTitle>
+                    <p className="text-muted-foreground text-sm">
+                      {service.description}
+                    </p>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="flex items-baseline gap-2 mb-4">
+                      <span className="text-3xl font-bold">{service.price}</span>
+                      <span className="text-muted-foreground text-sm">
+                        ({service.priceUsd})
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+                      <Clock className="h-4 w-4" />
+                      <span>{service.duration}</span>
+                    </div>
+                    <ul className="space-y-2 mb-6">
+                      {service.features.map((feature, featureIndex) => (
+                        <li
+                          key={featureIndex}
+                          className="flex items-center gap-2 text-sm"
+                        >
+                          <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button
+                      asChild
+                      className="w-full"
+                      variant={service.popular ? "default" : "outline"}
                     >
-                      Book Now
-                      <ExternalLink className="h-4 w-4 ml-2" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+                      <Link
+                        href={siteData.personal.calendlyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Book Now
+                        <ExternalLink className="h-4 w-4 ml-2" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </div>
+              </MagicCard>
             ))}
           </div>
         </div>
@@ -286,18 +178,22 @@ export default function ServicesPageClient() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {processSteps.map((item, index) => (
-              <div
+              <MagicCard
                 key={index}
-                className="process-step text-center p-6 rounded-xl border border-border/50 bg-card/30 hover:border-primary/30 transition-colors"
+                className="rounded-xl"
+                gradientColor="hsl(var(--muted))"
+                gradientOpacity={0.4}
               >
-                <div className="text-4xl font-bold text-primary/20 mb-2">
-                  {item.step}
+                <div className="text-center p-6">
+                  <div className="text-4xl font-bold text-primary/20 mb-2">
+                    {item.step}
+                  </div>
+                  <h3 className="font-semibold mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
+              </MagicCard>
             ))}
           </div>
         </div>
@@ -314,7 +210,7 @@ export default function ServicesPageClient() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <Card className="skills-card border border-border/50 bg-card/50 backdrop-blur-sm">
+            <MagicCard className="rounded-xl" gradientColor="hsl(var(--muted))" gradientOpacity={0.4}>
               <CardContent className="p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <Code className="h-5 w-5 text-primary" />
@@ -328,9 +224,9 @@ export default function ServicesPageClient() {
                   ))}
                 </div>
               </CardContent>
-            </Card>
+            </MagicCard>
 
-            <Card className="skills-card border border-border/50 bg-card/50 backdrop-blur-sm">
+            <MagicCard className="rounded-xl" gradientColor="hsl(var(--muted))" gradientOpacity={0.4}>
               <CardContent className="p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <Sparkles className="h-5 w-5 text-primary" />
@@ -344,7 +240,7 @@ export default function ServicesPageClient() {
                   ))}
                 </div>
               </CardContent>
-            </Card>
+            </MagicCard>
           </div>
         </div>
       </section>
@@ -352,7 +248,7 @@ export default function ServicesPageClient() {
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-3xl">
-          <div className="cta-content text-center p-8 rounded-2xl border border-border/50 bg-gradient-to-br from-primary/5 to-primary/10">
+          <div className="text-center p-8 rounded-2xl border border-border/50 bg-gradient-to-br from-primary/5 to-primary/10">
             <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
               Book a free 15-minute intro call to discuss your project. No
@@ -369,7 +265,7 @@ export default function ServicesPageClient() {
                   Schedule a Call
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="gap-2">
+              <Button asChild variant="outline" size="lg">
                 <Link href="/about">Learn More About Me</Link>
               </Button>
             </div>

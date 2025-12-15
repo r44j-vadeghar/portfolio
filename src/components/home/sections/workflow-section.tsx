@@ -54,7 +54,7 @@ const workflowSteps: WorkflowStep[] = [
     icon: Rocket,
     title: "Deploy",
     description: "Ship to production with confidence",
-    aiTool: "CI/CD + Vercel",
+    aiTool: "GitHub Actions + VPS",
     color: "text-green-500",
   },
 ];
@@ -224,7 +224,7 @@ const WorkflowSection = forwardRef<HTMLElement>((props, ref) => {
               "GPT-4",
               "Context7 MCP",
               "Voyage AI",
-              "Vercel AI SDK",
+              "Anthropic SDK",
               "LangChain",
               "pgvector",
             ].map((tool) => (
