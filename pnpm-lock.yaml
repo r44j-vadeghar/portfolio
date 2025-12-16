@@ -156,8 +156,8 @@ importers:
         specifier: ^4.12.0
         version: 4.12.0
       prettier:
-        specifier: ^3.7.4
-        version: 3.7.4
+        specifier: 3.5.3
+        version: 3.5.3
       razorpay:
         specifier: ^2.9.6
         version: 2.9.6
@@ -6782,11 +6782,6 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  prettier@3.7.4:
-    resolution: {integrity: sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==}
-    engines: {node: '>=14'}
-    hasBin: true
-
   pretty-bytes@5.6.0:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}
     engines: {node: '>=6'}
@@ -11507,7 +11502,7 @@ snapshots:
       get-it: 8.6.7(debug@4.4.0)
       groq-js: 1.16.0
       pkg-dir: 5.0.0
-      prettier: 3.7.4
+      prettier: 3.5.3
       semver: 7.7.1
       validate-npm-package-name: 3.0.0
     transitivePeerDependencies:
@@ -11799,7 +11794,7 @@ snapshots:
       outdent: 0.8.0
       parse-git-config: 3.0.0
       pkg-up: 3.1.0
-      prettier: 3.7.4
+      prettier: 3.5.3
       pretty-bytes: 5.6.0
       prompts: 2.4.2
       recast: 0.23.9
@@ -15639,8 +15634,6 @@ snapshots:
   prelude-ls@1.2.1: {}
 
   prettier@3.5.3: {}
-
-  prettier@3.7.4: {}
 
   pretty-bytes@5.6.0: {}
 
