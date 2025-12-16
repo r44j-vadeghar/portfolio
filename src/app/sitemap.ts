@@ -1,6 +1,6 @@
 import {
   getAllBlogCategorySlugs,
-  getAllBlogSlugs,
+  getAllBlogSlugsWithDates,
   getAllProductCategorySlugs,
   getAllProductSlugs,
 } from "@/sanity/lib/slugs";
@@ -79,14 +79,26 @@ export default async function sitemap({
         changeFrequency: "monthly",
         priority: 0.6,
       },
+      {
+        url: `${baseUrl}/services`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/sponsor`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      },
     ];
   }
 
   if (id === "blog") {
-    const blogSlugs = await getAllBlogSlugs();
-    return blogSlugs.map((slug) => ({
-      url: `${baseUrl}/blog/${slug}`,
-      lastModified: new Date(),
+    const blogPosts = await getAllBlogSlugsWithDates();
+    return blogPosts.map((post: { slug: string; lastModified: string }) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.lastModified),
       changeFrequency: "weekly",
       priority: 0.7,
     }));

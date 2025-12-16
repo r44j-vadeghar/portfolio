@@ -1,10 +1,6 @@
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "../live";
 
-/**
- * Fetches all blog post slugs from Sanity
- * @returns Array of blog post slugs
- */
 export const getAllBlogSlugs = async () => {
   const BLOG_SLUGS_QUERY = defineQuery(`
     *[_type == "post"] {
@@ -25,10 +21,33 @@ export const getAllBlogSlugs = async () => {
   }
 };
 
-/**
- * Fetches all product slugs from Sanity
- * @returns Array of product slugs
- */
+export const getAllBlogSlugsWithDates = async () => {
+  const BLOG_SLUGS_WITH_DATES_QUERY = defineQuery(`
+    *[_type == "post"] {
+      "slug": slug.current,
+      publishedAt,
+      updatedAt
+    }
+  `);
+
+  try {
+    const response = await sanityFetch({
+      query: BLOG_SLUGS_WITH_DATES_QUERY,
+    });
+
+    return (response.data || []).map(
+      (post: { slug: string; updatedAt?: string; publishedAt?: string }) => ({
+        slug: post.slug,
+        lastModified:
+          post.updatedAt || post.publishedAt || new Date().toISOString(),
+      })
+    );
+  } catch (error) {
+    console.error("Error fetching blog slugs with dates:", error);
+    return [];
+  }
+};
+
 export const getAllProductSlugs = async () => {
   const PRODUCT_SLUGS_QUERY = defineQuery(`
     *[_type == "productType"] {
@@ -49,10 +68,6 @@ export const getAllProductSlugs = async () => {
   }
 };
 
-/**
- * Fetches all blog category slugs from Sanity
- * @returns Array of blog category slugs
- */
 export const getAllBlogCategorySlugs = async () => {
   const BLOG_CATEGORY_SLUGS_QUERY = defineQuery(`
     *[_type == "category"] {
@@ -73,10 +88,6 @@ export const getAllBlogCategorySlugs = async () => {
   }
 };
 
-/**
- * Fetches all product category slugs from Sanity
- * @returns Array of product category slugs
- */
 export const getAllProductCategorySlugs = async () => {
   const PRODUCT_CATEGORY_SLUGS_QUERY = defineQuery(`
     *[_type == "productCategory"] {
@@ -97,10 +108,6 @@ export const getAllProductCategorySlugs = async () => {
   }
 };
 
-/**
- * Fetches all blog posts with full data for RSS feed
- * @returns Array of blog posts with complete information
- */
 export const getAllBlogPosts = async () => {
   const BLOG_POSTS_QUERY = defineQuery(`
     *[_type == "post"] {

@@ -185,6 +185,8 @@ export class SeoManager {
     modifiedTime,
     category,
     tags = [],
+    wordCount,
+    readingTimeMinutes,
   }: {
     title: string;
     description: string;
@@ -194,6 +196,8 @@ export class SeoManager {
     modifiedTime?: string;
     category?: string;
     tags?: string[];
+    wordCount?: number;
+    readingTimeMinutes?: number;
   }): JsonLdType {
     const postUrl = `${seoConfig.baseUrl}/blog/${slug}`;
     const imageUrl = image
@@ -211,6 +215,7 @@ export class SeoManager {
       url: postUrl,
       datePublished: publishedTime,
       dateModified: modifiedTime || publishedTime,
+      inLanguage: "en-US",
       author: {
         "@type": "Person",
         name: seoConfig.fullName,
@@ -231,6 +236,25 @@ export class SeoManager {
       },
       keywords: tags.join(", "),
       ...(category && { articleSection: category }),
+      ...(wordCount && { wordCount }),
+      ...(readingTimeMinutes && { timeRequired: `PT${readingTimeMinutes}M` }),
+    };
+  }
+
+  static getFAQSchema(
+    faqs: { question: string; answer: string }[]
+  ): JsonLdType {
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
     };
   }
 
