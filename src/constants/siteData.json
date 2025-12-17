@@ -3,6 +3,22 @@
     "fullName": "Vadeghar Raja Narayana",
     "name": "R44j",
     "title": "R44J - Full Stack Developer",
+    "identity": {
+      "givenName": "Raja Narayana",
+      "familyName": "Vadeghar",
+      "preferredName": "Raj Vadeghar",
+      "alternateNames": [
+        "Raja",
+        "Raja Narayana",
+        "V. Raja Narayana",
+        "Vadeghar Raja Narayana",
+        "Raj Vadeghar",
+        "Raj",
+        "R44j",
+        "R44J"
+      ],
+      "email": "r44j.dev@gmail.com"
+    },
     "keywords": "R44J, Senior Full Stack Developer, React, Next.js, TypeScript, Chrome Extensions, AI Integration, Real-time Applications, Cloud Infrastructure, WhatsApp Business API, Social Media Integrations, Stripe Payments, Vector Search, WebSockets",
     "description": "R44J is a Senior Full Stack Developer with 3+ years of experience building complex web applications, Chrome extensions, and cloud infrastructure. Expert in React/Next.js, real-time systems, AI integration, and scalable enterprise solutions.",
     "openGraph": {

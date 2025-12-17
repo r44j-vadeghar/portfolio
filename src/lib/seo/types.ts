@@ -24,6 +24,12 @@ export interface SeoConfig {
   titleTemplate: string;
   defaultImage: string;
   twitterHandle: string;
+  // Identity fields for Person schema
+  givenName: string;
+  familyName: string;
+  preferredName: string;
+  alternateNames: string[];
+  email: string;
   openGraph: {
     title: string;
     description: string;

@@ -12,6 +12,12 @@ export const seoConfig: SeoConfig = {
   titleTemplate: "%s | " + siteData.default.name,
   defaultImage: siteData.default.openGraph.image,
   twitterHandle: siteData.default.twitter.creator,
+  // Identity fields for Person schema SEO
+  givenName: siteData.default.identity.givenName,
+  familyName: siteData.default.identity.familyName,
+  preferredName: siteData.default.identity.preferredName,
+  alternateNames: siteData.default.identity.alternateNames,
+  email: siteData.default.identity.email,
   openGraph: {
     title: siteData.default.openGraph.title,
     description: siteData.default.openGraph.description,

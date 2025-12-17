@@ -28,8 +28,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: siteData.default.title,
   description: siteData.default.description,
-  keywords: siteData.default.keywords,
-  authors: [{ name: "R44J Vadeghar" }],
+  keywords: `${siteData.default.keywords}, Raja Narayana, Raj Vadeghar, Vadeghar, R44j, V. Raja Narayana`,
+  authors: [
+    { name: siteData.default.identity.preferredName },
+    { name: siteData.default.fullName },
+  ],
   robots: "index, follow",
   openGraph: {
     title: siteData.default.openGraph.title,
