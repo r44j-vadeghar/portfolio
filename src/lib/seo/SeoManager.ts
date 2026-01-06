@@ -123,20 +123,36 @@ export class SeoManager {
       "@context": "https://schema.org",
       "@type": "Person",
       "@id": `${seoConfig.baseUrl}/#person`,
-      name: seoConfig.fullName,
+      name: seoConfig.preferredName,
       givenName: seoConfig.givenName,
       familyName: seoConfig.familyName,
+      additionalName: "Raja Narayana",
       alternateName: seoConfig.alternateNames,
       url: seoConfig.baseUrl,
-      image: `${seoConfig.baseUrl}/raj.png`,
+      image: {
+        "@type": "ImageObject",
+        url: `${seoConfig.baseUrl}/raj.png`,
+        width: "400",
+        height: "400",
+      },
       email: seoConfig.email,
       jobTitle: "Senior Full Stack Developer",
       description: seoConfig.description,
+      nationality: {
+        "@type": "Country",
+        name: "India",
+      },
+      alumniOf: {
+        "@type": "EducationalOrganization",
+        name: "Kakatiya University",
+      },
       sameAs: [
         "https://github.com/r44j-vadeghar",
         "https://linkedin.com/in/r44j",
         "https://youtube.com/@rajvadeghar",
         "https://twitter.com/VadegharRaj",
+        "https://x.com/VadegharRaj",
+        "https://bsky.app/profile/r44j.dev",
       ],
       knowsAbout: [
         "React",
@@ -166,6 +182,10 @@ export class SeoManager {
         name: "Manifold Ventures",
         url: "https://www.meavana.com",
       },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": seoConfig.baseUrl,
+      },
     };
   }
 
@@ -189,14 +209,39 @@ export class SeoManager {
       },
       about: {
         "@type": "Person",
-        name: seoConfig.fullName,
+        name: seoConfig.preferredName,
         url: seoConfig.baseUrl,
       },
       mainEntity: {
         "@type": "Person",
-        name: seoConfig.fullName,
+        name: seoConfig.preferredName,
         url: seoConfig.baseUrl,
       },
+    };
+  }
+
+  static getProfilePageSchema(): JsonLdType {
+    return {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "@id": `${seoConfig.baseUrl}/about`,
+      name: `About ${seoConfig.preferredName}`,
+      description: `Learn about ${seoConfig.preferredName} (${seoConfig.name}), also known as ${seoConfig.fullName} - a Senior Full Stack Developer`,
+      url: `${seoConfig.baseUrl}/about`,
+      mainEntity: {
+        "@id": `${seoConfig.baseUrl}/#person`,
+      },
+      about: {
+        "@id": `${seoConfig.baseUrl}/#person`,
+      },
+      isPartOf: {
+        "@type": "WebSite",
+        "@id": seoConfig.baseUrl,
+        name: seoConfig.siteTitle,
+        url: seoConfig.baseUrl,
+      },
+      dateCreated: "2024-01-01",
+      dateModified: new Date().toISOString().split("T")[0],
     };
   }
 

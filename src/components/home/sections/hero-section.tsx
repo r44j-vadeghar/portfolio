@@ -188,6 +188,9 @@ export default function HeroSection({
                 >
                   {siteData.default.name}
                 </LineShadowText>
+                {/* <span className="text-lg md:text-xl text-muted-foreground font-normal block mb-2">
+                  ({siteData.default.name})
+                </span> */}
                 <span>
                   Building Tomorrow&apos;s{" "}
                   <Highlighter
@@ -267,7 +270,7 @@ export default function HeroSection({
               <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-primary/10 to-primary/30">
                 <Image
                   src={siteData.personal.avatar || "/placeholder.svg"}
-                  alt={siteData.default.name}
+                  alt={`${siteData.default.identity.preferredName} (${siteData.default.name}) - Senior Full Stack Developer`}
                   fill
                   className="object-cover rounded-full pointer-events-none select-none"
                   priority

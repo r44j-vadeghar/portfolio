@@ -2,15 +2,25 @@ import {
   Article,
   BlogPosting,
   BreadcrumbList,
+  FAQPage,
   Person,
   Product,
+  ProfilePage,
   WebPage,
   WebSite,
   WithContext,
 } from "schema-dts";
 
 export type JsonLdType = WithContext<
-  Person | BlogPosting | WebSite | WebPage | Article | BreadcrumbList | Product
+  | Person
+  | BlogPosting
+  | WebSite
+  | WebPage
+  | Article
+  | BreadcrumbList
+  | Product
+  | ProfilePage
+  | FAQPage
 >;
 
 export interface SeoConfig {

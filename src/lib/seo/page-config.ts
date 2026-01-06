@@ -5,11 +5,13 @@ export const pageSeoConfig: Record<string, PageSeoConfig> = {
   home: {
     title: siteData.default.openGraph.title.split("|")[0].trim(),
     description: siteData.home.hero.description,
+    keywords: siteData.default.keywords,
     type: "website",
   },
   about: {
     title: siteData.pages.about.title,
     description: siteData.pages.about.description,
+    keywords: siteData.pages.about.keywords,
     type: "profile",
   },
   blog: {

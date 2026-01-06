@@ -2,7 +2,7 @@
   "default": {
     "fullName": "Vadeghar Raja Narayana",
     "name": "R44j",
-    "title": "R44J - Full Stack Developer",
+    "title": "Raj Vadeghar (R44J) - Senior Full Stack Developer",
     "identity": {
       "givenName": "Raja Narayana",
       "familyName": "Vadeghar",
@@ -19,25 +19,26 @@
       ],
       "email": "r44j.dev@gmail.com"
     },
-    "keywords": "R44J, Senior Full Stack Developer, React, Next.js, TypeScript, Chrome Extensions, AI Integration, Real-time Applications, Cloud Infrastructure, WhatsApp Business API, Social Media Integrations, Stripe Payments, Vector Search, WebSockets",
-    "description": "R44J is a Senior Full Stack Developer with 3+ years of experience building complex web applications, Chrome extensions, and cloud infrastructure. Expert in React/Next.js, real-time systems, AI integration, and scalable enterprise solutions.",
+    "keywords": "Raj Vadeghar, Raja Narayana, Vadeghar, R44J, R44j, Raja Narayana Vadeghar, V. Raja Narayana, Senior Full Stack Developer, React, Next.js, TypeScript, Chrome Extensions, AI Integration, Real-time Applications, Cloud Infrastructure, WhatsApp Business API, Social Media Integrations, Stripe Payments, Vector Search, WebSockets",
+    "description": "Raj Vadeghar (R44J), also known as Raja Narayana Vadeghar, is a Senior Full Stack Developer with 3+ years of experience building complex web applications, Chrome extensions, and cloud infrastructure. Expert in React/Next.js, real-time systems, AI integration, and scalable enterprise solutions.",
     "openGraph": {
-      "title": "R44J | Senior Full Stack Developer & Solutions Architect",
-      "description": "Senior Full Stack Developer specializing in complex web applications, Chrome extensions, AI integration, and cloud infrastructure. Building scalable solutions for modern businesses.",
+      "title": "Raj Vadeghar (R44J) | Senior Full Stack Developer & Solutions Architect",
+      "description": "Raj Vadeghar, also known as Raja Narayana, is a Senior Full Stack Developer specializing in complex web applications, Chrome extensions, AI integration, and cloud infrastructure. Building scalable solutions for modern businesses.",
       "type": "website",
       "url": "https://r44j.dev",
       "image": "https://r44j.dev/raj.png"
     },
     "twitter": {
-      "title": "R44J | Senior Full Stack Developer & Solutions Architect",
-      "description": "Senior Full Stack Developer specializing in complex web applications, Chrome extensions, AI integration, and cloud infrastructure. Building scalable solutions for modern businesses.",
+      "title": "Raj Vadeghar (R44J) | Senior Full Stack Developer & Solutions Architect",
+      "description": "Raj Vadeghar, also known as Raja Narayana, is a Senior Full Stack Developer specializing in complex web applications, Chrome extensions, AI integration, and cloud infrastructure.",
       "creator": "@VadegharRaj"
     }
   },
   "pages": {
     "about": {
-      "title": "About Me",
-      "description": "Senior Full Stack Developer with 3+ years of experience building complex applications across startups and enterprises. Expert in React/Next.js ecosystems, AI integration, real-time systems, and cloud infrastructure. Currently developing WhatsApp Business platforms, Chrome extensions, and scalable web applications. Specialized in solving technical challenges and building products that scale."
+      "title": "About Raj Vadeghar (Raja Narayana) - Full Stack Developer",
+      "description": "Learn about Raj Vadeghar (R44J), also known as Raja Narayana Vadeghar - a Senior Full Stack Developer with 3+ years of experience building complex applications across startups and enterprises. Expert in React/Next.js ecosystems, AI integration, real-time systems, and cloud infrastructure.",
+      "keywords": "Raj Vadeghar, Raja Narayana, Vadeghar, R44J, About Raj, About Raja Narayana, Full Stack Developer, Software Engineer, Web Developer"
     },
     "contact": {
       "title": "Contact R44J"
@@ -425,8 +426,9 @@
   },
   "home": {
     "hero": {
-      "title": "Building Tomorrow's Digital Infrastructure",
-      "description": "I architect enterprise-grade systems that scale. From AI-powered platforms to real-time applications, I transform complex technical challenges into elegant solutions that drive business growth."
+      "title": "Raj Vadeghar - Building Tomorrow's Digital Infrastructure",
+      "subtitle": "Senior Full Stack Developer",
+      "description": "Hi, I'm Raj Vadeghar (R44J), a Senior Full Stack Developer who architects enterprise-grade systems that scale. From AI-powered platforms to real-time applications, I transform complex technical challenges into elegant solutions that drive business growth."
     },
     "skills": [
       {
